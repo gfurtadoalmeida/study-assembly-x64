@@ -1,0 +1,28 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - 'book-*'
+      - 'udemy-*'
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+  - task: VSBuild@1
+    name: Build
+    inputs:
+      solution: '**\*.sln'
+      platform: 'x64'
+      msbuildArchitecture: 'x64'
+  - task: VSTest@2
+    name: Test
+    inputs:
+      testSelector: 'testAssemblies'
+      testAssemblyVer2: |
+        **\*.Test.dll
+        !**\*TestAdapter.dll
+        !**\obj\**
+      searchFolder: '$(System.DefaultWorkingDirectory)'
