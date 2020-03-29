@@ -4,8 +4,8 @@ trigger:
       - master
   paths:
     include:
-      - 'book-*'
-      - 'udemy-*'
+      - 'book-*/*'
+      - 'udemy-*/*'
 
 pool:
   vmImage: 'windows-latest'
