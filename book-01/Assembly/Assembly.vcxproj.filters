@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\core_math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\core_array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\core_struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\core_string.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\core_stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\avx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\avx_scalar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\avx_packed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\__declarations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\types_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asm-headers\types_avx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\core_array.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\avx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\core_math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\core_stack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\core_string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\core_struct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\avx_scalar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\avx_packed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="asm\core\array\compare.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\array\get_from_const.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\array\reverse.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\array\sum.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\array\sum_columns.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\math\min_max.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\struct\get_cpu_info.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\string\concat.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\string\count_char_occurrence.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\stack\sum_arguments.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\stack\sum_arguments_xmm.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\get_set_rouding_mode.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\stack\sum_arguments_xmm_pow_2_use_macros.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\scalar\calc_euclidian_distance.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\scalar\convert_temperature.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\scalar\convert_number.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\scalar\compare_doubles_vcomisd.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\scalar\compare_doubles_vcmpsd.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\scalar\calc_sphere_area_volume.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\scalar\calc_mean_stdev.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\compare_doubles_equal.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\sum_floats.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\convert_numbers.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\math\arithmetics.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="asm\macros.inc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="asm\comparison_predicates.inc">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,20 +1,25 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Assembly - x64
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Projects and [annotations](/notes.md) used to learn assembly for x64 processors.  
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Each folder contains two projects:
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+* Main: implementation.
+* Test: verify if it works.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+**Do not expect optimized code.**
+
+## Books
+
+1. [Modern X86 Assembly Language Programming, 2nd edition](https://www.amazon.com/gp/product/B07L6Z6K9Z) ^1^
+
+[1] Says x86 but focus on x64 and AVX, AVX2 and AVX-512.
+
+## Support References
+
+* [x86 Assembly guide](http://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
+* [Intel - Introduction to x64 assembly](https://software.intel.com/en-us/articles/introduction-to-x64-assembly)
+* [Visual C++ - x64 software conventions](https://docs.microsoft.com/en-us/cpp/build/x64-software-conventions?view=vs-2019)
+* [Sandpile - x86 Processor technical references](https://www.sandpile.org/)
+* [The MASM Forum](http://masm32.com/board/index.php)
+* [Wikipedia](https://www.wikipedia.org/)
