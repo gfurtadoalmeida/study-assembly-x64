@@ -11,7 +11,6 @@ using namespace Assembly::AVX;
 using namespace Assembly::AVX::Packed;
 using namespace Assembly::AVX::Types;
 
-
 namespace Assembly {
 	namespace Test {
 		namespace AVX {
@@ -73,6 +72,30 @@ namespace Assembly {
 					for (size_t i = 0; i < LENGTH; i++)
 					{
 						Assert::AreEqual((int)src.Float[i], des.Int32[i]);
+					}
+				}
+
+				TEST_METHOD(Test_Process_Sqrt_Array_Float)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const int LENGTH = 19;
+
+					alignas(16) float values[LENGTH];
+					alignas(16) float results[LENGTH];
+
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = (float)i * (float)i;
+					}
+
+					Process_Sqrt_Array_Float(values, results, LENGTH);
+
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						Assert::AreEqual((float)i, results[i]);
 					}
 				}
 

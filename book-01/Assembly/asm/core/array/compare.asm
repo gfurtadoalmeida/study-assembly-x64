@@ -1,6 +1,6 @@
 .code
 
-; int Core_Array_Compare_(int* a, int* b, int arraysLength, int* matchedValues)
+; int Core_Array_Compare_(int* a, int* b, int arraysLength, int* matchedValue)
 Core_Array_Compare_ proc frame
 
 ; Prolog

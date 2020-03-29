@@ -14,6 +14,11 @@ namespace Assembly {
 			{
 				return AVX_Packed_Convert_Numbers_(source, destination, operation);
 			}
+			
+			void Process_Sqrt_Array_Float(float* input, const float* output, int arrayLength)
+			{
+				AVX_Packed_Process_Sqrt_Array_Float_(input, output, arrayLength);
+			}
 
 			void Sum_Floats(const XmmVal& a, const XmmVal& b, XmmVal results[])
 			{

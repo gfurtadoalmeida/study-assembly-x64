@@ -4,7 +4,7 @@ namespace Assembly {
 	namespace Core {
 		namespace Array {
 
-			__declspec(dllexport) int Compare(const int* a, const int* b, int arraysLength, int** matchedValues);
+			__declspec(dllexport) int Compare(const int* a, const int* b, int arraysLength, int** matchedValue);
 			__declspec(dllexport) int Get_From_Const(int position, int* value);
 			__declspec(dllexport) int Get_From_Const_Array_Length();
 			__declspec(dllexport) void Reverse(const int* source, const int* destination, int arrayLength);

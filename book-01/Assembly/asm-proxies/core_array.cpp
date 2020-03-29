@@ -5,9 +5,9 @@ namespace Assembly {
 	namespace Core {
 		namespace Array {
 
-			int Compare(const int* a, const int* b, int arraysLength, int** matchedValues)
+			int Compare(const int* a, const int* b, int arraysLength, int** matchedValue)
 			{
-				return Core_Array_Compare_(a, b, arraysLength, matchedValues);
+				return Core_Array_Compare_(a, b, arraysLength, matchedValue);
 			}
 
 			int Get_From_Const(int position, int* value)

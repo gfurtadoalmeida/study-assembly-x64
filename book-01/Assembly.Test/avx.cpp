@@ -9,7 +9,7 @@ using namespace Assembly::AVX::Types;
 namespace Assembly {
 	namespace Test {
 		namespace AVX {
-			TEST_CLASS(AVX)
+			TEST_CLASS(Core)
 			{
 			public:
 				TEST_METHOD(Test_Get_Rouding_Mode)
