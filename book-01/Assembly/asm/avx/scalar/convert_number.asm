@@ -9,9 +9,8 @@ mov eax, 1 ; Success
 cmp r8d, CvtOpJumpTableCount         ; Is r8d a valid jump table index ?
 jae BadCvtOp                         ; r9d is invalid if >= jump table count
 
-lea r9, qword ptr [CvtOpJumpTable]   ; Get jumpt table address relative to RIP
-lea r9, qword ptr [r9+r8*type qword] ; Find correct jump address
-jmp qword ptr [r9]                   ; Jump to specified conversion
+mov r9, CvtOpJumpTable           ; Get jump table address relative to RIP
+jmp qword ptr [r9+r8*type qword] ; Find correct jump address and jump to specified conversion
 
 ; int32 <-> float/double
 
