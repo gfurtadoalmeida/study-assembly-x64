@@ -160,7 +160,10 @@
     <MASM Include="asm\core\math\arithmetics.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="asm\avx\packed\process_sqrt_array_float.asm">
+    <MASM Include="asm\avx\packed\array_float_sqrt.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\array_min_max.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>

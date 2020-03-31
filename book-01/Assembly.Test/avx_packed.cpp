@@ -17,6 +17,30 @@ namespace Assembly {
 			TEST_CLASS(Packed)
 			{
 			public:
+				TEST_METHOD(Test_Array_Float_Sqrt)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const int LENGTH = 19;
+
+					alignas(16) float values[LENGTH];
+					alignas(16) float results[LENGTH];
+
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = (float)i * (float)i;
+					}
+
+					Array_Float_Sqrt(values, results, LENGTH);
+
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						Assert::AreEqual((float)i, results[i]);
+					}
+				}
+
 				TEST_METHOD(Test_Compare_Doubles_Equal)
 				{
 					// 4 doubles (64 bits) in 128 bits (xmm register).
@@ -75,28 +99,47 @@ namespace Assembly {
 					}
 				}
 
-				TEST_METHOD(Test_Process_Sqrt_Array_Float)
+				TEST_METHOD(Test_Find_Array_Float_Max)
 				{
 					// Use a length bigger than and not 
 					// divisible by 16.
 					// It will test the batch and one-by-one
 					// processing modes.
 					const int LENGTH = 19;
+					float result = 0.0F;
+					
+					alignas(16) float values[LENGTH];
+
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = (float)i;
+					}
+
+					Assert::AreEqual(true, Find_Array_Float_Max(values, LENGTH, &result));
+					Assert::AreEqual((float)LENGTH-1, result);
+				}
+
+
+				TEST_METHOD(Test_Find_Array_Float_Min)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const int LENGTH = 19;
+					float result = 0.0F;
 
 					alignas(16) float values[LENGTH];
-					alignas(16) float results[LENGTH];
 
 					for (size_t i = 0; i < LENGTH; i++)
 					{
-						values[i] = (float)i * (float)i;
+						values[i] = (float)i;
 					}
 
-					Process_Sqrt_Array_Float(values, results, LENGTH);
+					values[0] = -1.0F;
 
-					for (size_t i = 0; i < LENGTH; i++)
-					{
-						Assert::AreEqual((float)i, results[i]);
-					}
+					Assert::AreEqual(true, Find_Array_Float_Min(values, LENGTH, &result));
+					Assert::AreEqual(-1.0F, result);
 				}
 
 				TEST_METHOD(Test_Sum_Floats)

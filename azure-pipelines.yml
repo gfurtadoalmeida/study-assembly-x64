@@ -3,9 +3,9 @@ trigger:
     include:
       - master
   paths:
-    include:
-      - 'book-*/*'
-      - 'udemy-*/*'
+    exclude:
+      - 'README.md'
+      - 'notes.md'
 
 pool:
   vmImage: 'windows-latest'
@@ -17,6 +17,7 @@ steps:
       solution: '**\*.sln'
       platform: 'x64'
       msbuildArchitecture: 'x64'
+      configuration: release
   - task: VSTest@2
     name: Test
     inputs:

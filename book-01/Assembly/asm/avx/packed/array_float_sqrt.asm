@@ -1,7 +1,7 @@
 .code
 
-; AVX_Packed_Process_Sqrt_Array_Float_(float* input, const float* output, int arrayLength)
-AVX_Packed_Process_Sqrt_Array_Float_ proc
+; AVX_Packed_Array_Float_Sqtr_(float* input, const float* output, int arrayLength)
+AVX_Packed_Array_Float_Sqtr_ proc
 
 xor rax, rax ; Our counter for the loop
 
@@ -44,6 +44,6 @@ Done:
 
 ret
 
-AVX_Packed_Process_Sqrt_Array_Float_ endp
+AVX_Packed_Array_Float_Sqtr_ endp
 
 end

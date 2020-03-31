@@ -17,9 +17,10 @@ Each folder contains two projects:
 
 ## Support References
 
-* [x86 Assembly guide](http://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
+* [Felix Cloutier's x86/x64 instructions reference](https://www.felixcloutier.com/x86/index.html)
 * [Intel - Introduction to x64 assembly](https://software.intel.com/en-us/articles/introduction-to-x64-assembly)
-* [Visual C++ - x64 software conventions](https://docs.microsoft.com/en-us/cpp/build/x64-software-conventions?view=vs-2019)
 * [Sandpile - x86 Processor technical references](https://www.sandpile.org/)
 * [The MASM Forum](http://masm32.com/board/index.php)
+* [Visual C++ - x64 software conventions](https://docs.microsoft.com/en-us/cpp/build/x64-software-conventions?view=vs-2019)
+* [x86 Assembly guide](http://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 * [Wikipedia](https://www.wikipedia.org/)

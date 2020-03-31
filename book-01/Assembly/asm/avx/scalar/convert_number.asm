@@ -6,8 +6,8 @@ AVX_Scalar_Convert_Number_ proc
 mov eax, 1 ; Success
 
 ; Make sure cvt_op is valid, then jump to target conversion code
-cmp r8d, CvtOpJumpTableCount         ; Is r8d a valid jump table index ?
-jae BadCvtOp                         ; r9d is invalid if >= jump table count
+cmp r8d, CvtOpJumpTableCount     ; Is r8d a valid jump table index ?
+jae BadCvtOp                     ; r9d is invalid if >= jump table count
 
 mov r9, CvtOpJumpTable           ; Get jump table address relative to RIP
 jmp qword ptr [r9+r8*type qword] ; Find correct jump address and jump to specified conversion

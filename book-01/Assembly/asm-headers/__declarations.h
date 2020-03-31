@@ -11,9 +11,11 @@ extern "C" RoundingMode AVX_Get_Rounding_Mode_();
 extern "C" void AVX_Set_Rounding_Mode_(const RoundingMode roundingMode);
 
 // AVX / Packed
+extern "C" void AVX_Packed_Array_Float_Sqtr_(float* input, const float* output, int arrayLength);
 extern "C" void AVX_Packed_Compare_Doubles_Equal_(const XmmVal & a, const XmmVal & b, XmmVal results[]);
 extern "C" bool AVX_Packed_Convert_Numbers_(const XmmVal & source, const XmmVal & destination, CvtOp operation);
-extern "C" void AVX_Packed_Process_Sqrt_Array_Float_(float* input, const float* output, int arrayLength);
+extern "C" bool AVX_Packed_Find_Array_Float_Max_(const float* input, int arrayLength, float* result);
+extern "C" bool AVX_Packed_Find_Array_Float_Min_(const float* input, int arrayLength, float* result);
 extern "C" void AVX_Packed_Sum_Floats_(const XmmVal & a, const XmmVal & b, XmmVal results[]);
 
 // AVX / Scalar
