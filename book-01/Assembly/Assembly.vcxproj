@@ -142,6 +142,7 @@
     <MASM Include="asm\avx\packed\compare_doubles_equal.asm" />
     <MASM Include="asm\avx\packed\convert_numbers.asm" />
     <MASM Include="asm\avx\packed\array_float_sqrt.asm" />
+    <MASM Include="asm\avx\packed\matrix_float_transpose.asm" />
     <MASM Include="asm\avx\packed\sum_floats.asm" />
     <MASM Include="asm\avx\scalar\calc_euclidian_distance.asm" />
     <MASM Include="asm\avx\scalar\calc_mean_stdev.asm" />

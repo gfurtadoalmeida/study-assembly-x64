@@ -41,7 +41,7 @@ movd real8 ptr [rbp+type qword], xmm1
 ; r12 was used. Unecessary again but made to learn.
 mov r12, 2
 vcvtsi2sd xmm1, xmm1, r12 ; xmm1 = 2.0
-sub rsp, 32               ; Allocate registers home for math::pow
+sub rsp, type qword*4	  ; Allocate registers home (ecx,edx,r8,r9) for math::pow
 call pow                  ; xmm0 = pow(xmm0, xmm1) = pow (sum, 2.0)
 
 vaddsd xmm0, xmm0, real8 ptr [rbp]            ; xmm0 += sum

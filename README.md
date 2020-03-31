@@ -11,7 +11,7 @@ Each folder contains two projects:
 
 ## Books
 
-1. [Modern X86 Assembly Language Programming, 2nd edition](https://www.amazon.com/gp/product/B07L6Z6K9Z) ^1^
+1. [Modern X86 Assembly Language Programming, 2nd edition](https://www.amazon.com/gp/product/B07L6Z6K9Z) ^1^ [(github)](https://github.com/Apress/modern-x86-assembly-language-programming-2e)
 
 [1] Says x86 but focus on x64 and AVX, AVX2 and AVX-512.
 

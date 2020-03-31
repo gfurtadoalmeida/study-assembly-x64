@@ -107,7 +107,7 @@ namespace Assembly {
 					// processing modes.
 					const int LENGTH = 19;
 					float result = 0.0F;
-					
+
 					alignas(16) float values[LENGTH];
 
 					for (size_t i = 0; i < LENGTH; i++)
@@ -116,7 +116,7 @@ namespace Assembly {
 					}
 
 					Assert::AreEqual(true, Find_Array_Float_Max(values, LENGTH, &result));
-					Assert::AreEqual((float)LENGTH-1, result);
+					Assert::AreEqual((float)LENGTH - 1, result);
 				}
 
 
@@ -140,6 +140,28 @@ namespace Assembly {
 
 					Assert::AreEqual(true, Find_Array_Float_Min(values, LENGTH, &result));
 					Assert::AreEqual(-1.0F, result);
+				}
+
+				TEST_METHOD(Test_Matrix_Float_Transpose)
+				{
+					alignas(16) float matrix[4][4]
+					{
+						{2.0F,  7.0F,  8.0F,  3.0F},
+						{11.0F, 14.0F, 16.0F, 10.0F},
+						{24.0F, 21.0F, 27.0F, 29.0F},
+						{31.0F, 34.0F, 38.0F, 33.0F}
+					};
+					alignas(16) float results[4][4];
+
+					Matrix_Float_Transpose(*matrix, *results);
+
+					for (size_t row = 0; row < 4; row++)
+					{
+						for (size_t column = 0; column < 4; column++)
+						{
+							Assert::AreEqual(matrix[row][column], results[column][row]);
+						}
+					}
 				}
 
 				TEST_METHOD(Test_Sum_Floats)
