@@ -169,6 +169,9 @@
     <MASM Include="asm\avx\packed\matrix_float_transpose.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx\packed\matrix_float_multiplication.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

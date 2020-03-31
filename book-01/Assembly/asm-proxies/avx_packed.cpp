@@ -30,6 +30,11 @@ namespace Assembly {
 				return AVX_Packed_Find_Array_Float_Min_(input, arrayLength, result);
 			}
 
+			void Matrix_Float_Multiplication_(const float* a, const float* b, float* result)
+			{
+				AVX_Packed_Matrix_Float_Multiplication_(a, b, result);
+			}
+
 			void Matrix_Float_Transpose(float* input, const float* result)
 			{
 				AVX_Packed_Matrix_Float_Transpose_(input, result);

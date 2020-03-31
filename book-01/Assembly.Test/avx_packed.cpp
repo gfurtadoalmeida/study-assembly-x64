@@ -142,6 +142,43 @@ namespace Assembly {
 					Assert::AreEqual(-1.0F, result);
 				}
 
+				TEST_METHOD(Test_Matrix_Float_Multiplication)
+				{
+					alignas(16) float matrixA[4][4]
+					{
+						{10.0F, 11.0F, 12.0F, 13.0F},
+						{20.0F, 21.0F, 22.0F, 23.0F},
+						{30.0F, 31.0F, 32.0F, 33.0F},
+						{40.0F, 41.0F, 42.0F, 43.0F}
+					};
+					alignas(16) float matrixB[4][4]
+					{
+						{100.0F, 101.0F, 102.0F, 103.0F},
+						{200.0F, 201.0F, 202.0F, 203.0F},
+						{300.0F, 301.0F, 302.0F, 303.0F},
+						{400.0F, 401.0F, 402.0F, 403.0F}
+					};
+					alignas(16) float results[4][4];
+
+					Matrix_Float_Multiplication_(*matrixA, *matrixB, *results);
+
+					const float TRUTH[4][4]
+					{
+						{12000.0F, 12046.0F, 12092.0F, 12138.0F},
+						{22000.0F, 22086.0F, 22172.0F, 22258.0F},
+						{32000.0F, 32126.0F, 32252.0F, 32378.0F},
+						{42000.0F, 42166.0F, 42332.0F, 42498.0F}
+					};
+
+					for (size_t row = 0; row < 4; row++)
+					{
+						for (size_t column = 0; column < 4; column++)
+						{
+							Assert::AreEqual(TRUTH[row][column], results[row][column]);
+						}
+					}
+				}
+
 				TEST_METHOD(Test_Matrix_Float_Transpose)
 				{
 					alignas(16) float matrix[4][4]
