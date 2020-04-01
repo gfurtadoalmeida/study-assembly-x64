@@ -19,7 +19,7 @@ namespace Assembly {
 			{
 				return AVX_Packed_Convert_Numbers_(source, destination, operation);
 			}
-	
+
 			bool Find_Array_Float_Max(const float* input, int arrayLength, float* result)
 			{
 				return AVX_Packed_Find_Array_Float_Max_(input, arrayLength, result);
@@ -43,6 +43,11 @@ namespace Assembly {
 			void Sum_Floats(const XmmVal& a, const XmmVal& b, XmmVal results[])
 			{
 				AVX_Packed_Sum_Floats_(a, b, results);
+			}
+
+			void Sum_Shorts(const XmmVal& a, const XmmVal& b, XmmVal results[2])
+			{
+				AVX_Packed_Sum_Shorts_(a, b, results);
 			}
 		}
 	}

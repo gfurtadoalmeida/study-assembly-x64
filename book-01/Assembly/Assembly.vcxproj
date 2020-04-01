@@ -144,6 +144,7 @@
     <MASM Include="asm\avx\packed\array_float_sqrt.asm" />
     <MASM Include="asm\avx\packed\matrix_float_multiplication.asm" />
     <MASM Include="asm\avx\packed\matrix_float_transpose.asm" />
+    <MASM Include="asm\avx\packed\sum_shorts.asm" />
     <MASM Include="asm\avx\packed\sum_floats.asm" />
     <MASM Include="asm\avx\scalar\calc_euclidian_distance.asm" />
     <MASM Include="asm\avx\scalar\calc_mean_stdev.asm" />

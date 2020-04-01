@@ -19,6 +19,7 @@ extern "C" bool AVX_Packed_Find_Array_Float_Min_(const float* input, int arrayLe
 extern "C" void AVX_Packed_Matrix_Float_Multiplication_(const float* a, const float* b, float* result);
 extern "C" void AVX_Packed_Matrix_Float_Transpose_(float* input, const float* result);
 extern "C" void AVX_Packed_Sum_Floats_(const XmmVal & a, const XmmVal & b, XmmVal results[]);
+extern "C" void AVX_Packed_Sum_Shorts_(const XmmVal & a, const XmmVal & b, XmmVal results[2]);
 
 // AVX / Scalar
 extern "C" double AVX_Scalar_Calc_Euclidian_Distance_(double x1, double y1, double z1, double x2, double y2, double z2);

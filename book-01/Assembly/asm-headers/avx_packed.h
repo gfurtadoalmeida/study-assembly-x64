@@ -14,6 +14,7 @@ namespace Assembly {
 			__declspec(dllexport) void Matrix_Float_Multiplication_(const float* a, const float* b, float* result);
 			__declspec(dllexport) void Matrix_Float_Transpose(float* input, const float* result);
 			__declspec(dllexport) void Sum_Floats(const XmmVal& a, const XmmVal& b, XmmVal results[]);
+			__declspec(dllexport) void Sum_Shorts(const XmmVal& a, const XmmVal& b, XmmVal results[2]);
 		}
 	}
 }

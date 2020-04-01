@@ -16,6 +16,11 @@ namespace Assembly {
 		namespace AVX {
 			TEST_CLASS(Packed)
 			{
+				// The use of "alignas(16)" instruction on the tests below
+				// are necessary because I used only aligned AVX instructions.
+				// We could omit it if unaligned AVX instructions were used.
+				// For performance, aligned instructions should be used.
+
 			public:
 				TEST_METHOD(Test_Array_Float_Sqrt)
 				{
@@ -222,6 +227,41 @@ namespace Assembly {
 					{
 						Assert::AreEqual((i + 1) * 2.0F, results->Float[i]);
 					}
+				}
+
+				TEST_METHOD(Test_Sum_Shorts)
+				{
+					alignas(16) XmmVal a;
+					alignas(16) XmmVal b;
+					alignas(16) XmmVal results[2];
+
+					// We can fit 8 short numbers in it but I 
+					// send only 4.
+					a.Int16[0] = 10;
+					b.Int16[0] = 100;
+
+					a.Int16[1] = 200;
+					b.Int16[1] = -200;
+
+					a.Int16[2] = 30;
+					b.Int16[2] = 32760;
+
+					a.Int16[3] = -32766;
+					b.Int16[3] = -400;
+
+					Sum_Shorts(a, b, results);
+
+					// Wraparound
+					Assert::AreEqual((int16_t)110, results[0].Int16[0]);
+					Assert::AreEqual((int16_t)0, results[0].Int16[1]);
+					Assert::AreEqual((int16_t)-32746, results[0].Int16[2]);
+					Assert::AreEqual((int16_t)32370, results[0].Int16[3]);
+
+					// Saturated
+					Assert::AreEqual((int16_t)110, results[1].Int16[0]);
+					Assert::AreEqual((int16_t)0, results[1].Int16[1]);
+					Assert::AreEqual((int16_t)32767, results[1].Int16[2]);
+					Assert::AreEqual((int16_t)-32768, results[1].Int16[3]);
 				}
 			};
 		}
