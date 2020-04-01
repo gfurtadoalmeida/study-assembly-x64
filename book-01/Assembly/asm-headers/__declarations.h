@@ -18,6 +18,10 @@ extern "C" bool AVX_Packed_Find_Array_Float_Max_(const float* input, int arrayLe
 extern "C" bool AVX_Packed_Find_Array_Float_Min_(const float* input, int arrayLength, float* result);
 extern "C" void AVX_Packed_Matrix_Float_Multiplication_(const float* a, const float* b, float* result);
 extern "C" void AVX_Packed_Matrix_Float_Transpose_(float* input, const float* result);
+extern "C" void AVX_Packed_Multiply_Ints_A_(const XmmVal & a, const XmmVal & b, XmmVal results[2]);
+extern "C" void AVX_Packed_Multiply_Ints_B_(const XmmVal & a, const XmmVal & b, XmmVal & results);
+extern "C" void AVX_Packed_Multiply_Shorts_(const XmmVal & a, const XmmVal & b, XmmVal results[2]);
+extern "C" bool AVX_Packed_Shift_Integers_(const XmmVal & input, XmmVal & results, ShiftOp shift_op, unsigned int count);
 extern "C" void AVX_Packed_Sum_Floats_(const XmmVal & a, const XmmVal & b, XmmVal results[]);
 extern "C" void AVX_Packed_Sum_Shorts_(const XmmVal & a, const XmmVal & b, XmmVal results[2]);
 

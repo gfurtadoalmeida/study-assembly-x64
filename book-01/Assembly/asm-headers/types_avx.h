@@ -11,8 +11,8 @@ namespace Assembly {
 
 			// Must have the same order as defined in the
 			// jump table of the following files:
-			// - avx/scalar/convert_number.asm 
 			// - avx/packed/convert_numbers.asm 
+			// - avx/scalar/convert_number.asm 
 			enum CvtOp : unsigned int {
 				I32_F32, // int32_t to float
 				F32_I32, // float to int32_t
@@ -24,6 +24,21 @@ namespace Assembly {
 				F64_I64, // double to int64_t
 				F32_F64, // float to double
 				F64_F32, // double to float
+			};
+
+			// Must have the same order as defined in the
+			// jump table of the following files:
+			// - avx/packed/shift_integers.asm 
+			enum ShiftOp : unsigned int {
+				// Logical = fill with zeros
+				// Arithmetic = keeps signal bit
+
+				U16_LOG_LEFT,    // Logical left - word
+				U16_LOG_RIGHT,   // Logical right - word
+				U16_ARITH_RIGHT, // Arithmetic right - word
+				U32_LOG_LEFT,    // Logical left - doubleword
+				U32_LOG_RIGHT,   // Logical right - doubleword
+				U32_ARITH_RIGHT, // Arithmetic right - doubleword
 			};
 
 			union Uval

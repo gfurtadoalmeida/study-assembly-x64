@@ -124,7 +124,6 @@ namespace Assembly {
 					Assert::AreEqual((float)LENGTH - 1, result);
 				}
 
-
 				TEST_METHOD(Test_Find_Array_Float_Min)
 				{
 					// Use a length bigger than and not 
@@ -165,7 +164,7 @@ namespace Assembly {
 					};
 					alignas(16) float results[4][4];
 
-					Matrix_Float_Multiplication_(*matrixA, *matrixB, *results);
+					Matrix_Float_Multiplication(*matrixA, *matrixB, *results);
 
 					const float TRUTH[4][4]
 					{
@@ -204,6 +203,111 @@ namespace Assembly {
 							Assert::AreEqual(matrix[row][column], results[column][row]);
 						}
 					}
+				}
+
+				TEST_METHOD(Test_Multiply_Ints_A)
+				{
+					alignas(16) XmmVal a;
+					alignas(16) XmmVal b;
+					alignas(16) XmmVal results[2];
+
+					a.Int32[0] = 2;
+					b.Int32[0] = 2;
+
+					a.Int32[1] = -2;
+					b.Int32[1] = 2;
+
+					a.Int32[2] = 4;
+					b.Int32[2] = 4;
+
+					a.Int32[3] = -4;
+					b.Int32[3] = 4;
+
+					Multiply_Ints_A(a, b, results);
+
+					Assert::AreEqual((int64_t)4, results[0].Int64[0]);
+					Assert::AreEqual((int64_t)-4, results[0].Int64[1]);
+					Assert::AreEqual((int64_t)16, results[1].Int64[0]);
+					Assert::AreEqual((int64_t)-16, results[1].Int64[1]);
+				}
+
+				TEST_METHOD(Test_Multiply_Ints_B)
+				{
+					alignas(16) XmmVal a;
+					alignas(16) XmmVal b;
+					alignas(16) XmmVal results;
+
+					a.Int32[0] = 2;
+					b.Int32[0] = 2;
+
+					a.Int32[1] = -2;
+					b.Int32[1] = 2;
+
+					a.Int32[2] = 4;
+					b.Int32[2] = 4;
+
+					a.Int32[3] = -4;
+					b.Int32[3] = 4;
+
+					Multiply_Ints_B(a, b, results);
+
+					Assert::AreEqual((int32_t)4, results.Int32[0]);
+					Assert::AreEqual((int32_t)-4, results.Int32[1]);
+					Assert::AreEqual((int32_t)16, results.Int32[2]);
+					Assert::AreEqual((int32_t)-16, results.Int32[3]);
+				}
+
+				TEST_METHOD(Test_Multiply_Shorts)
+				{
+					alignas(16) XmmVal a;
+					alignas(16) XmmVal b;
+					alignas(16) XmmVal results[2];
+
+					a.Int16[0] = 2;
+					b.Int16[0] = 2;
+
+					a.Int16[1] = -2;
+					b.Int16[1] = 2;
+
+					a.Int16[2] = 4;
+					b.Int16[2] = 4;
+
+					a.Int16[3] = -4;
+					b.Int16[3] = 4;
+
+					a.Int16[4] = -5;
+					b.Int16[4] = 5;
+
+					Multiply_Shorts(a, b, results);
+
+					Assert::AreEqual((int32_t)4, results[0].Int32[0]);
+					Assert::AreEqual((int32_t)-4, results[0].Int32[1]);
+					Assert::AreEqual((int32_t)16, results[0].Int32[2]);
+					Assert::AreEqual((int32_t)-16, results[0].Int32[3]);
+					Assert::AreEqual((int32_t)-25, results[1].Int32[0]);
+				}
+
+				TEST_METHOD(Test_Shift_Integers)
+				{
+					alignas(16) XmmVal src;
+					alignas(16) XmmVal des;
+
+					// Each HEX digit = 4 bits
+					// Shifting by 4 means just moving a
+					// digit left /right.
+					// HEX are cool!
+
+					src.UInt32[0] = 0x12345678;
+					src.UInt32[1] = 0xFF00FF00;
+					src.UInt32[2] = 0x03030303;
+					src.UInt32[3] = 0x80800F0F;
+
+					Assert::AreEqual(true, Shift_Integers(src, des, ShiftOp::U32_LOG_LEFT, 4));
+
+					Assert::AreEqual((uint32_t)0x23456780, des.UInt32[0]);
+					Assert::AreEqual((uint32_t)0xF00FF000, des.UInt32[1]);
+					Assert::AreEqual((uint32_t)0x30303030, des.UInt32[2]);
+					Assert::AreEqual((uint32_t)0x0800F0F0, des.UInt32[3]);
 				}
 
 				TEST_METHOD(Test_Sum_Floats)
