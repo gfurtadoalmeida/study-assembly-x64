@@ -20,6 +20,16 @@ namespace Assembly {
 				return AVX_Packed_Convert_Numbers_(source, destination, operation);
 			}
 
+			bool Find_Array_Byte_Max(const uint8_t* input, int arrayLength, uint8_t* result)
+			{
+				return AVX_Packed_Find_Array_Byte_Max_(input, arrayLength, result);
+			}
+
+			bool Find_Array_Byte_Min(const uint8_t* input, int arrayLength, uint8_t* result)
+			{
+				return AVX_Packed_Find_Array_Byte_Min_(input, arrayLength, result);
+			}
+
 			bool Find_Array_Float_Max(const float* input, int arrayLength, float* result)
 			{
 				return AVX_Packed_Find_Array_Float_Max_(input, arrayLength, result);

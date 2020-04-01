@@ -27,7 +27,7 @@ cmp rdx, 4
 jae @B
 
 OneByOne:
-test r8, r8
+test rdx, rdx
 jz Done
 
 vmaxss xmm0, xmm0, real4 ptr [rcx] ; Find max between xmm0[0] and input[i]
@@ -99,7 +99,7 @@ cmp rdx, 4
 jae @B
 
 OneByOne:
-test r8, r8
+test rdx, rdx
 jz Done
 
 vminss xmm0, xmm0, real4 ptr [rcx]

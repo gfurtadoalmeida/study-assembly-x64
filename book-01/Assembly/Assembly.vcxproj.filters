@@ -163,9 +163,6 @@
     <MASM Include="asm\avx\packed\array_float_sqrt.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="asm\avx\packed\array_min_max.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
     <MASM Include="asm\avx\packed\matrix_float_transpose.asm">
       <Filter>Source Files</Filter>
     </MASM>
@@ -179,6 +176,12 @@
       <Filter>Source Files</Filter>
     </MASM>
     <MASM Include="asm\avx\packed\multiply_integers.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\array_float_min_max.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\array_byte_min_max.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>

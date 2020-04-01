@@ -104,6 +104,48 @@ namespace Assembly {
 					}
 				}
 
+				TEST_METHOD(Test_Find_Array_Byte_Max)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const int LENGTH = 19;
+					uint8_t result = 0;
+
+					alignas(16) uint8_t values[LENGTH];
+
+					for (uint8_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = i;
+					}
+
+					Assert::AreEqual(true, Find_Array_Byte_Max(values, LENGTH, &result));
+					Assert::AreEqual(values[LENGTH - 1], result);
+				}
+
+				TEST_METHOD(Test_Find_Array_Byte_Min)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const int LENGTH = 19;
+					uint8_t result = 0;
+
+					alignas(16) uint8_t values[LENGTH];
+
+					for (uint8_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = i+1;
+					}
+
+					values[LENGTH - 1] = 0;
+
+					Assert::AreEqual(true, Find_Array_Byte_Min(values, LENGTH, &result));
+					Assert::AreEqual(values[LENGTH - 1], result);
+				}
+
 				TEST_METHOD(Test_Find_Array_Float_Max)
 				{
 					// Use a length bigger than and not 
@@ -121,7 +163,7 @@ namespace Assembly {
 					}
 
 					Assert::AreEqual(true, Find_Array_Float_Max(values, LENGTH, &result));
-					Assert::AreEqual((float)LENGTH - 1, result);
+					Assert::AreEqual(values[LENGTH - 1], result);
 				}
 
 				TEST_METHOD(Test_Find_Array_Float_Min)
@@ -140,7 +182,7 @@ namespace Assembly {
 						values[i] = (float)i;
 					}
 
-					values[0] = -1.0F;
+					values[LENGTH - 1] = -1.0F;
 
 					Assert::AreEqual(true, Find_Array_Float_Min(values, LENGTH, &result));
 					Assert::AreEqual(-1.0F, result);

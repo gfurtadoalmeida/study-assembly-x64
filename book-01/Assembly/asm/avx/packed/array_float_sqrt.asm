@@ -5,7 +5,7 @@ AVX_Packed_Array_Float_Sqtr_ proc
 
 xor rax, rax ; Our counter for the loop
 
-test r8, r8 ; Exit if array length is zero
+test r8, r8  ; Exit if array length is zero
 jz Done
 
 ; If (rcx & 0f) == 0 then exit
@@ -35,7 +35,7 @@ test r8, r8
 jz Done
 
 vsqrtss xmm0, xmm0, real4 ptr [rcx+rax] ; Calculate one square roots
-vmovss real4 ptr [rdx + rax], xmm0	    ; Save the single result to destination
+vmovss real4 ptr [rdx+rax], xmm0	    ; Save the single result to destination
 add rax, type real4 ; Advance to the next item (4 bytes)
 dec r8
 jnz OneByOne 

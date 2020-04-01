@@ -13,10 +13,8 @@ _Mat4x4TransposeF32 macro
 ; xmm2  c3 c2 c1 c0 | xmm6  d2 c2 b2 a2
 ; xmm3  d3 d2 d1 d0 | xmm7  d3 c3 b3 a3
 ;
-; Just remeber that registers are read from the 
-; lower bit to the higher. It means that the output
-; above will be read, correctly, as:
-;
+;       0       127
+;       -----------
 ; xmm4  a0 b0 c0 d0
 ; xmm5  a1 b1 c1 d1
 ; xmm6  a2 b2 c2 d2
