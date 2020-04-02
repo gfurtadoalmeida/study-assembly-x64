@@ -184,6 +184,9 @@
     <MASM Include="asm\avx\packed\avx_p_array_sqrt_float.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx\packed\avx_p_array_mean_byte.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

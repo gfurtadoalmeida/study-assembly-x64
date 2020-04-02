@@ -12,8 +12,9 @@ extern "C" void AVX_Set_Rounding_Mode_(const RoundingMode roundingMode);
 
 // AVX / Packed
 extern "C" bool AVX_Packed_Array_Max_Byte_(const uint8_t * input, uint32_t arrayLength, uint8_t * result);
-extern "C" bool AVX_Packed_Array_Min_Byte_(const uint8_t * input, uint32_t arrayLength, uint8_t * result);
 extern "C" bool AVX_Packed_Array_Max_Float_(const float* input, uint32_t arrayLength, float* result);
+extern "C" bool AVX_Packed_Array_Mean_Byte_(const uint8_t * input, uint32_t arrayLength, uint64_t * sum, double* mean);
+extern "C" bool AVX_Packed_Array_Min_Byte_(const uint8_t * input, uint32_t arrayLength, uint8_t * result);
 extern "C" bool AVX_Packed_Array_Min_Float_(const float* input, uint32_t arrayLength, float* result);
 extern "C" void AVX_Packed_Array_Sqtr_Float_(float* input, uint32_t arrayLength, const float* result);
 extern "C" void AVX_Packed_Compare_Equal_Double_(const XmmVal & a, const XmmVal & b, XmmVal results[]);

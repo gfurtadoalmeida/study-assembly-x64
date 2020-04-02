@@ -20,14 +20,14 @@ namespace Assembly {
 				// are necessary because I used only aligned AVX instructions.
 				// We could omit it if unaligned AVX instructions were used.
 				// For performance, aligned instructions should be used.
+				//
+				// For any array, use a length bigger than and not 
+				// divisible by 16 so we can test the batch and one-by-one
+				// processing modes.
 
 			public:
 				TEST_METHOD(Test_Array_Max_Byte)
 				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
 					const uint32_t LENGTH = 19;
 					uint8_t result = 0;
 
@@ -42,12 +42,46 @@ namespace Assembly {
 					Assert::AreEqual(values[LENGTH - 1], result);
 				}
 
+				TEST_METHOD(Test_Array_Max_Float)
+				{
+					const uint32_t LENGTH = 19;
+					float result = 0.0F;
+
+					alignas(16) float values[LENGTH];
+
+					for (uint32_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = (float)i;
+					}
+
+					Assert::IsTrue(Array_Max_Float(values, LENGTH, &result));
+					Assert::AreEqual(values[LENGTH - 1], result);
+				}
+
+				TEST_METHOD(Test_Array_Mean_Byte)
+				{
+					// This array need a length bigger than and not 
+					// divisible by 32 so we can test the batch and one-by-one
+					// processing modes.
+					const uint32_t LENGTH = 34;
+
+					alignas(16) uint8_t values[LENGTH]
+					{  
+						12, 13, 15, 16, 24, 15, 22, 10, 9, 13, 13, 18, 16, 25, 23, 24, 
+						18, 214, 35, 52, 99, 53, 47, 33, 69, 81, 23, 0, 1, 12, 109, 32, 
+						44, 86
+					};
+
+					uint64_t sum;
+					double mean;
+
+					Assert::IsTrue(Array_Mean_Byte(values, LENGTH, &sum, &mean));
+					Assert::AreEqual(1276ULL, sum);
+					Assert::AreEqual(37.529411764705884, mean);
+				}
+
 				TEST_METHOD(Test_Array_Min_Byte)
 				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
 					const int LENGTH = 19;
 					uint8_t result = 0;
 
@@ -64,32 +98,8 @@ namespace Assembly {
 					Assert::AreEqual(values[LENGTH - 1], result);
 				}
 
-				TEST_METHOD(Test_Array_Max_Float)
-				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
-					const uint32_t LENGTH = 19;
-					float result = 0.0F;
-
-					alignas(16) float values[LENGTH];
-
-					for (uint32_t i = 0; i < LENGTH; i++)
-					{
-						values[i] = (float)i;
-					}
-
-					Assert::IsTrue(Array_Max_Float(values, LENGTH, &result));
-					Assert::AreEqual(values[LENGTH - 1], result);
-				}
-
 				TEST_METHOD(Test_Array_Min_Float)
 				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
 					const uint32_t LENGTH = 19;
 					float result = 0.0F;
 
@@ -108,10 +118,6 @@ namespace Assembly {
 
 				TEST_METHOD(Test_Array_Sqtr_Float)
 				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
 					const uint32_t LENGTH = 19;
 
 					alignas(16) float values[LENGTH];
@@ -172,8 +178,7 @@ namespace Assembly {
 
 					RoundingMode originalMode = Get_Rounding_Mode();
 
-					// Lets use the same rounding mode as
-					// C++.
+					// Lets use the same rounding mode as C++.
 					Set_Rounding_Mode(RoundingMode::Truncate);
 
 					bool converted = Convert_Number(src, des, CvtOp::F32_I32);

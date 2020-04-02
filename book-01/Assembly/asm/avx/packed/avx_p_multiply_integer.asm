@@ -13,7 +13,7 @@ vmovdqa xmm1, xmmword ptr [rdx]
 ; in the destination operand.
 ;
 ; Each result will occupy 2 * sizeof(int).
-; It is needed so the result does not get truncated when a overflow occurrs.
+; It is needed so the result does not get truncated when a overflow occurs.
 ;
 ; 4 int in -> 4 long out
 
@@ -71,17 +71,19 @@ vpmullw xmm2, xmm0, xmm1
 
 vpmulhw xmm3, xmm0, xmm1
 
+; vpunpcklwd + vpunpckhwd = Merge low and high results into final signed dwords
+
 ;        127            63             0
 ; xmm4 = high[1] low[1] | high[0] low[0]
 
-vpunpcklwd xmm4, xmm2, xmm3 ; Merge low and high results 
+vpunpcklwd xmm4, xmm2, xmm3
 
 ;        127            63             0
 ; xmm5 = high[3] low[3] | high[2] low[2]
-vpunpckhwd xmm5, xmm2, xmm3 ; into final signed dwords
+vpunpckhwd xmm5, xmm2, xmm3 
 
 ; Everything above was done because AVX doesn't
-; have a native instruction to mutiply shorts.
+; have a native instruction to multiply shorts.
 
 vmovdqa xmmword ptr [r8], xmm4
 vmovdqa xmmword ptr [r8+16], xmm5

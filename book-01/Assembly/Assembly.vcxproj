@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <MASM Include="asm\avx\avx_get_set_rouding_mode.asm" />
+    <MASM Include="asm\avx\packed\avx_p_array_mean_byte.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_min_max_byte.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_min_max_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_compare_equal_double.asm" />

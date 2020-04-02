@@ -7,8 +7,9 @@ namespace Assembly {
 		namespace Packed {
 
 			__declspec(dllexport) bool Array_Max_Byte(const uint8_t* input, uint32_t arrayLength, uint8_t* result);
-			__declspec(dllexport) bool Array_Min_Byte(const uint8_t* input, uint32_t arrayLength, uint8_t* result);
 			__declspec(dllexport) bool Array_Max_Float(const float* input, uint32_t arrayLength, float* result);
+			__declspec(dllexport) bool Array_Mean_Byte(const uint8_t * input, uint32_t arrayLength, uint64_t * sum, double* mean);
+			__declspec(dllexport) bool Array_Min_Byte(const uint8_t* input, uint32_t arrayLength, uint8_t* result);
 			__declspec(dllexport) bool Array_Min_Float(const float* input, uint32_t arrayLength, float* result);
 			__declspec(dllexport) void Array_Sqtr_Float(float* input, uint32_t arrayLength, const float* result);
 			__declspec(dllexport) void Compare_Equal_Double(const XmmVal& a, const XmmVal& b, XmmVal results[]);

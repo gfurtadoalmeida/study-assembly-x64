@@ -10,14 +10,19 @@ namespace Assembly {
 				return AVX_Packed_Array_Max_Byte_(input, arrayLength, result);
 			}
 
-			bool Array_Min_Byte(const uint8_t* input, uint32_t arrayLength, uint8_t* result)
-			{
-				return AVX_Packed_Array_Min_Byte_(input, arrayLength, result);
-			}
-
 			bool Array_Max_Float(const float* input, uint32_t arrayLength, float* result)
 			{
 				return AVX_Packed_Array_Max_Float_(input, arrayLength, result);
+			}
+
+			bool Array_Mean_Byte(const uint8_t* input, uint32_t arrayLength, uint64_t* sum, double* mean)
+			{
+				return AVX_Packed_Array_Mean_Byte_(input, arrayLength, sum, mean);
+			}
+
+			bool Array_Min_Byte(const uint8_t* input, uint32_t arrayLength, uint8_t* result)
+			{
+				return AVX_Packed_Array_Min_Byte_(input, arrayLength, result);
 			}
 
 			bool Array_Min_Float(const float* input, uint32_t arrayLength, float* result)
