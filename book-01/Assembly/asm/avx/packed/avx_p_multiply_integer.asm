@@ -1,7 +1,7 @@
 .code
 
-; void AVX_Packed_Multiply_Ints_A_(const XmmVal & a, const XmmVal & b, XmmVal results[2])
-AVX_Packed_Multiply_Ints_A_ proc
+; void AVX_Packed_Multiply_Int_A_(const XmmVal & a, const XmmVal & b, XmmVal results[2])
+AVX_Packed_Multiply_Int_A_ proc
 
 vmovdqa xmm0, xmmword ptr [rcx]
 vmovdqa xmm1, xmmword ptr [rdx] 
@@ -31,10 +31,10 @@ vpextrq qword ptr [r8+24], xmm3, 1 ; result[3] = xmm3[63:127]
 
 ret
 
-AVX_Packed_Multiply_Ints_A_ endp
+AVX_Packed_Multiply_Int_A_ endp
 
-; void AVX_Packed_Multiply_Ints_B_(const XmmVal & a, const XmmVal & b, XmmVal & results)
-AVX_Packed_Multiply_Ints_B_ proc
+; void AVX_Packed_Multiply_Int_B_(const XmmVal & a, const XmmVal & b, XmmVal & results)
+AVX_Packed_Multiply_Int_B_ proc
 
 vmovdqa xmm0, xmmword ptr [rcx]
 
@@ -49,10 +49,10 @@ vmovdqa xmmword ptr [r8], xmm1
 
 ret
 
-AVX_Packed_Multiply_Ints_B_ endp
+AVX_Packed_Multiply_Int_B_ endp
 
-; void AVX_Packed_Multiply_Shorts_(const XmmVal & a, const XmmVal & b, XmmVal results[2])
-AVX_Packed_Multiply_Shorts_ proc
+; void AVX_Packed_Multiply_Short_(const XmmVal & a, const XmmVal & b, XmmVal results[2])
+AVX_Packed_Multiply_Short_ proc
 
 vmovdqa xmm0, xmmword ptr [rcx]
 vmovdqa xmm1, xmmword ptr [rdx]
@@ -88,6 +88,6 @@ vmovdqa xmmword ptr [r8+16], xmm5
 
 ret
 
-AVX_Packed_Multiply_Shorts_ endp
+AVX_Packed_Multiply_Short_ endp
 
 end

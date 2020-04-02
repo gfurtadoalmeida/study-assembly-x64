@@ -22,34 +22,118 @@ namespace Assembly {
 				// For performance, aligned instructions should be used.
 
 			public:
-				TEST_METHOD(Test_Array_Float_Sqrt)
+				TEST_METHOD(Test_Array_Max_Byte)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const uint32_t LENGTH = 19;
+					uint8_t result = 0;
+
+					alignas(16) uint8_t values[LENGTH];
+
+					for (uint8_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = i;
+					}
+
+					Assert::IsTrue(Array_Max_Byte(values, LENGTH, &result));
+					Assert::AreEqual(values[LENGTH - 1], result);
+				}
+
+				TEST_METHOD(Test_Array_Min_Byte)
 				{
 					// Use a length bigger than and not 
 					// divisible by 16.
 					// It will test the batch and one-by-one
 					// processing modes.
 					const int LENGTH = 19;
+					uint8_t result = 0;
+
+					alignas(16) uint8_t values[LENGTH];
+
+					for (uint8_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = i + 1;
+					}
+
+					values[LENGTH - 1] = 0;
+
+					Assert::IsTrue(Array_Min_Byte(values, LENGTH, &result));
+					Assert::AreEqual(values[LENGTH - 1], result);
+				}
+
+				TEST_METHOD(Test_Array_Max_Float)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const uint32_t LENGTH = 19;
+					float result = 0.0F;
+
+					alignas(16) float values[LENGTH];
+
+					for (uint32_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = (float)i;
+					}
+
+					Assert::IsTrue(Array_Max_Float(values, LENGTH, &result));
+					Assert::AreEqual(values[LENGTH - 1], result);
+				}
+
+				TEST_METHOD(Test_Array_Min_Float)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const uint32_t LENGTH = 19;
+					float result = 0.0F;
+
+					alignas(16) float values[LENGTH];
+
+					for (uint32_t i = 0; i < LENGTH; i++)
+					{
+						values[i] = (float)i;
+					}
+
+					values[LENGTH - 1] = -1.0F;
+
+					Assert::IsTrue(Array_Min_Float(values, LENGTH, &result));
+					Assert::AreEqual(-1.0F, result);
+				}
+
+				TEST_METHOD(Test_Array_Sqtr_Float)
+				{
+					// Use a length bigger than and not 
+					// divisible by 16.
+					// It will test the batch and one-by-one
+					// processing modes.
+					const uint32_t LENGTH = 19;
 
 					alignas(16) float values[LENGTH];
 					alignas(16) float results[LENGTH];
 
-					for (size_t i = 0; i < LENGTH; i++)
+					for (uint32_t i = 0; i < LENGTH; i++)
 					{
 						values[i] = (float)i * (float)i;
 					}
 
-					Array_Float_Sqrt(values, results, LENGTH);
+					Array_Sqtr_Float(values, LENGTH, results);
 
-					for (size_t i = 0; i < LENGTH; i++)
+					for (uint32_t i = 0; i < LENGTH; i++)
 					{
 						Assert::AreEqual((float)i, results[i]);
 					}
 				}
 
-				TEST_METHOD(Test_Compare_Doubles_Equal)
+				TEST_METHOD(Test_Compare_Equal_Double)
 				{
 					// 4 doubles (64 bits) in 128 bits (xmm register).
-					const int LENGTH = 2;
+					const uint32_t LENGTH = 2;
 
 					alignas(16) XmmVal a;
 					alignas(16) XmmVal b;
@@ -61,7 +145,7 @@ namespace Assembly {
 					a.Double[1] = 1.0;
 					b.Double[1] = 2.0;
 
-					Compare_Doubles_Equal(a, b, results);
+					Compare_Equal_Double(a, b, results);
 
 					// Even though the results are stored in the double array,
 					// they are in fact 2 long values (64 bits, same size as a double).
@@ -69,21 +153,21 @@ namespace Assembly {
 					// 0XF = true
 					// As 0xF is NaN when double, we just check if it NaN, which means it's true.
 
-					Assert::AreEqual(true, std::isnan(results->Double[0]));
+					Assert::IsTrue(std::isnan(results->Double[0]));
 					Assert::AreEqual(0.0, results->Double[1]);
 				}
 
-				TEST_METHOD(Test_Convert_Numbers)
+				TEST_METHOD(Test_Convert_Number)
 				{
 					// 4 float (32 bits) in 128 bits (xmm register).
-					const int LENGTH = 4;
+					const uint32_t LENGTH = 4;
 
 					alignas(16) XmmVal src;
 					alignas(16) XmmVal des;
 
 					src.Float[0] = 2.7F;
 					src.Float[1] = 5.32F;
-					src.Float[2] = -15.1523;
+					src.Float[2] = -15.1523F;
 					src.Float[3] = -5.22F;
 
 					RoundingMode originalMode = Get_Rounding_Mode();
@@ -92,103 +176,19 @@ namespace Assembly {
 					// C++.
 					Set_Rounding_Mode(RoundingMode::Truncate);
 
-					bool converted = Convert_Numbers(src, des, CvtOp::F32_I32);
+					bool converted = Convert_Number(src, des, CvtOp::F32_I32);
 
 					Set_Rounding_Mode(originalMode);
 
-					Assert::AreEqual(true, converted);
+					Assert::IsTrue(converted);
 
-					for (size_t i = 0; i < LENGTH; i++)
+					for (uint32_t i = 0; i < LENGTH; i++)
 					{
-						Assert::AreEqual((int)src.Float[i], des.Int32[i]);
+						Assert::AreEqual((int32_t)src.Float[i], des.Int32[i]);
 					}
 				}
 
-				TEST_METHOD(Test_Find_Array_Byte_Max)
-				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
-					const int LENGTH = 19;
-					uint8_t result = 0;
-
-					alignas(16) uint8_t values[LENGTH];
-
-					for (uint8_t i = 0; i < LENGTH; i++)
-					{
-						values[i] = i;
-					}
-
-					Assert::AreEqual(true, Find_Array_Byte_Max(values, LENGTH, &result));
-					Assert::AreEqual(values[LENGTH - 1], result);
-				}
-
-				TEST_METHOD(Test_Find_Array_Byte_Min)
-				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
-					const int LENGTH = 19;
-					uint8_t result = 0;
-
-					alignas(16) uint8_t values[LENGTH];
-
-					for (uint8_t i = 0; i < LENGTH; i++)
-					{
-						values[i] = i+1;
-					}
-
-					values[LENGTH - 1] = 0;
-
-					Assert::AreEqual(true, Find_Array_Byte_Min(values, LENGTH, &result));
-					Assert::AreEqual(values[LENGTH - 1], result);
-				}
-
-				TEST_METHOD(Test_Find_Array_Float_Max)
-				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
-					const int LENGTH = 19;
-					float result = 0.0F;
-
-					alignas(16) float values[LENGTH];
-
-					for (size_t i = 0; i < LENGTH; i++)
-					{
-						values[i] = (float)i;
-					}
-
-					Assert::AreEqual(true, Find_Array_Float_Max(values, LENGTH, &result));
-					Assert::AreEqual(values[LENGTH - 1], result);
-				}
-
-				TEST_METHOD(Test_Find_Array_Float_Min)
-				{
-					// Use a length bigger than and not 
-					// divisible by 16.
-					// It will test the batch and one-by-one
-					// processing modes.
-					const int LENGTH = 19;
-					float result = 0.0F;
-
-					alignas(16) float values[LENGTH];
-
-					for (size_t i = 0; i < LENGTH; i++)
-					{
-						values[i] = (float)i;
-					}
-
-					values[LENGTH - 1] = -1.0F;
-
-					Assert::AreEqual(true, Find_Array_Float_Min(values, LENGTH, &result));
-					Assert::AreEqual(-1.0F, result);
-				}
-
-				TEST_METHOD(Test_Matrix_Float_Multiplication)
+				TEST_METHOD(Test_Matrix_Multiplication_Float)
 				{
 					alignas(16) float matrixA[4][4]
 					{
@@ -206,7 +206,7 @@ namespace Assembly {
 					};
 					alignas(16) float results[4][4];
 
-					Matrix_Float_Multiplication(*matrixA, *matrixB, *results);
+					Matrix_Multiplication_Float(*matrixA, *matrixB, *results);
 
 					const float TRUTH[4][4]
 					{
@@ -216,16 +216,16 @@ namespace Assembly {
 						{42000.0F, 42166.0F, 42332.0F, 42498.0F}
 					};
 
-					for (size_t row = 0; row < 4; row++)
+					for (uint32_t row = 0; row < 4; row++)
 					{
-						for (size_t column = 0; column < 4; column++)
+						for (uint32_t column = 0; column < 4; column++)
 						{
 							Assert::AreEqual(TRUTH[row][column], results[row][column]);
 						}
 					}
 				}
 
-				TEST_METHOD(Test_Matrix_Float_Transpose)
+				TEST_METHOD(Test_Matrix_Transpose_Float)
 				{
 					alignas(16) float matrix[4][4]
 					{
@@ -236,18 +236,18 @@ namespace Assembly {
 					};
 					alignas(16) float results[4][4];
 
-					Matrix_Float_Transpose(*matrix, *results);
+					Matrix_Transpose_Float(*matrix, *results);
 
-					for (size_t row = 0; row < 4; row++)
+					for (uint32_t row = 0; row < 4; row++)
 					{
-						for (size_t column = 0; column < 4; column++)
+						for (uint32_t column = 0; column < 4; column++)
 						{
 							Assert::AreEqual(matrix[row][column], results[column][row]);
 						}
 					}
 				}
 
-				TEST_METHOD(Test_Multiply_Ints_A)
+				TEST_METHOD(Test_Multiply_Int_A)
 				{
 					alignas(16) XmmVal a;
 					alignas(16) XmmVal b;
@@ -265,7 +265,7 @@ namespace Assembly {
 					a.Int32[3] = -4;
 					b.Int32[3] = 4;
 
-					Multiply_Ints_A(a, b, results);
+					Multiply_Int_A(a, b, results);
 
 					Assert::AreEqual((int64_t)4, results[0].Int64[0]);
 					Assert::AreEqual((int64_t)-4, results[0].Int64[1]);
@@ -273,7 +273,7 @@ namespace Assembly {
 					Assert::AreEqual((int64_t)-16, results[1].Int64[1]);
 				}
 
-				TEST_METHOD(Test_Multiply_Ints_B)
+				TEST_METHOD(Test_Multiply_Int_B)
 				{
 					alignas(16) XmmVal a;
 					alignas(16) XmmVal b;
@@ -291,7 +291,7 @@ namespace Assembly {
 					a.Int32[3] = -4;
 					b.Int32[3] = 4;
 
-					Multiply_Ints_B(a, b, results);
+					Multiply_Int_B(a, b, results);
 
 					Assert::AreEqual((int32_t)4, results.Int32[0]);
 					Assert::AreEqual((int32_t)-4, results.Int32[1]);
@@ -299,7 +299,7 @@ namespace Assembly {
 					Assert::AreEqual((int32_t)-16, results.Int32[3]);
 				}
 
-				TEST_METHOD(Test_Multiply_Shorts)
+				TEST_METHOD(Test_Multiply_Short)
 				{
 					alignas(16) XmmVal a;
 					alignas(16) XmmVal b;
@@ -320,7 +320,7 @@ namespace Assembly {
 					a.Int16[4] = -5;
 					b.Int16[4] = 5;
 
-					Multiply_Shorts(a, b, results);
+					Multiply_Short(a, b, results);
 
 					Assert::AreEqual((int32_t)4, results[0].Int32[0]);
 					Assert::AreEqual((int32_t)-4, results[0].Int32[1]);
@@ -329,7 +329,7 @@ namespace Assembly {
 					Assert::AreEqual((int32_t)-25, results[1].Int32[0]);
 				}
 
-				TEST_METHOD(Test_Shift_Integers)
+				TEST_METHOD(Test_Shift_Integer)
 				{
 					alignas(16) XmmVal src;
 					alignas(16) XmmVal des;
@@ -344,7 +344,7 @@ namespace Assembly {
 					src.UInt32[2] = 0x03030303;
 					src.UInt32[3] = 0x80800F0F;
 
-					Assert::AreEqual(true, Shift_Integers(src, des, ShiftOp::U32_LOG_LEFT, 4));
+					Assert::AreEqual(true, Shift_Integer(src, des, ShiftOp::U32_LOG_LEFT, 4));
 
 					Assert::AreEqual((uint32_t)0x23456780, des.UInt32[0]);
 					Assert::AreEqual((uint32_t)0xF00FF000, des.UInt32[1]);
@@ -352,7 +352,7 @@ namespace Assembly {
 					Assert::AreEqual((uint32_t)0x0800F0F0, des.UInt32[3]);
 				}
 
-				TEST_METHOD(Test_Sum_Floats)
+				TEST_METHOD(Test_Sum_Float)
 				{
 					// 4 float (32 bits) in 128 bits (xmm register).
 					const int LENGTH = 4;
@@ -367,7 +367,7 @@ namespace Assembly {
 						b.Float[i] = i + 1;
 					}
 
-					Sum_Floats(a, b, results);
+					Sum_Float(a, b, results);
 
 					for (short i = 0; i < LENGTH; i++)
 					{
@@ -375,7 +375,7 @@ namespace Assembly {
 					}
 				}
 
-				TEST_METHOD(Test_Sum_Shorts)
+				TEST_METHOD(Test_Sum_Short)
 				{
 					alignas(16) XmmVal a;
 					alignas(16) XmmVal b;
@@ -395,7 +395,7 @@ namespace Assembly {
 					a.Int16[3] = -32766;
 					b.Int16[3] = -400;
 
-					Sum_Shorts(a, b, results);
+					Sum_Short(a, b, results);
 
 					// Wraparound
 					Assert::AreEqual((int16_t)110, results[0].Int16[0]);

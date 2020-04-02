@@ -13,12 +13,12 @@ namespace Assembly {
 			public:
 				TEST_METHOD(Test_Concat)
 				{
-					const int NUM_ELEMENTS = 4;
-					const int DEST_LENGTH = 24;
+					const uint32_t NUM_ELEMENTS = 4;
+					const uint32_t DEST_LENGTH = 24;
 					const char* SOURCE[NUM_ELEMENTS] = { "This ", "Must ","Be ", "Concatened" };
 					char destination[DEST_LENGTH];
 
-					Assert::AreEqual((size_t)DEST_LENGTH - 1, Concat(SOURCE, NUM_ELEMENTS, &destination[0], DEST_LENGTH));
+					Assert::AreEqual(DEST_LENGTH - 1, Concat(SOURCE, NUM_ELEMENTS, &destination[0], DEST_LENGTH));
 					Assert::AreEqual("This Must Be Concatened", destination);
 				}
 
@@ -26,9 +26,9 @@ namespace Assembly {
 				{
 					char text[] = "Saxon Lamb of God Flotsam and Jetsam";
 
-					int occurrences = Count_Char_Occurrence(&text[0], 'a');
+					uint32_t occurrences = Count_Char_Occurrence(&text[0], 'a');
 
-					Assert::AreEqual(5, occurrences);
+					Assert::AreEqual(5U, occurrences);
 				}
 			};
 		}

@@ -1,6 +1,6 @@
 .code
 
-; size_t Core_String_Concat_(const char* const* source, size_t sourceElements, char* destination, size_t destinationLength);
+; uint32_t Core_String_Concat_(const char* const* source, uint32_t sourceElements, char* destination, uint32_t destinationLength);
 Core_String_Concat_ proc frame
 
 ; Prolog

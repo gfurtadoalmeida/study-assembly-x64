@@ -7,7 +7,7 @@ namespace Assembly {
 	namespace Core {
 		namespace Struct {
 
-			__declspec(dllexport) int Get_CPU_Info(const ProcessorInfo* processorInfo);
+			__declspec(dllexport) bool Get_CPU_Info(const ProcessorInfo* processorInfo);
 		}
 	}
 }

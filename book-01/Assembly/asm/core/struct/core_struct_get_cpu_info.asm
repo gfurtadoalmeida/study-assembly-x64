@@ -5,7 +5,7 @@ ProcessorInfo struct
 	ModelName byte 49 DUP(?)  ; Do not use "Name" as it is mistaken as an ignored directive ".NAME"
 ProcessorInfo ends
 
-; int Core_Struct_Get_CPU_Info_(const ProcessorInfo* processorInfo)
+; bool Core_Struct_Get_CPU_Info_(const ProcessorInfo* processorInfo)
 Core_Struct_Get_CPU_Info_ proc frame
 
 ; Prolog

@@ -66,6 +66,7 @@
     </Link>
     <MASM>
       <IncludePaths>$(SolutionDir)Assembly\asm;%(IncludePaths)</IncludePaths>
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </MASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -88,6 +89,7 @@
     </Link>
     <MASM>
       <IncludePaths>$(SolutionDir)Assembly\asm;%(IncludePaths)</IncludePaths>
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </MASM>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -137,12 +139,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="asm\avx\avx_rouding_mode_get_set.asm" />
+    <MASM Include="asm\avx\avx_get_set_rouding_mode.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_min_max_byte.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_min_max_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_compare_equal_double.asm" />
     <MASM Include="asm\avx\packed\avx_p_convert_number.asm" />
-    <MASM Include="asm\avx\packed\avx_p_sqrt_float.asm" />
+    <MASM Include="asm\avx\packed\avx_p_array_sqrt_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_matrix_multiplication_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_matrix_transpose_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_multiply_integer.asm" />

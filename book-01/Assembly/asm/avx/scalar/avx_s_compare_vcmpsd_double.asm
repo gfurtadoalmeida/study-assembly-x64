@@ -2,8 +2,8 @@ include comparison_predicates.inc
 
 .code
 
-; int AVX_Scalar_Compare_Double_VCMPSD_(double a, double b)
-AVX_Scalar_Compare_Double_VCMPSD_ proc
+; int AVX_Scalar_Compare_VCMPSD_Double_(double a, double b)
+AVX_Scalar_Compare_VCMPSD_Double_ proc
 
 xor r8, r8
 
@@ -33,6 +33,6 @@ Done:
 mov eax, r8d
 ret
 
-AVX_Scalar_Compare_Double_VCMPSD_ endp
+AVX_Scalar_Compare_VCMPSD_Double_ endp
 
 end

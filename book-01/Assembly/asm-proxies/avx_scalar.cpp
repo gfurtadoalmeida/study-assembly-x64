@@ -13,7 +13,7 @@ namespace Assembly {
 				return AVX_Scalar_Calc_Euclidian_Distance_(x1, y1, z1, x2, y2, z2);
 			}
 
-			bool Calc_Mean_Stdev(const double* values, int arrayLength, double* mean, double* stdev)
+			bool Calc_Mean_Stdev(const double* values, uint32_t arrayLength, double* mean, double* stdev)
 			{
 				return AVX_Scalar_Calc_Mean_Stdev_(values, arrayLength, mean, stdev);
 			}
@@ -23,14 +23,14 @@ namespace Assembly {
 				AVX_Scalar_Calc_Sphere_Area_Volume_(radius, area, volume);
 			}
 
-			int Compare_Double_VCOMISD(double a, double b)
+			int32_t Compare_VCOMISD_Double(double a, double b)
 			{
-				return AVX_Scalar_Compare_Double_VCOMISD_(a, b);
+				return AVX_Scalar_Compare_VCOMISD_Double_(a, b);
 			}
 
-			int Compare_Double_VCMPSD(double a, double b)
+			int32_t Compare_VCMPSD_Double(double a, double b)
 			{
-				return AVX_Scalar_Compare_Double_VCMPSD_(a, b);
+				return AVX_Scalar_Compare_VCMPSD_Double_(a, b);
 			}
 
 			float Convert_Celsius_Fahrenheit(float degree)

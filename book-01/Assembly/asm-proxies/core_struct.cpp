@@ -5,7 +5,7 @@ namespace Assembly {
 	namespace Core {
 		namespace Struct {
 
-			int Get_CPU_Info(const ProcessorInfo* processorInfo)
+			bool Get_CPU_Info(const ProcessorInfo* processorInfo)
 			{
 				return Core_Struct_Get_CPU_Info_(processorInfo);
 			}

@@ -1,7 +1,7 @@
 .code
 
-; void AVX_Packed_Sum_Floats_(const XmmVal & a, const XmmVal & b, XmmVal results[])
-AVX_Packed_Sum_Floats_ proc
+; void AVX_Packed_Sum_Float_(const XmmVal & a, const XmmVal & b, XmmVal results[])
+AVX_Packed_Sum_Float_ proc
 
 xor rax, rax
 
@@ -22,6 +22,6 @@ vmovaps xmmword ptr [r8], xmm2
 
 ret
 
-AVX_Packed_Sum_Floats_ endp
+AVX_Packed_Sum_Float_ endp
 
 end

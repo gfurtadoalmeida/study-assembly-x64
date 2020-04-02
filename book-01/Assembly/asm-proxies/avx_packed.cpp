@@ -4,80 +4,80 @@
 namespace Assembly {
 	namespace AVX {
 		namespace Packed {
-
-			void Array_Float_Sqrt(float* input, const float* output, int arrayLength)
+			
+			bool Array_Max_Byte(const uint8_t* input, uint32_t arrayLength, uint8_t* result)
 			{
-				AVX_Packed_Array_Float_Sqtr_(input, output, arrayLength);
+				return AVX_Packed_Array_Max_Byte_(input, arrayLength, result);
 			}
 
-			void Compare_Doubles_Equal(const XmmVal& a, const XmmVal& b, XmmVal results[])
+			bool Array_Min_Byte(const uint8_t* input, uint32_t arrayLength, uint8_t* result)
 			{
-				AVX_Packed_Compare_Doubles_Equal_(a, b, results);
+				return AVX_Packed_Array_Min_Byte_(input, arrayLength, result);
 			}
 
-			bool Convert_Numbers(const XmmVal& source, const XmmVal& destination, CvtOp operation)
+			bool Array_Max_Float(const float* input, uint32_t arrayLength, float* result)
 			{
-				return AVX_Packed_Convert_Numbers_(source, destination, operation);
+				return AVX_Packed_Array_Max_Float_(input, arrayLength, result);
 			}
 
-			bool Find_Array_Byte_Max(const uint8_t* input, int arrayLength, uint8_t* result)
+			bool Array_Min_Float(const float* input, uint32_t arrayLength, float* result)
 			{
-				return AVX_Packed_Find_Array_Byte_Max_(input, arrayLength, result);
+				return AVX_Packed_Array_Min_Float_(input, arrayLength, result);
 			}
 
-			bool Find_Array_Byte_Min(const uint8_t* input, int arrayLength, uint8_t* result)
+			void Array_Sqtr_Float(float* input, uint32_t arrayLength, const float* result)
 			{
-				return AVX_Packed_Find_Array_Byte_Min_(input, arrayLength, result);
+				AVX_Packed_Array_Sqtr_Float_(input, arrayLength, result);
 			}
 
-			bool Find_Array_Float_Max(const float* input, int arrayLength, float* result)
+			void Compare_Equal_Double(const XmmVal& a, const XmmVal& b, XmmVal results[])
 			{
-				return AVX_Packed_Find_Array_Float_Max_(input, arrayLength, result);
+				AVX_Packed_Compare_Equal_Double_(a, b, results);
 			}
 
-			bool Find_Array_Float_Min(const float* input, int arrayLength, float* result)
+			bool Convert_Number(const XmmVal& source, const XmmVal& destination, CvtOp operation)
 			{
-				return AVX_Packed_Find_Array_Float_Min_(input, arrayLength, result);
+				return AVX_Packed_Convert_Number_(source, destination, operation);
 			}
 
-			void Matrix_Float_Multiplication(const float* a, const float* b, float* result)
+			void Matrix_Multiplication_Float(const float* a, const float* b, float* result)
 			{
-				AVX_Packed_Matrix_Float_Multiplication_(a, b, result);
+				AVX_Packed_Matrix_Multiplication_Float_(a, b, result);
 			}
 
-			void Matrix_Float_Transpose(float* input, const float* result)
+			void Matrix_Transpose_Float(float* input, const float* result)
 			{
-				AVX_Packed_Matrix_Float_Transpose_(input, result);
+				AVX_Packed_Matrix_Transpose_Float_(input, result);
 			}
 
-			void Multiply_Ints_A(const XmmVal& a, const XmmVal& b, XmmVal results[2])
+			void Multiply_Int_A(const XmmVal& a, const XmmVal& b, XmmVal results[2])
 			{
-				AVX_Packed_Multiply_Ints_A_(a, b, results);
+				AVX_Packed_Multiply_Int_A_(a, b, results);
 			}
 
-			void Multiply_Ints_B(const XmmVal& a, const XmmVal& b, XmmVal& results)
+			void Multiply_Int_B(const XmmVal& a, const XmmVal& b, XmmVal& results)
 			{
-				AVX_Packed_Multiply_Ints_B_(a, b, results);
+				AVX_Packed_Multiply_Int_B_(a, b, results);
 			}
 
-			void Multiply_Shorts(const XmmVal& a, const XmmVal& b, XmmVal results[2])
+			void Multiply_Short(const XmmVal& a, const XmmVal& b, XmmVal results[2])
 			{
-				AVX_Packed_Multiply_Shorts_(a, b, results);
+				AVX_Packed_Multiply_Short_(a, b, results);
 			}
 
-			bool Shift_Integers(const XmmVal& input, XmmVal& results, ShiftOp shift_op, unsigned int count)
+			bool Shift_Integer(const XmmVal& input, XmmVal& results, ShiftOp shift_op, uint32_t count)
 			{
-				return AVX_Packed_Shift_Integers_(input, results, shift_op, count);
+				return AVX_Packed_Shift_Integer_(input, results, shift_op, count);
 			}
 
-			void Sum_Floats(const XmmVal& a, const XmmVal& b, XmmVal results[])
+			void Sum_Float(const XmmVal& a, const XmmVal& b, XmmVal results[])
 			{
-				AVX_Packed_Sum_Floats_(a, b, results);
+				AVX_Packed_Sum_Float_(a, b, results);
 			}
 
-			void Sum_Shorts(const XmmVal& a, const XmmVal& b, XmmVal results[2])
+			void Sum_Short(const XmmVal& a, const XmmVal& b, XmmVal results[2])
 			{
-				AVX_Packed_Sum_Shorts_(a, b, results);
+				AVX_Packed_Sum_Short_(a, b, results);
 			}
 		}
 	}

@@ -40,8 +40,8 @@ vmovhlps xmm7, xmm1, xmm0 ; xmm7 = d3 c3 b2 a3
 
 endm
 
-; extern "C" void AVX_Packed_Matrix_Float_Transpose_(float* input, const float* result)
-AVX_Packed_Matrix_Float_Transpose_ proc frame
+; void AVX_Packed_Matrix_Transpose_Float_(float* input, const float* result)
+AVX_Packed_Matrix_Transpose_Float_ proc frame
 
 _CreateFrame MT_, 0, xmmword*2 ; Space for xmm6 and xmm7
 _SaveXmmRegs xmm6, xmm7
@@ -65,6 +65,6 @@ _DeleteFrame
 
 ret
 
-AVX_Packed_Matrix_Float_Transpose_ endp
+AVX_Packed_Matrix_Transpose_Float_ endp
 
 end

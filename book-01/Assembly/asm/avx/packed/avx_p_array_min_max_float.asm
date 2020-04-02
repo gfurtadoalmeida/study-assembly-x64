@@ -1,7 +1,7 @@
 .code
 
-; bool AVX_Packed_Find_Array_Float_Max_(float* input, int arrayLength, float* result);
-AVX_Packed_Find_Array_Float_Max_ proc
+; bool AVX_Packed_Array_Max_Float_(float* input, int arrayLength, float* result);
+AVX_Packed_Array_Max_Float_ proc
 
 xor eax, eax
 
@@ -70,10 +70,10 @@ Done:
 
 ret
 
-AVX_Packed_Find_Array_Float_Max_ endp
+AVX_Packed_Array_Max_Float_ endp
 
-; bool AVX_Packed_Find_Array_Float_Min_(float* input, int arrayLength, float* result)
-AVX_Packed_Find_Array_Float_Min_ proc
+; bool AVX_Packed_Array_Min_Float_(float* input, int arrayLength, float* result)
+AVX_Packed_Array_Min_Float_ proc
 
 xor eax, eax
 
@@ -119,6 +119,6 @@ Done:
 
 ret
 
-AVX_Packed_Find_Array_Float_Min_ endp
+AVX_Packed_Array_Min_Float_ endp
 
 end

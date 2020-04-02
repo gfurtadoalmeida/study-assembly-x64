@@ -26,11 +26,11 @@ namespace Assembly {
 				TEST_METHOD(Test_Calc_Mean_Stdev)
 				{
 					const double VALUES[] = { 10, 12, 23, 23, 16, 23, 21, 16 };
-					const int LENGTH = sizeof(VALUES) / sizeof(double);
+					const uint32_t LENGTH = sizeof(VALUES) / sizeof(double);
 					double mean = 0.0;
 					double stdev = 0.0;
 
-					Assert::AreEqual(true, Calc_Mean_Stdev(&VALUES[0], LENGTH, &mean, &stdev));
+					Assert::IsTrue(Calc_Mean_Stdev(&VALUES[0], LENGTH, &mean, &stdev));
 					Assert::AreEqual(18.0, mean);
 					Assert::AreEqual(4.8989794855663558, stdev);
 				}
@@ -47,18 +47,18 @@ namespace Assembly {
 					Assert::AreEqual(523.59877559829886, volume);
 				}
 
-				TEST_METHOD(Test_Compare_Double_VCMPSD)
+				TEST_METHOD(Test_Compare_VCMPSD_Double)
 				{
-					Assert::AreEqual(-1, Compare_Double_VCMPSD(10.0, 10.5));
-					Assert::AreEqual(0, Compare_Double_VCMPSD(10.0, 10.0));
-					Assert::AreEqual(1, Compare_Double_VCMPSD(10.5, 10.0));
+					Assert::AreEqual(-1, Compare_VCMPSD_Double(10.0, 10.5));
+					Assert::AreEqual(0, Compare_VCMPSD_Double(10.0, 10.0));
+					Assert::AreEqual(1, Compare_VCMPSD_Double(10.5, 10.0));
 				}
 
-				TEST_METHOD(Test_Compare_Double_VCOMISD)
+				TEST_METHOD(Test_Compare_VCOMISD_Double)
 				{
-					Assert::AreEqual(-1, Compare_Double_VCOMISD(10.0, 10.5));
-					Assert::AreEqual(0, Compare_Double_VCOMISD(10.0, 10.0));
-					Assert::AreEqual(1, Compare_Double_VCOMISD(10.5, 10.0));
+					Assert::AreEqual(-1, Compare_VCOMISD_Double(10.0, 10.5));
+					Assert::AreEqual(0, Compare_VCOMISD_Double(10.0, 10.0));
+					Assert::AreEqual(1, Compare_VCOMISD_Double(10.5, 10.0));
 				}
 
 				TEST_METHOD(Test_Convert_Celsius_Fahrenheit)
@@ -84,22 +84,21 @@ namespace Assembly {
 
 					RoundingMode originalMode = Get_Rounding_Mode();
 
-					// Lets use the same rounding mode as
-					// C++.
+					// Lets use the same rounding mode as C++.
 					Set_Rounding_Mode(RoundingMode::Truncate);
 
-					Assert::AreEqual(true, Convert_Number(&src1, &des1, CvtOp::F32_I32));
-					Assert::AreEqual(true, Convert_Number(&src2, &des2, CvtOp::F32_I64));
-					Assert::AreEqual(true, Convert_Number(&src3, &des3, CvtOp::F64_I32));
-					Assert::AreEqual(true, Convert_Number(&src4, &des4, CvtOp::F64_I64));
-					Assert::AreEqual(true, Convert_Number(&src5, &des5, CvtOp::F64_F32));
+					Assert::IsTrue(Convert_Number(&src1, &des1, CvtOp::F32_I32));
+					Assert::IsTrue(Convert_Number(&src2, &des2, CvtOp::F32_I64));
+					Assert::IsTrue(Convert_Number(&src3, &des3, CvtOp::F64_I32));
+					Assert::IsTrue(Convert_Number(&src4, &des4, CvtOp::F64_I64));
+					Assert::IsTrue(Convert_Number(&src5, &des5, CvtOp::F64_F32));
 
 					Set_Rounding_Mode(originalMode);
 
-					Assert::AreEqual((int)src1.Float, des1.Int32);
-					Assert::AreEqual((long long)src2.Float, des2.Int64);
-					Assert::AreEqual((int)src3.Double, des3.Int32);
-					Assert::AreEqual((long long)src4.Double, des4.Int64);
+					Assert::AreEqual((int32_t)src1.Float, des1.Int32);
+					Assert::AreEqual((int64_t)src2.Float, des2.Int64);
+					Assert::AreEqual((int32_t)src3.Double, des3.Int32);
+					Assert::AreEqual((int64_t)src4.Double, des4.Int64);
 					Assert::AreEqual((float)src5.Double, des5.Float);
 				}
 			};

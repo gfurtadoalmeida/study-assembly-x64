@@ -1,7 +1,7 @@
 .code
 
-; bool AVX_Packed_Shift_Integers_(const XmmVal & input, XmmVal & results, ShiftOp shift_op, unsigned int count);
-AVX_Packed_Shift_Integers_ proc
+; bool AVX_Packed_Shift_Integer_(const XmmVal & input, XmmVal & results, ShiftOp shift_op, unsigned int count);
+AVX_Packed_Shift_Integer_ proc
 
 mov r8d, r8d ; Just to zero extend
 cmp r8, ShiftOpJumpTableCount
@@ -61,6 +61,6 @@ ShiftOpJumpTable equ $
     qword U32_ARITH_RIGHT
 ShiftOpJumpTableCount equ ($-ShiftOpJumpTable)/size qword
 
-AVX_Packed_Shift_Integers_ endp
+AVX_Packed_Shift_Integer_ endp
 
 end

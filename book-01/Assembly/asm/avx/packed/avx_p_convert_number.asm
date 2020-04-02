@@ -1,7 +1,7 @@
 .code
 
-; bool AVX_Packed_Convert_Numbers_(const XmmVal & source, const XmmVal & destination, CvtOp operation)
-AVX_Packed_Convert_Numbers_ proc
+; bool AVX_Packed_Convert_Number_(const XmmVal & source, const XmmVal & destination, CvtOp operation)
+AVX_Packed_Convert_Number_ proc
 
 mov eax, 1 ; Success
 
@@ -81,6 +81,6 @@ CvtOpJumpTable equ $
     qword F64_F32
 CvtOpJumpTableCount equ ($-CvtOpJumpTable)/size qword
 
-AVX_Packed_Convert_Numbers_ endp
+AVX_Packed_Convert_Number_ endp
 
 end

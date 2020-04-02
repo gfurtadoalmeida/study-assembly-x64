@@ -91,9 +91,6 @@
     <MASM Include="asm\avx\packed\avx_p_array_min_max_byte.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="asm\avx\packed\avx_p_sqrt_float.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
     <MASM Include="asm\avx\packed\avx_p_array_min_max_float.asm">
       <Filter>Source Files</Filter>
     </MASM>
@@ -142,9 +139,6 @@
     <MASM Include="asm\avx\scalar\avx_s_convert_temperature.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="asm\avx\avx_rouding_mode_get_set.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
     <MASM Include="asm\core\array\core_array_compare.asm">
       <Filter>Source Files</Filter>
     </MASM>
@@ -182,6 +176,12 @@
       <Filter>Source Files</Filter>
     </MASM>
     <MASM Include="asm\core\struct\core_struct_get_cpu_info.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\avx_get_set_rouding_mode.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\avx_p_array_sqrt_float.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>

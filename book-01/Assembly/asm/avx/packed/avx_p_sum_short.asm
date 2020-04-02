@@ -1,7 +1,7 @@
 .code
 
-; void AVX_Packed_Sum_Shorts_(const XmmVal & a, const XmmVal & b, XmmVal results[2])
-AVX_Packed_Sum_Shorts_ proc
+; void AVX_Packed_Sum_Short_(const XmmVal & a, const XmmVal & b, XmmVal results[2])
+AVX_Packed_Sum_Short_ proc
 
 vmovdqa xmm0, xmmword ptr [rcx]
 vmovdqa xmm1, xmmword ptr [rdx]
@@ -14,6 +14,6 @@ vmovdqa xmmword ptr [r8+type xmmword], xmm3 ; Saturated
 
 ret
 
-AVX_Packed_Sum_Shorts_ endp
+AVX_Packed_Sum_Short_ endp
 
 end

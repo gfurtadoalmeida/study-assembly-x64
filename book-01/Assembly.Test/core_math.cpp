@@ -13,10 +13,10 @@ namespace Assembly {
 			public:
 				TEST_METHOD(Test_Div)
 				{
-					int quotient;
-					int remainder;
+					int32_t quotient;
+					int32_t remainder;
 
-					Assert::AreEqual(1, Div(15, 5, &quotient, &remainder));
+					Assert::IsTrue(Div(15, 5, &quotient, &remainder));
 					Assert::AreEqual(3, quotient);
 					Assert::AreEqual(0, remainder);
 				}

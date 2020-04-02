@@ -5,12 +5,12 @@ namespace Assembly {
 	namespace Core {
 		namespace String {
 
-			size_t Concat(const char* const* source, size_t sourceElements, const char* destination, size_t destinationLength)
+			uint32_t Concat(const char* const* source, uint32_t sourceElements, const char* destination, uint32_t destinationLength)
 			{
 				return Core_String_Concat_(source, sourceElements, destination, destinationLength);
 			}
 
-			int Count_Char_Occurrence(const char* text, char value)
+			uint32_t Count_Char_Occurrence(const char* text, char value)
 			{
 				return Core_String_Count_Char_Occurrence_(text, value);
 			}

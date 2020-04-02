@@ -2,8 +2,8 @@ include macros.inc
 
 .code
 
-; void AVX_Packed_Matrix_Float_Multiplication_(const float* a, const float* b, float* result)
-AVX_Packed_Matrix_Float_Multiplication_ proc frame
+; void AVX_Packed_Matrix_Multiplication_Float_(const float* a, const float* b, float* result)
+AVX_Packed_Matrix_Multiplication_Float_ proc frame
 
 _CreateFrame MM_, 0, xmmword*2 ; Space for xmm6 and xmm7
 _SaveXmmRegs xmm6, xmm7
@@ -52,6 +52,6 @@ _DeleteFrame
 
 ret
 
-AVX_Packed_Matrix_Float_Multiplication_ endp
+AVX_Packed_Matrix_Multiplication_Float_ endp
 
 end

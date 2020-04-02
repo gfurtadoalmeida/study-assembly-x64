@@ -2,8 +2,8 @@ include <comparison_predicates.inc>
 
 .code
 
-; void AVX_Packed_Compare_Doubles_Equal_(const XmmVal & a, const XmmVal & b, XmmVal results[])
-AVX_Packed_Compare_Doubles_Equal_ proc
+; void AVX_Packed_Compare_Equal_Double_(const XmmVal & a, const XmmVal & b, XmmVal results[])
+AVX_Packed_Compare_Equal_Double_ proc
 
 vmovaps xmm0, xmmword ptr [rcx] ; xmm0 = a
 vmovaps xmm1, xmmword ptr [rdx] ; xmm1 = b
@@ -27,6 +27,6 @@ vmovapd xmmword ptr [r8], xmm2
 
 ret
 
-AVX_Packed_Compare_Doubles_Equal_  endp
+AVX_Packed_Compare_Equal_Double_  endp
 
 end

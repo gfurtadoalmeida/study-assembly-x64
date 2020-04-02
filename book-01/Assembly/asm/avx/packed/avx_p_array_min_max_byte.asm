@@ -9,8 +9,8 @@ StartMinVal qword 0ffffffffffffffffh
 
 .code
 
-; bool AVX_Packed_Find_Array_Byte_Max_(byte* input, int arrayLength, byte* result);
-AVX_Packed_Find_Array_Byte_Max_ proc frame
+; bool AVX_Packed_Array_Max_Byte_(byte* input, int arrayLength, byte* result);
+AVX_Packed_Array_Max_Byte_ proc frame
 
 ; Prolog
 push rbx
@@ -87,10 +87,10 @@ pop rbx
 
 ret
 
-AVX_Packed_Find_Array_Byte_Max_ endp
+AVX_Packed_Array_Max_Byte_ endp
 
-; bool AVX_Packed_Find_Array_Byte_Min_(float* input, int arrayLength, float* result)
-AVX_Packed_Find_Array_Byte_Min_ proc frame
+; bool AVX_Packed_Array_Min_Byte_(float* input, int arrayLength, float* result)
+AVX_Packed_Array_Min_Byte_ proc frame
 
 push rbx
 .pushreg rbx
@@ -153,6 +153,6 @@ pop rbx
 
 ret
 
-AVX_Packed_Find_Array_Byte_Min_ endp
+AVX_Packed_Array_Min_Byte_ endp
 
 end

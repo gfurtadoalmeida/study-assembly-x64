@@ -1,7 +1,7 @@
 .code
 
-; int AVX_Scalar_Compare_Double_VCOMISD_(double a, double b)
-AVX_Scalar_Compare_Double_VCOMISD_ proc
+; int AVX_Scalar_Compare_VCOMISD_Double_(double a, double b)
+AVX_Scalar_Compare_VCOMISD_Double_ proc
 
 xor eax, eax
 
@@ -19,6 +19,6 @@ Bigger:
 inc rax
 ret
 
-AVX_Scalar_Compare_Double_VCOMISD_ endp
+AVX_Scalar_Compare_VCOMISD_Double_ endp
 
 end

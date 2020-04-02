@@ -16,7 +16,7 @@ namespace Assembly {
 				{
 					const ProcessorInfo cpu;
 
-					Assert::AreEqual(1, Get_CPU_Info(&cpu));
+					Assert::IsTrue(Get_CPU_Info(&cpu));
 					Assert::IsNotNull(cpu.Name);
 					Assert::IsNotNull(cpu.Vendor);
 

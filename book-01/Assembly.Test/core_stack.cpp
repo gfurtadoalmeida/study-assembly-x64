@@ -14,7 +14,7 @@ namespace Assembly {
 			public:
 				TEST_METHOD(Test_Sum_Arguments)
 				{
-					Assert::AreEqual((int64_t)36, Sum_Arguments(1, 2, 3, 4, 5, 6, 7, 8));
+					Assert::AreEqual(36LL, Sum_Arguments(1, 2, 3, 4, 5, 6, 7, 8));
 				}
 
 				TEST_METHOD(Test_Sum_Arguments_Xmm)

@@ -7,13 +7,13 @@ namespace Assembly {
 	namespace AVX {
 		namespace Types {
 
-			enum RoundingMode : unsigned int { Nearest, Down, Up, Truncate };
+			enum class RoundingMode : uint32_t { Nearest, Down, Up, Truncate };
 
 			// Must have the same order as defined in the
 			// jump table of the following files:
 			// - avx/packed/convert_numbers.asm 
 			// - avx/scalar/convert_number.asm 
-			enum CvtOp : unsigned int {
+			enum class CvtOp : uint32_t {
 				I32_F32, // int32_t to float
 				F32_I32, // float to int32_t
 				I32_F64, // int32_t to double
@@ -29,7 +29,7 @@ namespace Assembly {
 			// Must have the same order as defined in the
 			// jump table of the following files:
 			// - avx/packed/shift_integers.asm 
-			enum ShiftOp : unsigned int {
+			enum class ShiftOp : uint32_t {
 				// Logical = fill with zeros
 				// Arithmetic = keeps signal bit
 
