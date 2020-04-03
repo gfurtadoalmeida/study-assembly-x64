@@ -144,6 +144,8 @@
     <MASM Include="asm\avx\packed\avx_p_array_min_max_byte.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_min_max_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_compare_equal_double.asm" />
+    <MASM Include="asm\avx\packed\avx_p_convert_byte_to_float_0_1_range.asm" />
+    <MASM Include="asm\avx\packed\avx_p_convert_float_to_byte_0_255_range.asm" />
     <MASM Include="asm\avx\packed\avx_p_convert_number.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_sqrt_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_matrix_multiplication_float.asm" />

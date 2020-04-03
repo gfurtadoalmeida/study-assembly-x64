@@ -40,6 +40,16 @@ namespace Assembly {
 				AVX_Packed_Compare_Equal_Double_(a, b, results);
 			}
 
+			bool Convert_Byte_To_Float_0_1_Range(const uint8_t* input, uint32_t arrayLength, float* output)
+			{
+				return AVX_Packed_Convert_Byte_To_Float_0_1_Range_(input, arrayLength, output);
+			}
+
+			bool Convert_Float_To_Byte_0_255_Range(const float* input, uint32_t arrayLength, uint8_t* output)
+			{
+				return AVX_Packed_Convert_Float_To_Byte_0_255_Range(input, arrayLength, output);
+			}
+
 			bool Convert_Number(const XmmVal& source, const XmmVal& destination, CvtOp operation)
 			{
 				return AVX_Packed_Convert_Number_(source, destination, operation);

@@ -18,6 +18,8 @@ extern "C" bool AVX_Packed_Array_Min_Byte_(const uint8_t * input, uint32_t array
 extern "C" bool AVX_Packed_Array_Min_Float_(const float* input, uint32_t arrayLength, float* result);
 extern "C" void AVX_Packed_Array_Sqtr_Float_(float* input, uint32_t arrayLength, const float* result);
 extern "C" void AVX_Packed_Compare_Equal_Double_(const XmmVal & a, const XmmVal & b, XmmVal results[]);
+extern "C" bool AVX_Packed_Convert_Byte_To_Float_0_1_Range_(const uint8_t * input, uint32_t arrayLength, float* output);
+extern "C" bool AVX_Packed_Convert_Float_To_Byte_0_255_Range(const float* input, uint32_t arrayLength, uint8_t * output);
 extern "C" bool AVX_Packed_Convert_Number_(const XmmVal & source, const XmmVal & destination, CvtOp operation);
 extern "C" void AVX_Packed_Matrix_Multiplication_Float_(const float* a, const float* b, float* result);
 extern "C" void AVX_Packed_Matrix_Transpose_Float_(float* input, const float* result);
@@ -39,7 +41,7 @@ extern "C" float AVX_Scalar_Convert_Fahrenheit_Celsius_(float degree);
 extern "C" bool AVX_Scalar_Convert_Number_(const Uval * source, const Uval * destination, CvtOp operation);
 
 // Core / Array
-extern "C" int32_t Core_Array_Compare_(const int32_t * a, const int32_t * b, uint32_t arraysLength, int32_t **matchedValue);
+extern "C" int32_t Core_Array_Compare_(const int32_t * a, const int32_t * b, uint32_t arraysLength, int32_t * *matchedValue);
 extern "C" uint32_t Core_Array_Get_From_Const_ArrayLength_;
 extern "C" bool Core_Array_Get_From_Const_(uint32_t position, uint32_t * value);
 extern "C" void Core_Array_Reverse_(const int32_t * source, const int32_t * destination, uint32_t arrayLength);

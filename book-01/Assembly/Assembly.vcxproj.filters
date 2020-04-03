@@ -187,6 +187,12 @@
     <MASM Include="asm\avx\packed\avx_p_array_mean_byte.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx\packed\avx_p_convert_byte_to_float_0_1_range.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\avx_p_convert_float_to_byte_0_255_range.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

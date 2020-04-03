@@ -66,9 +66,9 @@ namespace Assembly {
 					const uint32_t LENGTH = 34;
 
 					alignas(16) uint8_t values[LENGTH]
-					{  
-						12, 13, 15, 16, 24, 15, 22, 10, 9, 13, 13, 18, 16, 25, 23, 24, 
-						18, 214, 35, 52, 99, 53, 47, 33, 69, 81, 23, 0, 1, 12, 109, 32, 
+					{
+						12, 13, 15, 16, 24, 15, 22, 10, 9, 13, 13, 18, 16, 25, 23, 24,
+						18, 214, 35, 52, 99, 53, 47, 33, 69, 81, 23, 0, 1, 12, 109, 32,
 						44, 86
 					};
 
@@ -161,6 +161,59 @@ namespace Assembly {
 
 					Assert::IsTrue(std::isnan(results->Double[0]));
 					Assert::AreEqual(0.0, results->Double[1]);
+				}
+
+				TEST_METHOD(Test_Convert_Byte_To_Float_0_1_Range)
+				{
+					// This array needs a length bigger than and not 
+					// divisible by 32 so we can test the batch and one-by-one
+					// processing modes.
+					const uint32_t LENGTH = 34;
+
+					alignas(16) uint8_t values[LENGTH]
+					{
+						12, 13, 15, 16, 24, 15, 22, 10, 9, 13, 13, 18, 16, 25, 23, 24,
+						18, 214, 35, 52, 99, 53, 47, 33, 69, 81, 23, 0, 1, 12, 109, 32,
+						44, 86
+					};
+					alignas(16) float output[LENGTH];
+					
+					Assert::IsTrue(Convert_Byte_To_Float_0_1_Range(values, LENGTH, output));
+
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						Assert::AreEqual(values[i], (uint8_t)ceilf(output[i] * 255.0F));
+					}
+				}
+
+				TEST_METHOD(Test_Convert_Float_To_Byte_0_255_Range)
+				{
+					// This array needs a length bigger than and not 
+					// divisible by 32 so we can test the batch and one-by-one
+					// processing modes.
+					const uint32_t LENGTH = 34;
+
+					alignas(16) float values[LENGTH]
+					{
+						1.0F, 0.3F,  0.5F, 0.6F, 0.7F, 0.8F, 0.95F, 0.96F, 0.96F, 0.3F, 0.1F, 0.22F, 0.33F, 0.97F, 1.0F, 0.0F,
+						0.8F, 0.24F, 0.65F, 0.0F, 0.0F, 0.3F, 0.23F, 0.52F, 0.69F, 0.81F, 0.22F, 0.0F, 1.0F, 0.20F, 0.52F, 0.22F,
+						0.44F, 0.86F
+					};
+					alignas(16) uint8_t output[LENGTH];
+
+					// Lets use the same rounding mode.
+					Set_Rounding_Mode(RoundingMode::Truncate);
+
+					bool converted = Convert_Float_To_Byte_0_255_Range(values, LENGTH, output);
+
+					Set_Rounding_Mode(RoundingMode::Nearest);
+
+					Assert::IsTrue(converted);
+
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						Assert::AreEqual((uint8_t)truncf(values[i] * 255), output[i]);
+					}
 				}
 
 				TEST_METHOD(Test_Convert_Number)
