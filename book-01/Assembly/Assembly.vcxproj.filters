@@ -193,6 +193,9 @@
     <MASM Include="asm\avx\packed\avx_p_convert_float_to_byte_0_255_range.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx\packed\avx_p_histogram_gray_image.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

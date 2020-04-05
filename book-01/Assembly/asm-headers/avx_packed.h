@@ -16,6 +16,7 @@ namespace Assembly {
 			__declspec(dllexport) bool Convert_Byte_To_Float_0_1_Range(const uint8_t* input, uint32_t arrayLength, float* output);
 			__declspec(dllexport) bool Convert_Float_To_Byte_0_255_Range(const float* input, uint32_t arrayLength, uint8_t* output);
 			__declspec(dllexport) bool Convert_Number(const XmmVal& source, const XmmVal& destination, CvtOp operation);
+			__declspec(dllexport) bool Histogram_Gray_Image(const uint8_t* pixels, uint32_t numPixels, uint32_t* histogram);
 			__declspec(dllexport) void Matrix_Multiplication_Float(const float* a, const float* b, float* result);
 			__declspec(dllexport) void Matrix_Transpose_Float(float* input, const float* result);
 			__declspec(dllexport) void Multiply_Int_A(const XmmVal& a, const XmmVal& b, XmmVal results[2]);

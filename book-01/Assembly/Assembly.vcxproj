@@ -148,6 +148,7 @@
     <MASM Include="asm\avx\packed\avx_p_convert_float_to_byte_0_255_range.asm" />
     <MASM Include="asm\avx\packed\avx_p_convert_number.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_sqrt_float.asm" />
+    <MASM Include="asm\avx\packed\avx_p_histogram_gray_image.asm" />
     <MASM Include="asm\avx\packed\avx_p_matrix_multiplication_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_matrix_transpose_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_multiply_integer.asm" />

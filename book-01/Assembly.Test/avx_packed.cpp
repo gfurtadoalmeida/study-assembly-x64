@@ -177,7 +177,7 @@ namespace Assembly {
 						44, 86
 					};
 					alignas(16) float output[LENGTH];
-					
+
 					Assert::IsTrue(Convert_Byte_To_Float_0_1_Range(values, LENGTH, output));
 
 					for (size_t i = 0; i < LENGTH; i++)
@@ -244,6 +244,33 @@ namespace Assembly {
 					{
 						Assert::AreEqual((int32_t)src.Float[i], des.Int32[i]);
 					}
+				}
+
+				TEST_METHOD(Test_Histogram_Gray_Image)
+				{
+					// This array needs a length bigger than and not 
+					// divisible by 32 so we can test the batch and one-by-one
+					// processing modes.
+					const uint32_t LENGTH = 34;
+
+					alignas(16) uint8_t values[LENGTH]
+					{
+						0, 0, 0, 0, 0, 0, 0, 0,
+						63, 63, 63, 63, 63, 63, 63, 63,
+						127, 127, 127, 127, 127, 127, 127, 127,
+						255, 255, 255, 255, 255, 255, 255, 255,
+						15, 31
+					};
+					alignas(16) uint32_t output[256];
+
+					Assert::IsTrue(Histogram_Gray_Image(values, LENGTH, output));
+
+					Assert::AreEqual(8U, output[0]);
+					Assert::AreEqual(8U, output[63]);
+					Assert::AreEqual(8U, output[127]);
+					Assert::AreEqual(8U, output[255]);
+					Assert::AreEqual(1U, output[15]);
+					Assert::AreEqual(1U, output[31]);
 				}
 
 				TEST_METHOD(Test_Matrix_Multiplication_Float)

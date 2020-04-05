@@ -55,6 +55,11 @@ namespace Assembly {
 				return AVX_Packed_Convert_Number_(source, destination, operation);
 			}
 
+			bool Histogram_Gray_Image(const uint8_t* pixels, uint32_t numPixels, uint32_t* histogram)
+			{
+				return AVX_Packed_Histogram_Gray_Image_(pixels, numPixels, histogram);
+			}
+
 			void Matrix_Multiplication_Float(const float* a, const float* b, float* result)
 			{
 				AVX_Packed_Matrix_Multiplication_Float_(a, b, result);

@@ -21,6 +21,7 @@ extern "C" void AVX_Packed_Compare_Equal_Double_(const XmmVal & a, const XmmVal 
 extern "C" bool AVX_Packed_Convert_Byte_To_Float_0_1_Range_(const uint8_t * input, uint32_t arrayLength, float* output);
 extern "C" bool AVX_Packed_Convert_Float_To_Byte_0_255_Range(const float* input, uint32_t arrayLength, uint8_t * output);
 extern "C" bool AVX_Packed_Convert_Number_(const XmmVal & source, const XmmVal & destination, CvtOp operation);
+extern "C" bool AVX_Packed_Histogram_Gray_Image_(const uint8_t * pixels, uint32_t numPixels, uint32_t * histogram);
 extern "C" void AVX_Packed_Matrix_Multiplication_Float_(const float* a, const float* b, float* result);
 extern "C" void AVX_Packed_Matrix_Transpose_Float_(float* input, const float* result);
 extern "C" void AVX_Packed_Multiply_Int_A_(const XmmVal & a, const XmmVal & b, XmmVal results[2]);
