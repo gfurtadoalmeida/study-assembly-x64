@@ -16,14 +16,18 @@ namespace Assembly {
 		namespace AVX {
 			TEST_CLASS(Packed)
 			{
-				// The use of "alignas(16)" instruction on the tests below
-				// are necessary because I used only aligned AVX instructions.
+				// The use of "alignas(16)" or "alignas(32)" instruction on the 
+				// tests below are necessary because they use aligned AVX instructions.
 				// We could omit it if unaligned AVX instructions were used.
 				// For performance, aligned instructions should be used.
 				//
 				// For any array, use a length bigger than and not 
 				// divisible by 16 so we can test the batch and one-by-one
 				// processing modes.
+				//
+				// Use of alignas:
+				// - 128 bits = alignas(16)
+				// - 256 bits = alignas(32)
 
 			public:
 				TEST_METHOD(Test_Array_Max_Byte)
@@ -493,6 +497,50 @@ namespace Assembly {
 					Assert::AreEqual((int16_t)0, results[1].Int16[1]);
 					Assert::AreEqual((int16_t)32767, results[1].Int16[2]);
 					Assert::AreEqual((int16_t)-32768, results[1].Int16[3]);
+				}
+
+				TEST_METHOD(Test_Y_Sum_Float)
+				{
+					// 8 float (32 bits) in 256 bits (ymm register).
+					const int LENGTH = 8;
+
+					alignas(32) YmmVal a;
+					alignas(32) YmmVal b;
+					alignas(32) YmmVal results[LENGTH];
+
+					for (short i = 0; i < LENGTH; i++)
+					{
+						a.Float[i] = i + 1;
+						b.Float[i] = i + 1;
+					}
+
+					Y_Sum_Float(a, b, results);
+
+					for (short i = 0; i < LENGTH; i++)
+					{
+						Assert::AreEqual((i + 1) * 2.0F, results->Float[i]);
+					}
+				}
+
+				TEST_METHOD(Test_Y_Abs_Double)
+				{
+					// 4 double (64 bits) in 256 bits (ymm register).
+					const int LENGTH = 4;
+
+					alignas(32) YmmVal a;
+					alignas(32) YmmVal results[LENGTH];
+
+					for (short i = 0; i < LENGTH; i++)
+					{
+						a.Double[i] = -(i + 1);
+					}
+
+					Y_Abs_Double(a, results);
+
+					for (short i = 0; i < LENGTH; i++)
+					{
+						Assert::AreEqual(i + 1.0, results->Double[i]);
+					}
 				}
 			};
 		}

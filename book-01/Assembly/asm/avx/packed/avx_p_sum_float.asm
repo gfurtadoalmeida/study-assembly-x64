@@ -14,7 +14,7 @@ vmovaps xmm1, xmmword ptr [rdx] ; xmm1 = b
 ;    +     +     +     +  
 ; | [3] | [2] | [1] | [0] | xmm1
 ;    =     =     =     =  
-; | [3] | [2] | [1] | [0] | xmm2; 
+; | [3] | [2] | [1] | [0] | xmm2 
 
 vaddps xmm2, xmm0, xmm1 ; xmm2 = xmm0 + xmm1
 

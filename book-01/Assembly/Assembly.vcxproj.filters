@@ -196,6 +196,12 @@
     <MASM Include="asm\avx\packed\avx_p_histogram_gray_image.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx\packed\avx_p_y_sum_float.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\avx_p_y_abs_double.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

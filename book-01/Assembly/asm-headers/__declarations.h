@@ -30,6 +30,9 @@ extern "C" void AVX_Packed_Multiply_Short_(const XmmVal & a, const XmmVal & b, X
 extern "C" bool AVX_Packed_Shift_Integer_(const XmmVal & input, XmmVal & results, ShiftOp shiftOp, uint32_t shiftCount);
 extern "C" void AVX_Packed_Sum_Float_(const XmmVal & a, const XmmVal & b, XmmVal results[]);
 extern "C" void AVX_Packed_Sum_Short_(const XmmVal & a, const XmmVal & b, XmmVal results[2]);
+// AVX / Packed / 256 bits registers
+extern "C" void AVX_Packed_Y_Abs_Double_(const YmmVal & input, YmmVal results[]);
+extern "C" void AVX_Packed_Y_Sum_Float_(const YmmVal & a, const YmmVal & b, YmmVal results[]);
 
 // AVX / Scalar
 extern "C" double AVX_Scalar_Calc_Euclidian_Distance_(double x1, double y1, double z1, double x2, double y2, double z2);

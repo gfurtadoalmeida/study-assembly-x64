@@ -4,7 +4,7 @@
 namespace Assembly {
 	namespace AVX {
 		namespace Packed {
-			
+
 			bool Array_Max_Byte(const uint8_t* input, uint32_t arrayLength, uint8_t* result)
 			{
 				return AVX_Packed_Array_Max_Byte_(input, arrayLength, result);
@@ -98,6 +98,16 @@ namespace Assembly {
 			void Sum_Short(const XmmVal& a, const XmmVal& b, XmmVal results[2])
 			{
 				AVX_Packed_Sum_Short_(a, b, results);
+			}
+
+			void Y_Abs_Double(const YmmVal& input, YmmVal results[])
+			{
+				AVX_Packed_Y_Abs_Double_(input, results);
+			}
+
+			void Y_Sum_Float(const YmmVal& a, const YmmVal& b, YmmVal results[])
+			{
+				AVX_Packed_Y_Sum_Float_(a, b, results);
 			}
 		}
 	}

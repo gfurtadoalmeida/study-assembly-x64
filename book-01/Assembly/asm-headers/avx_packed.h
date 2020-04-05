@@ -25,6 +25,8 @@ namespace Assembly {
 			__declspec(dllexport) bool Shift_Integer(const XmmVal& input, XmmVal& results, ShiftOp shift_op, uint32_t count);
 			__declspec(dllexport) void Sum_Float(const XmmVal& a, const XmmVal& b, XmmVal results[]);
 			__declspec(dllexport) void Sum_Short(const XmmVal& a, const XmmVal& b, XmmVal results[2]);
+			__declspec(dllexport) void Y_Abs_Double(const YmmVal& input, YmmVal results[]);
+			__declspec(dllexport) void Y_Sum_Float(const YmmVal& a, const YmmVal& b, YmmVal results[]);
 		}
 	}
 }
