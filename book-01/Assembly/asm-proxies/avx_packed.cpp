@@ -105,6 +105,11 @@ namespace Assembly {
 				AVX_Packed_Y_Abs_Double_(input, results);
 			}
 
+			bool Y_Array_Cols_Mean_Double(const double* input, uint32_t numRows, uint32_t numCols, double* colMeans)
+			{
+				return AVX_Packed_Y_Array_Cols_Mean_Double_(input, numRows, numCols, colMeans);
+			}
+
 			void Y_Calc_Sphere_Area_Volume(const float* radius, uint32_t arrayLength, float* areas, float* volumes, float qnanValue)
 			{
 				AVX_Packed_Y_Calc_Sphere_Area_Volume_(radius, arrayLength, areas, volumes, qnanValue);

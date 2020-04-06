@@ -499,27 +499,49 @@ namespace Assembly {
 					Assert::AreEqual((int16_t)-32768, results[1].Int16[3]);
 				}
 
-				TEST_METHOD(Test_Y_Sum_Float)
+				TEST_METHOD(Test_Y_Abs_Double)
 				{
-					// 8 float (32 bits) in 256 bits (ymm register).
-					const int LENGTH = 8;
+					// 4 double (64 bits) in 256 bits (ymm register).
+					const int LENGTH = 4;
 
 					alignas(32) YmmVal a;
-					alignas(32) YmmVal b;
 					alignas(32) YmmVal results[LENGTH];
 
 					for (short i = 0; i < LENGTH; i++)
 					{
-						a.Float[i] = i + 1;
-						b.Float[i] = i + 1;
+						a.Double[i] = -(i + 1);
 					}
 
-					Y_Sum_Float(a, b, results);
+					Y_Abs_Double(a, results);
 
 					for (short i = 0; i < LENGTH; i++)
 					{
-						Assert::AreEqual((i + 1) * 2.0F, results->Float[i]);
+						Assert::AreEqual(i + 1.0, results->Double[i]);
 					}
+				}
+
+				TEST_METHOD(Test_Y_Array_Cols_Mean_Double)
+				{
+					const int ROWS = 2;
+					const int COLS = 8;
+
+					alignas(32) double matrix[ROWS][COLS]
+					{
+						{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 },
+						{ 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 }
+					};
+					alignas(32) double means[COLS];
+
+					Y_Array_Cols_Mean_Double(&matrix[0][0], ROWS, COLS, means);
+
+					Assert::AreEqual(1.5, means[0]);
+					Assert::AreEqual(2.5, means[1]);
+					Assert::AreEqual(3.5, means[2]);
+					Assert::AreEqual(4.5, means[3]);
+					Assert::AreEqual(5.5, means[4]);
+					Assert::AreEqual(6.5, means[5]);
+					Assert::AreEqual(7.5, means[6]);
+					Assert::AreEqual(8.5, means[7]);
 				}
 
 				TEST_METHOD(Test_Y_Calc_Sphere_Area_Volume)
@@ -548,24 +570,26 @@ namespace Assembly {
 					Assert::IsTrue(isnan(volumes[0]));
 				}
 
-				TEST_METHOD(Test_Y_Abs_Double)
+				TEST_METHOD(Test_Y_Sum_Float)
 				{
-					// 4 double (64 bits) in 256 bits (ymm register).
-					const int LENGTH = 4;
+					// 8 float (32 bits) in 256 bits (ymm register).
+					const int LENGTH = 8;
 
 					alignas(32) YmmVal a;
+					alignas(32) YmmVal b;
 					alignas(32) YmmVal results[LENGTH];
 
 					for (short i = 0; i < LENGTH; i++)
 					{
-						a.Double[i] = -(i + 1);
+						a.Float[i] = i + 1;
+						b.Float[i] = i + 1;
 					}
 
-					Y_Abs_Double(a, results);
+					Y_Sum_Float(a, b, results);
 
 					for (short i = 0; i < LENGTH; i++)
 					{
-						Assert::AreEqual(i + 1.0, results->Double[i]);
+						Assert::AreEqual((i + 1) * 2.0F, results->Float[i]);
 					}
 				}
 			};

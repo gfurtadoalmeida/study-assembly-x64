@@ -141,6 +141,7 @@
   <ItemGroup>
     <MASM Include="asm\avx\avx_get_set_rouding_mode.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_abs_double.asm" />
+    <MASM Include="asm\avx\packed\avx_p_y_array_cols_mean_double.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_calc_sphere_area_volume.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_sum_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_mean_byte.asm" />
