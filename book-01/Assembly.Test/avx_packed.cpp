@@ -522,6 +522,32 @@ namespace Assembly {
 					}
 				}
 
+				TEST_METHOD(Test_Y_Calc_Sphere_Area_Volume)
+				{
+					// 8 float (32 bits) in 256 bits (ymm register).
+					const int LENGTH = 8;
+
+					alignas(32) float radius[LENGTH]{ NAN, 2.0F, 3.0F, 4.0F, 5.0F, 6.0F, 7.0F, 8.0F };
+					alignas(32) float areas[LENGTH];
+					alignas(32) float volumes[LENGTH];
+
+					Y_Calc_Sphere_Area_Volume(radius, LENGTH, areas, volumes, NAN);
+
+					// Skip the first item. It will be tested alone.
+					for (size_t i = 1; i < LENGTH; i++)
+					{
+						float area = 4.0F * M_PI * powf(radius[i], 2);
+						float volume = (area * radius[i]) / 3;
+
+						// Compare with 2 decimal digits only.
+						Assert::AreEqual(trunc(area * 100), trunc(areas[i] * 100));
+						Assert::AreEqual(trunc(volume * 100), trunc(volumes[i] * 100));
+					}
+
+					Assert::IsTrue(isnan(areas[0]));
+					Assert::IsTrue(isnan(volumes[0]));
+				}
+
 				TEST_METHOD(Test_Y_Abs_Double)
 				{
 					// 4 double (64 bits) in 256 bits (ymm register).

@@ -37,11 +37,11 @@ namespace Assembly {
 
 				TEST_METHOD(Test_Calc_Sphere_Area_Volume)
 				{
-					const double RADIOUS = 5.0;
+					const double RADIUS = 5.0;
 					double area = -1;
 					double volume = -1;
 
-					Calc_Sphere_Area_Volume(RADIOUS, &area, &volume);
+					Calc_Sphere_Area_Volume(RADIUS, &area, &volume);
 
 					Assert::AreEqual(314.15926535897933, area);
 					Assert::AreEqual(523.59877559829886, volume);

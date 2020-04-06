@@ -105,6 +105,11 @@ namespace Assembly {
 				AVX_Packed_Y_Abs_Double_(input, results);
 			}
 
+			void Y_Calc_Sphere_Area_Volume(const float* radius, uint32_t arrayLength, float* areas, float* volumes, float qnanValue)
+			{
+				AVX_Packed_Y_Calc_Sphere_Area_Volume_(radius, arrayLength, areas, volumes, qnanValue);
+			}
+
 			void Y_Sum_Float(const YmmVal& a, const YmmVal& b, YmmVal results[])
 			{
 				AVX_Packed_Y_Sum_Float_(a, b, results);
