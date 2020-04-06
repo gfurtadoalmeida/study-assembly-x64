@@ -544,6 +544,24 @@ namespace Assembly {
 					Assert::AreEqual(8.5, means[7]);
 				}
 
+				TEST_METHOD(Test_Y_Calc_Correlation_Coefficient)
+				{
+					const int LENGTH = 6;
+					alignas(32) double x[LENGTH]{ 5.0, 10.0, 15.0, 20.0, 25.0, 30.0 };
+					alignas(32) double y[LENGTH]{ 2.0, 4.0, 6.0, 8.0, 10.0, 12.0 };
+					double sums[5];
+					double rho;
+					double epsilon = 1.0e-12;
+
+					Assert::IsTrue(Y_Calc_Correlation_Coefficient(x, y, LENGTH, sums, epsilon, &rho));
+				
+					Assert::AreEqual(105.0, sums[0]);
+					Assert::AreEqual(42.0, sums[1]);
+					Assert::AreEqual(2275.0, sums[2]);
+					Assert::AreEqual(364.0, sums[3]);
+					Assert::AreEqual(910.0, sums[4]);
+				}
+
 				TEST_METHOD(Test_Y_Calc_Sphere_Area_Volume)
 				{
 					// 8 float (32 bits) in 256 bits (ymm register).

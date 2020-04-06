@@ -208,6 +208,9 @@
     <MASM Include="asm\avx\packed\avx_p_y_array_cols_mean_double.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx\packed\avx_p_y_calc_correlation_coefficient.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

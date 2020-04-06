@@ -34,6 +34,7 @@ extern "C" void AVX_Packed_Sum_Short_(const XmmVal & a, const XmmVal & b, XmmVal
 // AVX / Packed / 256 bits registers
 extern "C" void AVX_Packed_Y_Abs_Double_(const YmmVal & input, YmmVal results[]);
 extern "C" bool AVX_Packed_Y_Array_Cols_Mean_Double_(const double* input, uint32_t numRows, uint32_t numCols, double* colMeans);
+extern "C" bool AVX_Packed_Y_Calc_Correlation_Coefficient_(const double* x, const double* y, size_t arrayLength, double sums[5], double epsilon, double* rho);
 extern "C" void AVX_Packed_Y_Calc_Sphere_Area_Volume_(const float* radius, uint32_t arrayLength, float* areaa, float* volumea, float qnanValue);
 extern "C" void AVX_Packed_Y_Sum_Float_(const YmmVal & a, const YmmVal & b, YmmVal results[]);
 

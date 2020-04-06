@@ -27,6 +27,7 @@ namespace Assembly {
 			__declspec(dllexport) void Sum_Short(const XmmVal& a, const XmmVal& b, XmmVal results[2]);
 			__declspec(dllexport) void Y_Abs_Double(const YmmVal& input, YmmVal results[]);
 			__declspec(dllexport) bool Y_Array_Cols_Mean_Double(const double* input, uint32_t numRows, uint32_t numCols, double* colMeans);
+			__declspec(dllexport) bool Y_Calc_Correlation_Coefficient(const double* x, const double* y, size_t arrayLength, double sums[5], double epsilon, double* rho);
 			__declspec(dllexport) void Y_Calc_Sphere_Area_Volume(const float* radius, uint32_t arrayLength, float* areas, float* volumes, float qnanValue);
 			__declspec(dllexport) void Y_Sum_Float(const YmmVal& a, const YmmVal& b, YmmVal results[]);
 		}

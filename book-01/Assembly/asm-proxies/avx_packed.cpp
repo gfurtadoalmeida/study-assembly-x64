@@ -110,6 +110,11 @@ namespace Assembly {
 				return AVX_Packed_Y_Array_Cols_Mean_Double_(input, numRows, numCols, colMeans);
 			}
 
+			bool Y_Calc_Correlation_Coefficient(const double* x, const double* y, size_t arrayLength, double sums[5], double epsilon, double* rho)
+			{
+				return AVX_Packed_Y_Calc_Correlation_Coefficient_(x, y, arrayLength, sums, epsilon, rho);
+			}
+
 			void Y_Calc_Sphere_Area_Volume(const float* radius, uint32_t arrayLength, float* areas, float* volumes, float qnanValue)
 			{
 				AVX_Packed_Y_Calc_Sphere_Area_Volume_(radius, arrayLength, areas, volumes, qnanValue);
