@@ -144,6 +144,8 @@
     <MASM Include="asm\avx\packed\avx_p_y_array_cols_mean_double.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_calc_correlation_coefficient.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_calc_sphere_area_volume.asm" />
+    <MASM Include="asm\avx\packed\avx_p_y_matrix_multiplication_double.asm" />
+    <MASM Include="asm\avx\packed\avx_p_y_matrix_transpose_double.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_sum_float.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_mean_byte.asm" />
     <MASM Include="asm\avx\packed\avx_p_array_min_max_byte.asm" />

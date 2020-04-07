@@ -16,7 +16,7 @@ vmovaps xmm3, xmmword ptr [rdx+48] ; xmm3 = b.row_3
 
 xor r9, r9
 
-;        127              95                 63                 31                 0
+;        127                 95                    63                    31                    0
 ; xmm4 = a[row][0] * b[0][3] | a[row][0] * b[0][2] | a[row][0] * b[0][1] | a[row][0] * b[0][0] |
 ;                  +                     +                     +                     +
 ; xmm5 = a[row][1] * b[1][3] | a[row][1] * b[1][2] | a[row][1] * b[1][1] | a[row][1] * b[1][0] |

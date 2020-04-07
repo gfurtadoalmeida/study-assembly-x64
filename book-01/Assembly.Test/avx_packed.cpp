@@ -588,6 +588,65 @@ namespace Assembly {
 					Assert::IsTrue(isnan(volumes[0]));
 				}
 
+				TEST_METHOD(Test_Y_Matrix_Multiplication_Double)
+				{
+					alignas(32) double matrixA[4][4]
+					{
+						{10.0, 11.0, 12.0, 13.0},
+						{20.0, 21.0, 22.0, 23.0},
+						{30.0, 31.0, 32.0, 33.0},
+						{40.0, 41.0, 42.0, 43.0}
+					};
+					alignas(32) double matrixB[4][4]
+					{
+						{100.0, 101.0, 102.0, 103.0},
+						{200.0, 201.0, 202.0, 203.0},
+						{300.0, 301.0, 302.0, 303.0},
+						{400.0, 401.0, 402.0, 403.0}
+					};
+					alignas(32) double results[4][4];
+
+					Y_Matrix_Multiplication_Double(*matrixA, *matrixB, *results);
+
+					const double TRUTH[4][4]
+					{
+						{12000.0, 12046.0, 12092.0, 12138.0},
+						{22000.0, 22086.0, 22172.0, 22258.0},
+						{32000.0, 32126.0, 32252.0, 32378.0},
+						{42000.0, 42166.0, 42332.0, 42498.0}
+					};
+
+					for (uint32_t row = 0; row < 4; row++)
+					{
+						for (uint32_t column = 0; column < 4; column++)
+						{
+							Assert::AreEqual(TRUTH[row][column], results[row][column]);
+						}
+					}
+				}
+
+				TEST_METHOD(Test_Y_Matrix_Transpose_Double)
+				{
+					alignas(32) double matrix[4][4]
+					{
+						{2.0,  7.0,  8.0,  3.0},
+						{11.0, 14.0, 16.0, 10.0},
+						{24.0, 21.0, 27.0, 29.0},
+						{31.0, 34.0, 38.0, 33.0}
+					};
+					alignas(32) double results[4][4];
+
+					Y_Matrix_Transpose_Double(*matrix, *results);
+
+					for (uint32_t row = 0; row < 4; row++)
+					{
+						for (uint32_t column = 0; column < 4; column++)
+						{
+							Assert::AreEqual(matrix[row][column], results[column][row]);
+						}
+					}
+				}
+
 				TEST_METHOD(Test_Y_Sum_Float)
 				{
 					// 8 float (32 bits) in 256 bits (ymm register).

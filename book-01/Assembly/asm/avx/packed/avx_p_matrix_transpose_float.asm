@@ -59,7 +59,6 @@ vmovaps xmmword ptr [rdx+16], xmm5 ; result[4:7] = xmm5
 vmovaps xmmword ptr [rdx+32], xmm6 ; result[8:11] = xmm6
 vmovaps xmmword ptr [rdx+48], xmm7 ; result[12:15] = xmm7
 
-Done:
 _RestoreXmmRegs xmm6, xmm7
 _DeleteFrame
 

@@ -120,6 +120,16 @@ namespace Assembly {
 				AVX_Packed_Y_Calc_Sphere_Area_Volume_(radius, arrayLength, areas, volumes, qnanValue);
 			}
 
+			void Y_Matrix_Multiplication_Double(const double* a, const double* b, double* result)
+			{
+				AVX_Packed_Y_Matrix_Multiplication_Double_(a, b, result);
+			}
+
+			void Y_Matrix_Transpose_Double(double* input, const double* result)
+			{
+				AVX_Packed_Y_Matrix_Transpose_Double_(input, result);
+			}
+
 			void Y_Sum_Float(const YmmVal& a, const YmmVal& b, YmmVal results[])
 			{
 				AVX_Packed_Y_Sum_Float_(a, b, results);
