@@ -94,6 +94,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="asm-headers\avx.h" />
+    <ClInclude Include="asm-headers\avx2_packed.h" />
     <ClInclude Include="asm-headers\avx_packed.h" />
     <ClInclude Include="asm-headers\avx_scalar.h" />
     <ClInclude Include="asm-headers\types_avx.h" />
@@ -110,6 +111,9 @@
   <ItemGroup>
     <ClCompile Include="asm-proxies\avx.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\avx2_packed.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="asm-proxies\avx_packed.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -139,6 +143,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <MASM Include="asm\avx-2\packed\avx2_p_permute_float.asm" />
     <MASM Include="asm\avx\avx_get_set_rouding_mode.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_abs_double.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_array_cols_mean_double.asm" />

@@ -33,14 +33,14 @@ extern "C" void AVX_Packed_Sum_Short_(const XmmVal & a, const XmmVal & b, XmmVal
 
 // AVX / Packed / 256 bits registers
 extern "C" void AVX_Packed_Y_Abs_Double_(const YmmVal & input, YmmVal results[]);
-extern "C" void AVX_Packed_Y_Blend_Float_(YmmVal * src1, YmmVal * src2, YmmVal * des, BlendSource blend[]);
 extern "C" bool AVX_Packed_Y_Array_Cols_Mean_Double_(const double* input, uint32_t numRows, uint32_t numCols, double* colMeans);
+extern "C" void AVX_Packed_Y_Blend_Float_(YmmVal * src1, YmmVal * src2, YmmVal * des, BlendSource blend[]);
 extern "C" bool AVX_Packed_Y_Calc_Correlation_Coefficient_(const double* x, const double* y, size_t arrayLength, double sums[5], double epsilon, double* rho);
 extern "C" void AVX_Packed_Y_Calc_Sphere_Area_Volume_(const float* radius, uint32_t arrayLength, float* areaa, float* volumea, float qnanValue);
 extern "C" void AVX_Packed_Y_Matrix_Multiplication_Double_(const double* a, const double* b, double* result);
 extern "C" void AVX_Packed_Y_Matrix_Transpose_Double_(double* input, const double* result);
-extern "C" void AVX_Packed_Y_Sum_Float_(const YmmVal & a, const YmmVal & b, YmmVal results[]);
 extern "C" void AVX_Packed_Y_Permute_Float_(YmmVal * src, YmmVal * des, YmmVal * indexes);
+extern "C" void AVX_Packed_Y_Sum_Float_(const YmmVal & a, const YmmVal & b, YmmVal results[]);
 
 // AVX / Scalar
 extern "C" double AVX_Scalar_Calc_Euclidian_Distance_(double x1, double y1, double z1, double x2, double y2, double z2);
@@ -51,6 +51,9 @@ extern "C" int32_t AVX_Scalar_Compare_VCOMISD_Double_(double a, double b);
 extern "C" float AVX_Scalar_Convert_Celsius_Fahrenheit_(float degree);
 extern "C" float AVX_Scalar_Convert_Fahrenheit_Celsius_(float degree);
 extern "C" bool AVX_Scalar_Convert_Number_(const Uval * source, const Uval * destination, CvtOp operation);
+
+// AVX2 / Packed
+extern "C" void AVX2_Packed_Permute_Float_(YmmVal * src, YmmVal * des, YmmVal * indexes);
 
 // Core / Array
 extern "C" int32_t Core_Array_Compare_(const int32_t * a, const int32_t * b, uint32_t arraysLength, int32_t * *matchedValue);
