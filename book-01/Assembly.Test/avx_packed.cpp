@@ -544,6 +544,45 @@ namespace Assembly {
 					Assert::AreEqual(8.5, means[7]);
 				}
 
+				TEST_METHOD(Test_Y_Blend_Float)
+				{
+					alignas(32) YmmVal src1;
+					alignas(32) YmmVal src2;
+					alignas(32) YmmVal results;
+					alignas(32) BlendSource blends[8]
+					{
+						  BlendSource::Source2,
+						  BlendSource::Source2,
+						  BlendSource::Source2,
+						  BlendSource::Source2,
+						  BlendSource::Source1,
+						  BlendSource::Source1,
+						  BlendSource::Source1,
+						  BlendSource::Source1
+					};
+
+					src1.Float[0] = 100; src2.Float[0] = 10;
+					src1.Float[1] = 200; src2.Float[1] = 20;
+					src1.Float[2] = 300; src2.Float[2] = 30;
+					src1.Float[3] = 400; src2.Float[3] = 40;
+					src1.Float[4] = 500; src2.Float[4] = 50;
+					src1.Float[5] = 600; src2.Float[5] = 60;
+					src1.Float[6] = 700; src2.Float[6] = 70;
+					src1.Float[7] = 800; src2.Float[7] = 80;
+
+					Y_Blend_Float(&src1, &src2, &results, blends);
+
+					for (size_t i = 0; i < 4; i++)
+					{
+						Assert::AreEqual(src2.Float[i], results.Float[i]);
+					}
+
+					for (size_t i = 4; i < 8; i++)
+					{
+						Assert::AreEqual(src1.Float[i], results.Float[i]);
+					}
+				}
+
 				TEST_METHOD(Test_Y_Calc_Correlation_Coefficient)
 				{
 					const int LENGTH = 6;
@@ -554,7 +593,7 @@ namespace Assembly {
 					double epsilon = 1.0e-12;
 
 					Assert::IsTrue(Y_Calc_Correlation_Coefficient(x, y, LENGTH, sums, epsilon, &rho));
-				
+
 					Assert::AreEqual(105.0, sums[0]);
 					Assert::AreEqual(42.0, sums[1]);
 					Assert::AreEqual(2275.0, sums[2]);
@@ -644,6 +683,29 @@ namespace Assembly {
 						{
 							Assert::AreEqual(matrix[row][column], results[column][row]);
 						}
+					}
+				}
+
+				TEST_METHOD(Test_Y_Permute_Float)
+				{
+					alignas(32) YmmVal src;
+					alignas(32) YmmVal indexes;
+					alignas(32) YmmVal results;
+
+					src.Float[0] = 100; indexes.Int32[0] = 7;
+					src.Float[1] = 200; indexes.Int32[1] = 6;
+					src.Float[2] = 300; indexes.Int32[2] = 5;
+					src.Float[3] = 400; indexes.Int32[3] = 4;
+					src.Float[4] = 500; indexes.Int32[4] = 3;
+					src.Float[5] = 600; indexes.Int32[5] = 2;
+					src.Float[6] = 700; indexes.Int32[6] = 1;
+					src.Float[7] = 800; indexes.Int32[7] = 0;
+
+					Y_Permute_Float(&src, &results, &indexes);
+
+					for (size_t i = 0, r = 7; i < 8; i++, r--)
+					{
+						Assert::AreEqual(src.Float[i], results.Float[r]);
 					}
 				}
 

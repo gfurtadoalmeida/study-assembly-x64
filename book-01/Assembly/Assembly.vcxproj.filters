@@ -217,6 +217,12 @@
     <MASM Include="asm\avx\packed\avx_p_y_matrix_multiplication_double.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx\packed\avx_p_y_blend_float.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx\packed\avx_p_y_permute_float.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

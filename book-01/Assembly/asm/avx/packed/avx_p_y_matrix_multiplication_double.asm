@@ -16,14 +16,14 @@ vmovapd ymm3, ymmword ptr [rdx+96] ; ymm3 = b.row_3
 
 xor r9, r9
 
-;        255                 127                   96                    63                    0
-; xmm4 = a[row][0] * b[0][3] | a[row][0] * b[0][2] | a[row][0] * b[0][1] | a[row][0] * b[0][0] |
+;        255                 195                   127                   63                    0
+; ymm4 = a[row][0] * b[0][3] | a[row][0] * b[0][2] | a[row][0] * b[0][1] | a[row][0] * b[0][0] |
 ;                  +                     +                     +                     +
-; xmm5 = a[row][1] * b[1][3] | a[row][1] * b[1][2] | a[row][1] * b[1][1] | a[row][1] * b[1][0] |
+; ymm5 = a[row][1] * b[1][3] | a[row][1] * b[1][2] | a[row][1] * b[1][1] | a[row][1] * b[1][0] |
 ;                  +                     +                     +                     +
-; xmm6 = a[row][2] * b[2][3] | a[row][2] * b[2][2] | a[row][2] * b[2][1] | a[row][2] * b[2][0] |
+; ymm6 = a[row][2] * b[2][3] | a[row][2] * b[2][2] | a[row][2] * b[2][1] | a[row][2] * b[2][0] |
 ;                  +                     +                     +                     +
-; xmm7 = a[row][3] * b[3][3] | a[row][3] * b[3][2] | a[row][3] * b[3][1] | a[row][3] * b[3][0] |
+; ymm7 = a[row][3] * b[3][3] | a[row][3] * b[3][2] | a[row][3] * b[3][1] | a[row][3] * b[3][0] |
 ;                  =                     =                     =                     =
 ; res  =        [row][3]     |     res[row][2]     |     res[row][1]     |     res[row][0]     |
 

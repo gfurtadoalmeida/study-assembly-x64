@@ -109,6 +109,11 @@ namespace Assembly {
 			{
 				return AVX_Packed_Y_Array_Cols_Mean_Double_(input, numRows, numCols, colMeans);
 			}
+			
+			void Y_Blend_Float(YmmVal* src1, YmmVal* src2, YmmVal* des, BlendSource blend[])
+			{
+				AVX_Packed_Y_Blend_Float_(src1, src2, des, blend);
+			}
 
 			bool Y_Calc_Correlation_Coefficient(const double* x, const double* y, size_t arrayLength, double sums[5], double epsilon, double* rho)
 			{
@@ -128,6 +133,11 @@ namespace Assembly {
 			void Y_Matrix_Transpose_Double(double* input, const double* result)
 			{
 				AVX_Packed_Y_Matrix_Transpose_Double_(input, result);
+			}
+
+			void Y_Permute_Float(YmmVal* src, YmmVal* des, YmmVal* indexes)
+			{
+				AVX_Packed_Y_Permute_Float_(src, des, indexes);
 			}
 
 			void Y_Sum_Float(const YmmVal& a, const YmmVal& b, YmmVal results[])
