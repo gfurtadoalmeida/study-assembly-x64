@@ -54,6 +54,119 @@ namespace Assembly {
 						Assert::AreEqual(src.Float[i], results.Float[r]);
 					}
 				}
+
+
+				TEST_METHOD(Test_Gather_Double_I32)
+				{
+					double src[20];
+					double des[8]{ -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 };
+
+					int32_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
+					int64_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
+
+					for (size_t i = 0; i < 20; i++)
+					{
+						src[i] = i + 1.0;
+					}
+
+					Gather_Double(src, des, indexes, merge);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						if (merge[i] == 0)
+						{
+							Assert::AreEqual(-1.0, des[i]);
+						}
+						else
+						{
+							Assert::AreEqual(src[indexes[i]], des[i]);
+						}
+					}
+				}
+
+				TEST_METHOD(Test_Gather_Double_I64)
+				{
+					double src[20];
+					double des[8]{ -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 };
+
+					int64_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
+					int64_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
+
+					for (size_t i = 0; i < 20; i++)
+					{
+						src[i] = i + 1.0;
+					}
+
+					Gather_Double(src, des, indexes, merge);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						if (merge[i] == 0)
+						{
+							Assert::AreEqual(-1.0, des[i]);
+						}
+						else
+						{
+							Assert::AreEqual(src[indexes[i]], des[i]);
+						}
+					}
+				}
+
+				TEST_METHOD(Test_Gather_Float_I32)
+				{
+					float src[20];
+					float des[8]{ -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F };
+
+					int32_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
+					int32_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
+
+					for (size_t i = 0; i < 20; i++)
+					{
+						src[i] = i + 1.0F;
+					}
+
+					Gather_Float(src, des, indexes, merge);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						if (merge[i] == 0)
+						{
+							Assert::AreEqual(-1.0F, des[i]);
+						}
+						else
+						{
+							Assert::AreEqual(src[indexes[i]], des[i]);
+						}
+					}
+				}
+
+				TEST_METHOD(Test_Gather_Float_I64)
+				{
+					float src[20];
+					float des[8]{ -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F };
+
+					int64_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
+					int32_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
+
+					for (size_t i = 0; i < 20; i++)
+					{
+						src[i] = i + 1.0F;
+					}
+
+					Gather_Float(src, des, indexes, merge);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						if (merge[i] == 0)
+						{
+							Assert::AreEqual(-1.0F, des[i]);
+						}
+						else
+						{
+							Assert::AreEqual(src[indexes[i]], des[i]);
+						}
+					}
+				}
 			};
 		}
 	}

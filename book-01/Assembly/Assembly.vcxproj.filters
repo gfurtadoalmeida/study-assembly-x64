@@ -232,6 +232,9 @@
     <MASM Include="asm\avx-2\packed\avx2_p_permute_float.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_gather.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

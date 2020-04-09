@@ -144,6 +144,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <MASM Include="asm\avx-2\packed\avx2_p_gather.asm" />
     <MASM Include="asm\avx-2\packed\avx2_p_permute_float.asm" />
     <MASM Include="asm\avx\avx_get_set_rouding_mode.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_abs_double.asm" />
