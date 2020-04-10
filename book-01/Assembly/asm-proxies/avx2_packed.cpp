@@ -29,6 +29,16 @@ namespace Assembly {
 			{
 				AVX2_Packed_Permute_Float_(src, des, indexes);
 			}
+
+			void Sum_Int(const YmmVal& a, const YmmVal& b, YmmVal& result)
+			{
+				AVX2_Packed_Sum_Int_(a, b, result);
+			}
+
+			void Sum_Short(const YmmVal& a, const YmmVal& b, YmmVal& result)
+			{
+				AVX2_Packed_Sum_Short_(a, b, result);
+			}
 		}
 	}
 }

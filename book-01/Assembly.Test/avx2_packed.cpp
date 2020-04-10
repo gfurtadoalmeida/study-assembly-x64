@@ -55,7 +55,6 @@ namespace Assembly {
 					}
 				}
 
-
 				TEST_METHOD(Test_Gather_Double_I32)
 				{
 					double src[20];
@@ -165,6 +164,56 @@ namespace Assembly {
 						{
 							Assert::AreEqual(src[indexes[i]], des[i]);
 						}
+					}
+				}
+
+				TEST_METHOD(Test_Sum_Int)
+				{
+					alignas(32) YmmVal a;
+					alignas(32) YmmVal b;
+					alignas(32) YmmVal result;
+
+					// To test wraparound.
+					a.Int32[0] = INT_MAX; b.Int32[0] = 100;
+
+					for (size_t i = 1; i < 8; i++)
+					{
+						a.Int32[i] = i * 10;
+						b.Int32[i] = a.Int32[i];
+					}
+
+					Sum_Int(a, b, result);
+
+					Assert::AreEqual(INT_MIN + b.Int32[0] - 1, result.Int32[0]);
+
+					for (size_t i = 1; i < 8; i++)
+					{
+						Assert::AreEqual(a.Int32[i] * 2, result.Int32[i]);
+					}
+				}
+
+				TEST_METHOD(Test_Sum_Short)
+				{
+					alignas(32) YmmVal a;
+					alignas(32) YmmVal b;
+					alignas(32) YmmVal result;
+
+					// To test saturation.
+					a.Int16[0] = SHRT_MAX; b.Int16[0] = 100;
+
+					for (size_t i = 1; i < 16; i++)
+					{
+						a.Int16[i] = i * 10;
+						b.Int16[i] = a.Int16[i];
+					}
+
+					Sum_Short(a, b, result);
+
+					Assert::AreEqual((short)SHRT_MAX, result.Int16[0]);
+
+					for (size_t i = 1; i < 16; i++)
+					{
+						Assert::AreEqual((int16_t)(a.Int16[i] * 2), result.Int16[i]);
 					}
 				}
 			};

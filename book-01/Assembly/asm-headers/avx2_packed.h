@@ -11,6 +11,8 @@ namespace Assembly {
 			__declspec(dllexport) void Gather_Float(const float* src, float* des, const int32_t* indexes, const int32_t* merge);
 			__declspec(dllexport) void Gather_Float(const float* src, float* des, const int64_t* indexes, const int32_t* merge);
 			__declspec(dllexport) void Permute_Float(YmmVal* src, YmmVal* des, YmmVal* indexes);
+			__declspec(dllexport) void Sum_Int(const YmmVal& a, const YmmVal& b, YmmVal& result);
+			__declspec(dllexport) void Sum_Short(const YmmVal& a, const YmmVal& b, YmmVal& result);
 		}
 	}
 }

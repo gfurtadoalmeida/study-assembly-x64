@@ -58,6 +58,8 @@ extern "C" void AVX2_Packed_Gather_Double_I64_(const double* src, double* des, c
 extern "C" void AVX2_Packed_Gather_Float_I32_(const float* src, float* des, const int32_t * indexes, const int32_t * merge);
 extern "C" void AVX2_Packed_Gather_Float_I64_(const float* src, float* des, const int64_t * indexes, const int32_t * merge);
 extern "C" void AVX2_Packed_Permute_Float_(YmmVal * src, YmmVal * des, YmmVal * indexes);
+extern "C" void AVX2_Packed_Sum_Int_(const YmmVal & a, const YmmVal & b, YmmVal & result);
+extern "C" void AVX2_Packed_Sum_Short_(const YmmVal & a, const YmmVal & b, YmmVal & result);
 
 // Core / Array
 extern "C" int32_t Core_Array_Compare_(const int32_t * a, const int32_t * b, uint32_t arraysLength, int32_t * *matchedValue);
