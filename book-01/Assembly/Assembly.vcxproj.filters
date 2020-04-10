@@ -250,6 +250,18 @@
     <MASM Include="asm\avx-2\packed\avx2_p_pack_i32_i16.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_convert_ubyte_ushort.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_convert_short_int.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_convert_ushort_uint.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_convert_short_long.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

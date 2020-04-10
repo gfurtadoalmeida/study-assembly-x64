@@ -29,6 +29,88 @@ namespace Assembly {
 				// - 128 bits = alignas(16)
 				// - 256 bits = alignas(32)
 
+				TEST_METHOD(Test_Convert_Short_Int)
+				{
+					alignas(32) YmmVal values;
+					alignas(32) YmmVal result[2];
+
+					for (size_t i = 0; i < 16; i++)
+					{
+						values.Int16[i] = i;
+					}
+
+					Convert_Short_Int(&values, result);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						Assert::AreEqual((int32_t)values.Int16[i], result[0].Int32[i]);
+						Assert::AreEqual((int32_t)values.Int16[i + 8], result[1].Int32[i]);
+					}
+				}
+
+				TEST_METHOD(Test_Convert_Short_Long)
+				{
+					alignas(32) YmmVal values;
+					alignas(32) YmmVal result[4];
+
+					for (size_t i = 0; i < 16; i++)
+					{
+						values.Int16[i] = i;
+					}
+
+					Convert_Short_Long(&values, result);
+
+					for (size_t i = 0; i < 4; i++)
+					{
+						Assert::AreEqual((int64_t)values.Int16[i], result[0].Int64[i]);
+						Assert::AreEqual((int64_t)values.Int16[i + 4], result[1].Int64[i]);
+						Assert::AreEqual((int64_t)values.Int16[i + 8], result[2].Int64[i]);
+						Assert::AreEqual((int64_t)values.Int16[i + 12], result[3].Int64[i]);
+					}
+				}
+
+				TEST_METHOD(Test_Convert_UByte_UInt)
+				{
+					alignas(32) YmmVal values;
+					alignas(32) YmmVal result[4];
+
+					for (size_t i = 0; i < 32; i++)
+					{
+						values.UByte[i] = i;
+					}
+
+					Convert_UByte_UInt(&values, result);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						Assert::AreEqual((uint32_t)values.UByte[i], result[0].UInt32[i]);
+						Assert::AreEqual((uint32_t)values.UByte[i + 8], result[1].UInt32[i]);
+						Assert::AreEqual((uint32_t)values.UByte[i + 16], result[2].UInt32[i]);
+						Assert::AreEqual((uint32_t)values.UByte[i + 24], result[3].UInt32[i]);
+					}
+				}
+
+				TEST_METHOD(Test_Convert_UByte_UShort)
+				{
+					alignas(32) YmmVal values;
+					alignas(32) YmmVal result[2];
+
+					for (size_t i = 0; i < 32; i++)
+					{
+						values.UByte[i] = i;
+					}
+
+					Convert_UByte_UShort(&values, result);
+
+					for (size_t i = 0; i < 16; i++)
+					{
+						// Had to invert the cast because the assert does not
+						// works with uint16_t.
+						Assert::AreEqual(values.UByte[i], (uint8_t)result[0].UInt16[i]);
+						Assert::AreEqual(values.UByte[i + 16], (uint8_t)result[1].UInt16[i]);
+					}
+				}
+
 				TEST_METHOD(Test_Permute_Float)
 				{
 					alignas(32) YmmVal src;

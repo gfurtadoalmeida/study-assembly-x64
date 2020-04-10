@@ -5,6 +5,26 @@ namespace Assembly {
 	namespace AVX2 {
 		namespace Packed {
 
+			void Convert_Short_Int(YmmVal* values, YmmVal result[2])
+			{
+				AVX2_Packed_Convert_Short_Int_(values, result);
+			}
+			
+			void Convert_Short_Long(YmmVal* values, YmmVal result[4])
+			{
+				AVX2_Packed_Convert_Short_Long_(values, result);
+			}
+
+			void Convert_UByte_UInt(YmmVal* values, YmmVal result[4])
+			{
+				AVX2_Packed_Convert_UByte_UInt_(values, result);
+			}
+
+			void Convert_UByte_UShort(YmmVal* values, YmmVal result[2])
+			{
+				AVX2_Packed_Convert_UByte_UShort_(values, result);
+			}
+
 			void Gather_Double(const double* src, double* des, const int32_t* indexes, const int64_t* merge)
 			{
 				AVX2_Packed_Gather_Double_I32_(src, des, indexes, merge);

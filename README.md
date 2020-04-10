@@ -18,10 +18,10 @@ Each folder contains two projects:
 ## Support References
 
 * [Felix Cloutier's x86/x64 instructions reference](https://www.felixcloutier.com/x86/index.html)
+* [Intel - 64 and IA-32 Architectures Software Developer’s Manual](https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf)
 * [Intel - Introduction to x64 assembly](https://software.intel.com/en-us/articles/introduction-to-x64-assembly)
 * [Sandpile - x86 Processor technical references](https://www.sandpile.org/)
 * [The MASM Forum](http://masm32.com/board/index.php)
 * [Tutorials Point](https://www.tutorialspoint.com/assembly_programming/)
-* [Visual C++ x64 software conventions](https://docs.microsoft.com/en-us/cpp/build/x64-software-conventions?view=vs-2019)
 * [x86 Assembly guide](http://www.cs.virginia.edu/~evans/cs216/guides/x86.html)
 * [Wikipedia](https://www.wikipedia.org/)
