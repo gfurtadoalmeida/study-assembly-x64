@@ -204,7 +204,7 @@ XMM0-15, YMM0-15, ZMM0-31
 └───────────────────────────────┴───────────────┴───────────────┘
 ```
 
-## Windows x64 Software Conventions [:link:](https://docs.microsoft.com/en-us/cpp/build/x64-software-conventions?view=vs-2019)
+## Visual C++ x64 Software Conventions [:link:](https://docs.microsoft.com/en-us/cpp/build/x64-software-conventions?view=vs-2019)
 
 ### Registers
 
@@ -221,7 +221,7 @@ XMM0-15, YMM0-15, ZMM0-31
 | Stack pointer                | Nonvolatile | RSP                    |    Y     |
 | Syscall/sysret instructions  | Volatile    | R10, R11               |    Y     |
 
-Registers marked as nonvolatile or preserve **MUST** have their values saved (pushed to stack) before being used and **MUST** have their values restored before the method returns.
+Registers marked as nonvolatile or preserve **MUST** have their values saved (pushed to stack) before being used and **MUST** have their values restored before the method returns.  
 
 ### Stack Usage
 
@@ -262,3 +262,18 @@ Epilog:
 2. Pop nonvolatile/preserve registers from stack.
 3. Pop RBP from the stack.
 4. Call _vzeroupper_ in case any 256 bits register (YMM) was used.
+
+### Returning a Struct by Value
+
+When returning a struct by value, RCX will contain a pointer to a temporary buffer allocated to the struct and all parameters will be shifted one register to the right.  
+
+The first three arguments will be passed using registers RDX/XMM1, R8/XMM2, and R9/XMM3. Any remaining arguments are passed on the stack.  
+
+Beware that the buffer allocated **IS NOT** necessarily the final memory location.  
+
+This type of return is slow because Visual C++ will allocate a variable to hold the intermediate value (temporary buffer) and then will move it to a final memory location.  
+
+Responsibilities:
+
+* Caller: allocate the temporary buffer and store the pointer on RCX prior calling a function that returns struct by value.
+* Called: copy RCX to RAX prior returning.
