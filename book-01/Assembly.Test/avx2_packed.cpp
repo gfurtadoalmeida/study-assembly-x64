@@ -1,11 +1,13 @@
+#define _USE_MATH_DEFINES
 #include "pch.h"
 #include "CppUnitTest.h"
-#define _USE_MATH_DEFINES
 #include <math.h>
+#include "../Assembly/asm-headers/utils.h"
 #include "../Assembly/asm-headers/avx.h"
 #include "../Assembly/asm-headers/avx2_packed.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace Assembly::Utils;
 using namespace Assembly::AVX::Types;
 using namespace Assembly::AVX2::Packed;
 
@@ -215,6 +217,59 @@ namespace Assembly {
 					{
 						Assert::AreEqual((int16_t)(a.Int16[i] * 2), result.Int16[i]);
 					}
+				}
+
+				TEST_METHOD(Test_Pack_I32_I16)
+				{
+					alignas(32) YmmVal a;
+					alignas(32) YmmVal b;
+					alignas(32) YmmVal result;
+
+					a.Int32[0] = 10;      b.Int32[0] = 32768;
+					a.Int32[1] = -200000; b.Int32[1] = 6500;
+					a.Int32[2] = 300000;  b.Int32[2] = 42000;
+					a.Int32[3] = -4000;   b.Int32[3] = -68000;
+					a.Int32[4] = 9000;    b.Int32[4] = 25000;
+					a.Int32[5] = 80000;   b.Int32[5] = 500000;
+					a.Int32[6] = 200;     b.Int32[6] = -7000;
+					a.Int32[7] = -32769;  b.Int32[7] = 12500;
+
+					Pack_I32_I16(a, b, &result);
+
+					for (size_t i = 0; i < 4; i++)
+					{
+						Assert::AreEqual(ClampToShort(a.Int32[i]), result.Int16[i]);
+						Assert::AreEqual(ClampToShort(b.Int32[i]), result.Int16[i + 4]);
+						Assert::AreEqual(ClampToShort(a.Int32[i + 4]), result.Int16[i + 8]);
+						Assert::AreEqual(ClampToShort(b.Int32[i + 4]), result.Int16[i + 12]);
+					}
+				}
+
+				TEST_METHOD(Test_Unpack_U32_U64)
+				{
+					alignas(32) YmmVal a;
+					alignas(32) YmmVal b;
+
+					a.UInt32[0] = 0x00000000; b.UInt32[0] = 0x88888888;
+					a.UInt32[1] = 0x11111111; b.UInt32[1] = 0x99999999;
+					a.UInt32[2] = 0x22222222; b.UInt32[2] = 0xaaaaaaaa;
+					a.UInt32[3] = 0x33333333; b.UInt32[3] = 0xbbbbbbbb;
+					a.UInt32[4] = 0x44444444; b.UInt32[4] = 0xcccccccc;
+					a.UInt32[5] = 0x55555555; b.UInt32[5] = 0xdddddddd;
+					a.UInt32[6] = 0x66666666; b.UInt32[6] = 0xeeeeeeee;
+					a.UInt32[7] = 0x77777777; b.UInt32[7] = 0xffffffff;
+
+					YmmValAB result = Unpack_U32_U64(a, b);
+
+					Assert::AreEqual(Merge(b.UInt32[0], a.UInt32[0]), result.A.UInt64[0]);
+					Assert::AreEqual(Merge(b.UInt32[1], a.UInt32[1]), result.A.UInt64[1]);
+					Assert::AreEqual(Merge(b.UInt32[4], a.UInt32[4]), result.A.UInt64[2]);
+					Assert::AreEqual(Merge(b.UInt32[5], a.UInt32[5]), result.A.UInt64[3]);
+
+					Assert::AreEqual(Merge(b.UInt32[2], a.UInt32[2]), result.B.UInt64[0]);
+					Assert::AreEqual(Merge(b.UInt32[3], a.UInt32[3]), result.B.UInt64[1]);
+					Assert::AreEqual(Merge(b.UInt32[6], a.UInt32[6]), result.B.UInt64[2]);
+					Assert::AreEqual(Merge(b.UInt32[7], a.UInt32[7]), result.B.UInt64[3]);
 				}
 			};
 		}

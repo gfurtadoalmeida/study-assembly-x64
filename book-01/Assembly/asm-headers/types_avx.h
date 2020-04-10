@@ -85,6 +85,12 @@ namespace Assembly {
 					double Double[4];
 				};
 			};
+
+			struct alignas(32) YmmValAB
+			{
+				YmmVal A;
+				YmmVal B;
+			};
 		}
 	}
 }

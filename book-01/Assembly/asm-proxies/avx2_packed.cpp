@@ -25,6 +25,11 @@ namespace Assembly {
 				AVX2_Packed_Gather_Float_I64_(src, des, indexes, merge);
 			}
 
+			void Pack_I32_I16(const YmmVal& a, const YmmVal& b, YmmVal* result)
+			{
+				AVX2_Packed_Pack_I32_I16_(a, b, result);
+			}
+
 			void Permute_Float(YmmVal* src, YmmVal* des, YmmVal* indexes)
 			{
 				AVX2_Packed_Permute_Float_(src, des, indexes);
@@ -38,6 +43,11 @@ namespace Assembly {
 			void Sum_Short(const YmmVal& a, const YmmVal& b, YmmVal& result)
 			{
 				AVX2_Packed_Sum_Short_(a, b, result);
+			}
+
+			YmmValAB Unpack_U32_U64(const YmmVal& a, const YmmVal& b)
+			{
+				return AVX2_Packed_Unpack_U32_U64_(a, b);
 			}
 		}
 	}

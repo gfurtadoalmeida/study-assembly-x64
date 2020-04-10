@@ -58,6 +58,7 @@
       <PreprocessorDefinitions>_DEBUG;ASSEMBLY_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -104,6 +105,7 @@
     <ClInclude Include="asm-headers\core_string.h" />
     <ClInclude Include="asm-headers\core_struct.h" />
     <ClInclude Include="asm-headers\types_core.h" />
+    <ClInclude Include="asm-headers\utils.h" />
     <ClInclude Include="asm-headers\__declarations.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -137,6 +139,9 @@
     <ClCompile Include="asm-proxies\core_struct.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="asm-proxies\utils.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -145,8 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <MASM Include="asm\avx-2\packed\avx2_p_gather.asm" />
-    <MASM Include="asm\avx-2\packed\avx2_p_math_integer.asm" />
+    <MASM Include="asm\avx-2\packed\avx2_p_pack_i32_i16.asm" />
+    <MASM Include="asm\avx-2\packed\avx2_p_sum_int_short.asm" />
     <MASM Include="asm\avx-2\packed\avx2_p_permute_float.asm" />
+    <MASM Include="asm\avx-2\packed\avx2_p_unpack_u32_u64.asm" />
     <MASM Include="asm\avx\avx_get_set_rouding_mode.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_abs_double.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_array_cols_mean_double.asm" />

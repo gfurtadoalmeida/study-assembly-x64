@@ -57,6 +57,9 @@
     <ClInclude Include="asm-headers\avx2_packed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="asm-headers\utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -90,6 +93,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="asm-proxies\avx2_packed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -235,7 +241,13 @@
     <MASM Include="asm\avx-2\packed\avx2_p_gather.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="asm\avx-2\packed\avx2_p_math_integer.asm">
+    <MASM Include="asm\avx-2\packed\avx2_p_sum_int_short.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_unpack_u32_u64.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_pack_i32_i16.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>
