@@ -64,6 +64,46 @@ namespace Assembly {
 					Assert::AreEqual(50ULL, pcd.NumClippedPixels);
 				}
 
+				TEST_METHOD(Test_Convert_Float_HalfPrecision_And_Back)
+				{
+					// As C++ does not have native support for half-precision
+					// numbers, I'll have to test the conversion to-and-from
+					// together in this method.
+
+					float values[8];
+					values[0] = 4.15F;
+					values[1] = 32.90F;
+					values[2] = 56.32F;
+					values[3] = -68.67F;
+					values[4] = 420.55F;
+					values[5] = 750.01F;
+					values[6] = -62.12F;
+					values[7] = 170.06F;
+
+					uint16_t conversions[4][8];
+					float results[4][8];
+
+					Convert_Float_HalfPrecision(values, conversions[0], RoundingMode::Nearest);
+					Convert_Float_HalfPrecision(values, conversions[1], RoundingMode::Up);
+					Convert_Float_HalfPrecision(values, conversions[2], RoundingMode::Down);
+					Convert_Float_HalfPrecision(values, conversions[3], RoundingMode::Truncate);
+
+					Convert_HalfPrecision_Float(conversions[0], results[0]);
+					Convert_HalfPrecision_Float(conversions[1], results[1]);
+					Convert_HalfPrecision_Float(conversions[2], results[2]);
+					Convert_HalfPrecision_Float(conversions[3], results[3]);
+
+					// As there is loss of precision in the conversions, it is
+					// impossible to just compare the original values with converted ones.
+					for (size_t i = 0; i < 8; i++)
+					{
+						Assert::AreEqual(roundf(results[0][i]) * 10, roundf(values[i]) * 10);
+						Assert::AreEqual(ceilf(results[1][i]) * 10, ceilf(values[i]) * 10);
+						Assert::AreEqual(floorf(results[2][i]) * 10, floorf(values[i]) * 10);
+						Assert::AreEqual(truncf(results[3][i]) * 10, truncf(values[i]) * 10);
+					}
+				}
+
 				TEST_METHOD(Test_Convert_Short_Int)
 				{
 					alignas(32) YmmVal values;

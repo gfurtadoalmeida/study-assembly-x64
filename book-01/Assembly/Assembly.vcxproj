@@ -156,6 +156,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <MASM Include="asm\avx-2\packed\avx2_packed_convert_float_halfprecision.asm" />
+    <MASM Include="asm\avx-2\packed\avx2_packed_convert_halfprecision_float.asm" />
     <MASM Include="asm\avx-2\packed\avx2_p_clip_pixel_gray_image.asm" />
     <MASM Include="asm\avx-2\packed\avx2_p_convert_short_int.asm" />
     <MASM Include="asm\avx-2\packed\avx2_p_convert_short_long.asm" />

@@ -277,6 +277,12 @@
     <MASM Include="asm\avx-2\scalar\avx2_s_bit_manipulation.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_packed_convert_float_halfprecision.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_packed_convert_halfprecision_float.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

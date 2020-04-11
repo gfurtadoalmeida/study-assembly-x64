@@ -4,7 +4,14 @@ namespace Assembly {
 	namespace AVX {
 		namespace Types {
 
-			enum class RoundingMode : uint32_t { Nearest, Down, Up, Truncate };
+			enum class RoundingMode : uint32_t 
+			{ 
+				Nearest = 0b000, 
+				Down = 0b001, 
+				Up = 0b010, 
+				Truncate = 0b011,
+				SpecifiedInMxcsr = 0b100
+			};
 
 			// Must have the same order as defined in the
 			// jump table of the following files:

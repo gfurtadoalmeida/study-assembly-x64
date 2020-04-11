@@ -7,6 +7,8 @@ namespace Assembly {
 		namespace Packed {
 
 			__declspec(dllexport) bool Clip_Pixel_Gray_Image(PixelClipData* pcd);
+			__declspec(dllexport) void Convert_Float_HalfPrecision(float values[8], uint16_t result[8], RoundingMode roudingMode);
+			__declspec(dllexport) void Convert_HalfPrecision_Float(uint16_t values[8], float result[8]);
 			__declspec(dllexport) void Convert_Short_Int(YmmVal* values, YmmVal result[2]);
 			__declspec(dllexport) void Convert_Short_Long(YmmVal* values, YmmVal result[4]);
 			__declspec(dllexport) void Convert_UByte_UInt(YmmVal* values, YmmVal result[4]);

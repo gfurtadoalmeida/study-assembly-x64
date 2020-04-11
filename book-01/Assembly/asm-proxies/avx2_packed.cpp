@@ -10,6 +10,16 @@ namespace Assembly {
 				return AVX2_Packed_Clip_Pixel_Gray_Image_(pcd);
 			}
 
+			void Convert_Float_HalfPrecision(float values[8], uint16_t result[8], RoundingMode roudingMode)
+			{
+				AVX2_Packed_Convert_Float_HalfPrecision_(values, result, roudingMode);
+			}
+
+			void Convert_HalfPrecision_Float(uint16_t values[8], float result[8])
+			{
+				AVX2_Packed_Convert_HalfPrecision_Float_(values, result);
+			}
+
 			void Convert_Short_Int(YmmVal* values, YmmVal result[2])
 			{
 				AVX2_Packed_Convert_Short_Int_(values, result);

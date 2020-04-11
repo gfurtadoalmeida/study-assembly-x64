@@ -54,6 +54,8 @@ extern "C" bool AVX_Scalar_Convert_Number_(const Uval * source, const Uval * des
 
 // AVX2 / Packed
 extern "C" bool AVX2_Packed_Clip_Pixel_Gray_Image_(PixelClipData * pcd);
+extern "C" void AVX2_Packed_Convert_Float_HalfPrecision_(float values[8], uint16_t result[8], RoundingMode roudingMode);
+extern "C" void AVX2_Packed_Convert_HalfPrecision_Float_(uint16_t values[8], float result[8]);
 extern "C" void AVX2_Packed_Convert_Short_Int_(YmmVal * values, YmmVal result[2]);
 extern "C" void AVX2_Packed_Convert_Short_Long_(YmmVal * values, YmmVal result[4]);
 extern "C" void AVX2_Packed_Convert_UByte_UInt_(YmmVal * values, YmmVal result[4]);
