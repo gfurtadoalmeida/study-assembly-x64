@@ -70,7 +70,7 @@ namespace Assembly {
 					// numbers, I'll have to test the conversion to-and-from
 					// together in this method.
 
-					float values[8];
+					alignas(32) float values[8];
 					values[0] = 4.15F;
 					values[1] = 32.90F;
 					values[2] = 56.32F;
@@ -80,8 +80,8 @@ namespace Assembly {
 					values[6] = -62.12F;
 					values[7] = 170.06F;
 
-					uint16_t conversions[4][8];
-					float results[4][8];
+					alignas(32) uint16_t conversions[4][8];
+					alignas(32) float results[4][8];
 
 					Convert_Float_HalfPrecision(values, conversions[0], RoundingMode::Nearest);
 					Convert_Float_HalfPrecision(values, conversions[1], RoundingMode::Up);
