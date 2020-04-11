@@ -60,6 +60,9 @@
     <ClInclude Include="asm-headers\utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="asm-headers\avx2_scalar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -96,6 +99,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="asm-proxies\utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\avx2_scalar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -263,6 +269,12 @@
       <Filter>Source Files</Filter>
     </MASM>
     <MASM Include="asm\avx-2\packed\avx2_p_clip_pixel_gray_image.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\scalar\avx2_s_flagless_instructions.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\scalar\avx2_s_bit_manipulation.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>

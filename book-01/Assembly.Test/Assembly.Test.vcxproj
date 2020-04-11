@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="avx.cpp" />
     <ClCompile Include="avx2_packed.cpp" />
+    <ClCompile Include="avx2_scalar.cpp" />
     <ClCompile Include="avx_packed.cpp" />
     <ClCompile Include="avx_scalar.cpp" />
     <ClCompile Include="core_array.cpp" />

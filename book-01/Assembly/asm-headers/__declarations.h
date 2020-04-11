@@ -68,6 +68,13 @@ extern "C" void AVX2_Packed_Sum_Int_(const YmmVal & a, const YmmVal & b, YmmVal 
 extern "C" void AVX2_Packed_Sum_Short_(const YmmVal & a, const YmmVal & b, YmmVal & result);
 extern "C" YmmValAB AVX2_Packed_Unpack_U32_U64_(const YmmVal & a, const YmmVal & b);
 
+// AVX2  Scalar
+extern "C" uint32_t AVX2_Scalar_And_Not_(uint32_t a, uint32_t b);
+extern "C" void AVX2_Scalar_Count_Zero_Bits_(uint32_t value, uint32_t * leadingZeros, uint32_t * trailingZeros);
+extern "C" uint32_t AVX2_Scalar_Extract_Bits_(uint32_t value, uint8_t start, uint8_t length);
+extern "C" uint64_t AVX2_Scalar_Flagless_Multiply_UInt_(uint32_t a, uint32_t b, uint64_t flags[2]);
+extern "C" void AVX2_Scalar_Flagless_Shift_UInt_(uint32_t value, uint32_t count, uint32_t results[3], uint64_t flags[4]);
+
 // Core / Array
 extern "C" int32_t Core_Array_Compare_(const int32_t * a, const int32_t * b, uint32_t arraysLength, int32_t * *matchedValue);
 extern "C" uint32_t Core_Array_Get_From_Const_ArrayLength_;
