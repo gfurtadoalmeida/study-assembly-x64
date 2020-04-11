@@ -8,8 +8,8 @@ namespace Assembly {
 
 			// Must have the same order as defined in the
 			// jump table of the following files:
-			// - avx/packed/convert_numbers.asm 
-			// - avx/scalar/convert_number.asm 
+			// - avx/packed/avx_p_convert_number.asm 
+			// - avx/scalar/avx_p_convert_number.asm 
 			enum class CvtOp : uint32_t {
 				I32_F32, // int32_t to float
 				F32_I32, // float to int32_t
@@ -25,7 +25,7 @@ namespace Assembly {
 
 			// Must have the same order as defined in the
 			// jump table of the following files:
-			// - avx/packed/shift_integers.asm 
+			// - avx/packed/avx_p_shift_integer.asm 
 			enum class ShiftOp : uint32_t {
 				// Logical = fill with zeros
 				// Arithmetic = keeps signal bit
@@ -90,6 +90,18 @@ namespace Assembly {
 			{
 				YmmVal A;
 				YmmVal B;
+			};
+
+			// Must have the same definition as
+			// defined in the following files:
+			// - avx2/packed/avx2_p_clip_pixel_gray_image.asm
+			struct PixelClipData {
+				uint8_t* Source;
+				uint8_t* Destination;
+				uint64_t NumPixels;
+				uint64_t NumClippedPixels;
+				uint8_t ThresholdLow;
+				uint8_t ThresholdHigh;
 			};
 		}
 	}

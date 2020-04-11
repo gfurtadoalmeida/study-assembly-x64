@@ -6,6 +6,7 @@ namespace Assembly {
 	namespace AVX2 {
 		namespace Packed {
 
+			__declspec(dllexport) bool Clip_Pixel_Gray_Image(PixelClipData* pcd);
 			__declspec(dllexport) void Convert_Short_Int(YmmVal* values, YmmVal result[2]);
 			__declspec(dllexport) void Convert_Short_Long(YmmVal* values, YmmVal result[4]);
 			__declspec(dllexport) void Convert_UByte_UInt(YmmVal* values, YmmVal result[4]);

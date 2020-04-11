@@ -53,6 +53,7 @@ extern "C" float AVX_Scalar_Convert_Fahrenheit_Celsius_(float degree);
 extern "C" bool AVX_Scalar_Convert_Number_(const Uval * source, const Uval * destination, CvtOp operation);
 
 // AVX2 / Packed
+extern "C" bool AVX2_Packed_Clip_Pixel_Gray_Image_(PixelClipData * pcd);
 extern "C" void AVX2_Packed_Convert_Short_Int_(YmmVal * values, YmmVal result[2]);
 extern "C" void AVX2_Packed_Convert_Short_Long_(YmmVal * values, YmmVal result[4]);
 extern "C" void AVX2_Packed_Convert_UByte_UInt_(YmmVal * values, YmmVal result[4]);

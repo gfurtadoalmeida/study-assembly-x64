@@ -262,6 +262,9 @@
     <MASM Include="asm\avx-2\packed\avx2_p_convert_short_long.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_clip_pixel_gray_image.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">

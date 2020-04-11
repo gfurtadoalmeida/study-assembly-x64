@@ -29,6 +29,41 @@ namespace Assembly {
 				// - 128 bits = alignas(16)
 				// - 256 bits = alignas(32)
 
+				TEST_METHOD(Test_Clip_Pixel_Gray_Image)
+				{
+					uint8_t source[64];
+					uint8_t destination[64];
+
+					PixelClipData pcd;
+					pcd.Source = source;
+					pcd.Destination = destination;
+					pcd.NumPixels = 64;
+					pcd.NumClippedPixels = 0;
+					pcd.ThresholdLow = 50;
+					pcd.ThresholdHigh = 200;
+
+					// 20 pixels lower than threshold low.
+					for (size_t i = 0; i < 20; i++)
+					{
+						source[i] = 20;
+					}
+
+					// 30 pixels higher than threshold high.
+					for (size_t i = 20; i < 50; i++)
+					{
+						source[i] = 255;
+					}
+
+					// 14 not-clipped pixels.
+					for (size_t i = 50; i < 64; i++)
+					{
+						source[i] = i;
+					}
+
+					Assert::IsTrue(Clip_Pixel_Gray_Image(&pcd));
+					Assert::AreEqual(50ULL, pcd.NumClippedPixels);
+				}
+
 				TEST_METHOD(Test_Convert_Short_Int)
 				{
 					alignas(32) YmmVal values;

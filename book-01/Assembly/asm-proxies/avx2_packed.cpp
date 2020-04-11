@@ -5,6 +5,11 @@ namespace Assembly {
 	namespace AVX2 {
 		namespace Packed {
 
+			bool Clip_Pixel_Gray_Image(PixelClipData* pcd)
+			{
+				return AVX2_Packed_Clip_Pixel_Gray_Image_(pcd);
+			}
+
 			void Convert_Short_Int(YmmVal* values, YmmVal result[2])
 			{
 				AVX2_Packed_Convert_Short_Int_(values, result);
