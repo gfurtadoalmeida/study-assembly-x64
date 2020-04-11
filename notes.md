@@ -189,7 +189,7 @@ Commonly used flags:
 
 #### Vector [:link:](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions)
 
-Holds data for vector processing done by SIMD instructions.  
+Added with AVX, AVX2 and AVX-512, holds data for vector processing done by SIMD instructions.  
 
 XMM0-15, YMM0-15, ZMM0-31
 
@@ -200,8 +200,25 @@ XMM0-15, YMM0-15, ZMM0-31
 ├───────────────────────────────┬───────────────────────────────┤
 │                               │            YMM 256 b          │
 ├───────────────────────────────┼───────────────┬───────────────┤
-│                               │               │   XMM 128 b   │  
+│                               │               │   XMM 128 b   │
 └───────────────────────────────┴───────────────┴───────────────┘
+```
+
+#### Vector Opmask [:link:](https://en.wikipedia.org/wiki/AVX-512#Opmask_registers)
+
+Added with AVX-512, primarily used as predicate masks to perform conditional executions and merging operations. They can also be employed as destination operands for instructions that generate vector mask results.
+
+The number of bits used depends on the vector type. For a double (64 bits), only 8 bits will suffice (512 b / 64 b = 8).
+
+K0-K7
+
+```text
+63                                                              0
+┌───────────────────────────────────────────────────────────────┐
+│                         AVX-512BW 63 b                        │
+├───────────────────────────────────────────────┬───────────────┤
+│                                               │      16 b     │
+└───────────────────────────────────────────────┴───────────────┘
 ```
 
 ## Visual C++ x64 Software Conventions [:link:](https://docs.microsoft.com/en-us/cpp/build/x64-software-conventions?view=vs-2019)
@@ -215,9 +232,10 @@ XMM0-15, YMM0-15, ZMM0-31
 | Arguments (real and vectors) | Volatile    | Y/XMM4-5               |    Y     |
 | Frame pointer                | Nonvolatile | RBP                    |    Y     |
 | Return value (integer)       | Volatile    | EAX                    |    -     |
-| Return value (real)          | Volatile    | Y/XMM0                 |    -     |
+| Return value (real)          | Volatile    | Z/Y/XMM0               |    -     |
 | Scratchpad (integer)         | Nonvolatile | R12-R15, RBX, RDI, RSI |    Y     |
-| Scratchpad (real and vector) | Nonvolatile | Y/XMM6-15              |    Y     |
+| Scratchpad (real and vector) | Nonvolatile | Z/Y/XMM6-15            |    Y     |
+| Scratchpad (real and vector) | Volatile    | Z/Y/XMM16-31           |    -     |
 | Stack pointer                | Nonvolatile | RSP                    |    Y     |
 | Syscall/sysret instructions  | Volatile    | R10, R11               |    Y     |
 
