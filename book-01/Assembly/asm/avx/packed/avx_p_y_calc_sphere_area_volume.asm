@@ -53,7 +53,7 @@ vandnps ymm5, ymm1, ymm3 ; volume >= 0.0F = volume | volume < 0.0F = 0.0F
 vorps ymm5, ymm4, ymm5	 ; volume >= 0.0F = volume | volume < 0.0F = QNAN
 vmovaps ymmword ptr[r9+rax], ymm5
 
-add rax, 32 ; 8 * 32 bits = 32 bytes
+add rax, type ymmword
 sub rdx, 8  ; 8 radius processed
 dec r10
 jnz @B

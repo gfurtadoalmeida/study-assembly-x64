@@ -48,6 +48,9 @@
     <ClCompile Include="avx2_scalar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="avx512_scalar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

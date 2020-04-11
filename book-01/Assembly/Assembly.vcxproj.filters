@@ -63,6 +63,9 @@
     <ClInclude Include="asm-headers\avx2_scalar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="asm-headers\avx512_Scalar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -102,6 +105,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="asm-proxies\avx2_scalar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\avx512_scalar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -277,10 +283,13 @@
     <MASM Include="asm\avx-2\scalar\avx2_s_bit_manipulation.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="asm\avx-2\packed\avx2_packed_convert_float_halfprecision.asm">
+    <MASM Include="asm\avx-512\scalar\avx512_p_calc_sphere_area_volume.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="asm\avx-2\packed\avx2_packed_convert_halfprecision_float.asm">
+    <MASM Include="asm\avx-2\packed\avx2_p_convert_float_halfprecision.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-2\packed\avx2_p_convert_halfprecision_float.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>

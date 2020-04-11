@@ -1,13 +1,9 @@
-#define _USE_MATH_DEFINES
 #include "pch.h"
 #include "CppUnitTest.h"
-#include <math.h>
-#include "../Assembly/asm-headers/utils.h"
 #include "../Assembly/asm-headers/avx.h"
 #include "../Assembly/asm-headers/avx2_scalar.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-using namespace Assembly::Utils;
 using namespace Assembly::AVX::Types;
 using namespace Assembly::AVX2::Scalar;
 

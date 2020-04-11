@@ -98,6 +98,7 @@
     <ClInclude Include="asm-headers\avx.h" />
     <ClInclude Include="asm-headers\avx2_packed.h" />
     <ClInclude Include="asm-headers\avx2_scalar.h" />
+    <ClInclude Include="asm-headers\avx512_Scalar.h" />
     <ClInclude Include="asm-headers\avx_packed.h" />
     <ClInclude Include="asm-headers\avx_scalar.h" />
     <ClInclude Include="asm-headers\types_avx.h" />
@@ -123,6 +124,10 @@
     <ClCompile Include="asm-proxies\avx2_scalar.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\avx512_scalar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="asm-proxies\avx_packed.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -156,8 +161,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="asm\avx-2\packed\avx2_packed_convert_float_halfprecision.asm" />
-    <MASM Include="asm\avx-2\packed\avx2_packed_convert_halfprecision_float.asm" />
+    <MASM Include="asm\avx-2\packed\avx2_p_convert_float_halfprecision.asm" />
+    <MASM Include="asm\avx-2\packed\avx2_p_convert_halfprecision_float.asm" />
     <MASM Include="asm\avx-2\packed\avx2_p_clip_pixel_gray_image.asm" />
     <MASM Include="asm\avx-2\packed\avx2_p_convert_short_int.asm" />
     <MASM Include="asm\avx-2\packed\avx2_p_convert_short_long.asm" />
@@ -170,6 +175,7 @@
     <MASM Include="asm\avx-2\packed\avx2_p_unpack_u32_u64.asm" />
     <MASM Include="asm\avx-2\scalar\avx2_s_bit_manipulation.asm" />
     <MASM Include="asm\avx-2\scalar\avx2_s_flagless_instructions.asm" />
+    <MASM Include="asm\avx-512\scalar\avx512_p_calc_sphere_area_volume.asm" />
     <MASM Include="asm\avx\avx_get_set_rouding_mode.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_abs_double.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_array_cols_mean_double.asm" />
