@@ -31,8 +31,8 @@ namespace Assembly {
 
 				TEST_METHOD(Test_Clip_Pixel_Gray_Image)
 				{
-					uint8_t source[64];
-					uint8_t destination[64];
+					alignas(32) uint8_t source[64];
+					alignas(32) uint8_t destination[64];
 
 					PixelClipData pcd;
 					pcd.Source = source;
