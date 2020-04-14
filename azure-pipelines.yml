@@ -8,7 +8,8 @@ trigger:
       - 'notes.md'
 
 pool:
-  vmImage: 'windows-latest'
+  name: default
+  demands: AVX
 
 steps:
   - task: VSBuild@1
