@@ -14,6 +14,22 @@ namespace Assembly {
 		namespace AVX512 {
 			TEST_CLASS(Scalar)
 			{
+				TEST_METHOD(Test_Calc_Conditional_Sum_Zero_Masking)
+				{
+					const uint32_t LENGTH = 5;
+
+					double a[LENGTH] = { 10, 20, 30, 40, 30 };
+					double b[LENGTH] = { 1, 2, 3, 4, 5 };
+					double result[LENGTH];
+
+					Assert::IsTrue(Calc_Conditional_Sum_Zero_Masking(a, b, result, LENGTH, 30.0));
+					Assert::AreEqual(11.0, result[0]);
+					Assert::AreEqual(22.0, result[1]);
+					Assert::AreEqual(0.0, result[2]);
+					Assert::AreEqual(44.0, result[3]);
+					Assert::AreEqual(0.0, result[4]);
+				}
+
 				TEST_METHOD(Test_Calc_Sphere_Area_Volume)
 				{
 					double radius = 2.0;

@@ -78,6 +78,7 @@ extern "C" uint64_t AVX2_Scalar_Flagless_Multiply_UInt_(uint32_t a, uint32_t b, 
 extern "C" void AVX2_Scalar_Flagless_Shift_UInt_(uint32_t value, uint32_t count, uint32_t results[3], uint64_t flags[4]);
 
 // AVX-512 Scalar
+extern "C" bool AVX512_Scalar_Calc_Conditional_Sum_Zero_Masking_(double* a, double* b, double* result, uint32_t length, double valueToIgnore);
 extern "C" bool AVX512_Scalar_Calc_Sphere_Area_Volume_(double radius, double* area, double* volume, double errorValue);
 
 // Core / Array

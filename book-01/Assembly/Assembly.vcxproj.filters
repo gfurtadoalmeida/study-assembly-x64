@@ -283,13 +283,16 @@
     <MASM Include="asm\avx-2\scalar\avx2_s_bit_manipulation.asm">
       <Filter>Source Files</Filter>
     </MASM>
-    <MASM Include="asm\avx-512\scalar\avx512_p_calc_sphere_area_volume.asm">
-      <Filter>Source Files</Filter>
-    </MASM>
     <MASM Include="asm\avx-2\packed\avx2_p_convert_float_halfprecision.asm">
       <Filter>Source Files</Filter>
     </MASM>
     <MASM Include="asm\avx-2\packed\avx2_p_convert_halfprecision_float.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-512\scalar\avx512_s_calc_sphere_area_volume.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-512\scalar\avx512_s_calc_conditional_sum_zero_masking.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>
