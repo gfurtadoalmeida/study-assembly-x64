@@ -18,8 +18,8 @@ namespace Assembly {
 				{
 					const uint32_t LENGTH = 5;
 
-					double a[LENGTH] = { 10, 20, 30, 40, 30 };
-					double b[LENGTH] = { 1, 2, 3, 4, 5 };
+					alignas(64) double a[LENGTH] = { 10, 20, 30, 40, 30 };
+					alignas(64) double b[LENGTH] = { 1, 2, 3, 4, 5 };
 					double result[LENGTH];
 
 					Assert::IsTrue(Calc_Conditional_Sum_Zero_Masking(a, b, result, LENGTH, 30.0));
