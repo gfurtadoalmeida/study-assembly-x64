@@ -186,6 +186,140 @@ namespace Assembly {
 					}
 				}
 
+				TEST_METHOD(Test_Gather_Double_I32)
+				{
+					alignas(32) double src[20];
+					alignas(32) double des[8]{ -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 };
+					alignas(32) int32_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
+					alignas(32) int64_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
+
+					for (size_t i = 0; i < 20; i++)
+					{
+						src[i] = i + 1.0;
+					}
+
+					Gather_Double(src, des, indexes, merge);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						if (merge[i] == 0)
+						{
+							Assert::AreEqual(-1.0, des[i]);
+						}
+						else
+						{
+							Assert::AreEqual(src[indexes[i]], des[i]);
+						}
+					}
+				}
+
+				TEST_METHOD(Test_Gather_Double_I64)
+				{
+					alignas(32) double src[20];
+					alignas(32) double des[8]{ -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 };
+					alignas(32) int64_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
+					alignas(32) int64_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
+
+					for (size_t i = 0; i < 20; i++)
+					{
+						src[i] = i + 1.0;
+					}
+
+					Gather_Double(src, des, indexes, merge);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						if (merge[i] == 0)
+						{
+							Assert::AreEqual(-1.0, des[i]);
+						}
+						else
+						{
+							Assert::AreEqual(src[indexes[i]], des[i]);
+						}
+					}
+				}
+
+				TEST_METHOD(Test_Gather_Float_I32)
+				{
+					alignas(32) float src[20];
+					alignas(32) float des[8]{ -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F };
+					alignas(32) int32_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
+					alignas(32) int32_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
+
+					for (size_t i = 0; i < 20; i++)
+					{
+						src[i] = i + 1.0F;
+					}
+
+					Gather_Float(src, des, indexes, merge);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						if (merge[i] == 0)
+						{
+							Assert::AreEqual(-1.0F, des[i]);
+						}
+						else
+						{
+							Assert::AreEqual(src[indexes[i]], des[i]);
+						}
+					}
+				}
+
+				TEST_METHOD(Test_Gather_Float_I64)
+				{
+					alignas(32) float src[20];
+					alignas(32) float des[8]{ -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F };
+					alignas(32) int64_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
+					alignas(32) int32_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
+
+					for (size_t i = 0; i < 20; i++)
+					{
+						src[i] = i + 1.0F;
+					}
+
+					Gather_Float(src, des, indexes, merge);
+
+					for (size_t i = 0; i < 8; i++)
+					{
+						if (merge[i] == 0)
+						{
+							Assert::AreEqual(-1.0F, des[i]);
+						}
+						else
+						{
+							Assert::AreEqual(src[indexes[i]], des[i]);
+						}
+					}
+				}
+
+				TEST_METHOD(Test_Pack_I32_I16)
+				{
+					alignas(32) YmmVal a;
+					alignas(32) YmmVal b;
+					alignas(32) YmmVal result;
+
+					a.Int32[0] = 10;      b.Int32[0] = 32768;
+					a.Int32[1] = -200000; b.Int32[1] = 6500;
+					a.Int32[2] = 300000;  b.Int32[2] = 42000;
+					a.Int32[3] = -4000;   b.Int32[3] = -68000;
+					a.Int32[4] = 9000;    b.Int32[4] = 25000;
+					a.Int32[5] = 80000;   b.Int32[5] = 500000;
+					a.Int32[6] = 200;     b.Int32[6] = -7000;
+					a.Int32[7] = -32769;  b.Int32[7] = 12500;
+
+					Pack_I32_I16(a, b, &result);
+
+					for (size_t i = 0; i < 4; i++)
+					{
+						Assert::AreEqual(ClampToShort(a.Int32[i]), result.Int16[i]);
+						Assert::AreEqual(ClampToShort(b.Int32[i]), result.Int16[i + 4]);
+						Assert::AreEqual(ClampToShort(a.Int32[i + 4]), result.Int16[i + 8]);
+						Assert::AreEqual(ClampToShort(b.Int32[i + 4]), result.Int16[i + 12]);
+					}
+				}
+
 				TEST_METHOD(Test_Permute_Float)
 				{
 					alignas(32) YmmVal src;
@@ -211,118 +345,6 @@ namespace Assembly {
 					for (size_t i = 4, r = 7; i < 8; i++, r--)
 					{
 						Assert::AreEqual(src.Float[i], results.Float[r]);
-					}
-				}
-
-				TEST_METHOD(Test_Gather_Double_I32)
-				{
-					double src[20];
-					double des[8]{ -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 };
-
-					int32_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
-					int64_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
-
-					for (size_t i = 0; i < 20; i++)
-					{
-						src[i] = i + 1.0;
-					}
-
-					Gather_Double(src, des, indexes, merge);
-
-					for (size_t i = 0; i < 8; i++)
-					{
-						if (merge[i] == 0)
-						{
-							Assert::AreEqual(-1.0, des[i]);
-						}
-						else
-						{
-							Assert::AreEqual(src[indexes[i]], des[i]);
-						}
-					}
-				}
-
-				TEST_METHOD(Test_Gather_Double_I64)
-				{
-					double src[20];
-					double des[8]{ -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 };
-
-					int64_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
-					int64_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
-
-					for (size_t i = 0; i < 20; i++)
-					{
-						src[i] = i + 1.0;
-					}
-
-					Gather_Double(src, des, indexes, merge);
-
-					for (size_t i = 0; i < 8; i++)
-					{
-						if (merge[i] == 0)
-						{
-							Assert::AreEqual(-1.0, des[i]);
-						}
-						else
-						{
-							Assert::AreEqual(src[indexes[i]], des[i]);
-						}
-					}
-				}
-
-				TEST_METHOD(Test_Gather_Float_I32)
-				{
-					float src[20];
-					float des[8]{ -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F };
-
-					int32_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
-					int32_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
-
-					for (size_t i = 0; i < 20; i++)
-					{
-						src[i] = i + 1.0F;
-					}
-
-					Gather_Float(src, des, indexes, merge);
-
-					for (size_t i = 0; i < 8; i++)
-					{
-						if (merge[i] == 0)
-						{
-							Assert::AreEqual(-1.0F, des[i]);
-						}
-						else
-						{
-							Assert::AreEqual(src[indexes[i]], des[i]);
-						}
-					}
-				}
-
-				TEST_METHOD(Test_Gather_Float_I64)
-				{
-					float src[20];
-					float des[8]{ -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F, -1.0F };
-
-					int64_t indexes[8]{ 1, 3, 5, 7, 9, 11, 13, 15 };
-					int32_t merge[8]{ 1, 1, 0, 1, 1, 0, 1, 1 };
-
-					for (size_t i = 0; i < 20; i++)
-					{
-						src[i] = i + 1.0F;
-					}
-
-					Gather_Float(src, des, indexes, merge);
-
-					for (size_t i = 0; i < 8; i++)
-					{
-						if (merge[i] == 0)
-						{
-							Assert::AreEqual(-1.0F, des[i]);
-						}
-						else
-						{
-							Assert::AreEqual(src[indexes[i]], des[i]);
-						}
 					}
 				}
 
@@ -375,33 +397,7 @@ namespace Assembly {
 						Assert::AreEqual((int16_t)(a.Int16[i] * 2), result.Int16[i]);
 					}
 				}
-
-				TEST_METHOD(Test_Pack_I32_I16)
-				{
-					alignas(32) YmmVal a;
-					alignas(32) YmmVal b;
-					alignas(32) YmmVal result;
-
-					a.Int32[0] = 10;      b.Int32[0] = 32768;
-					a.Int32[1] = -200000; b.Int32[1] = 6500;
-					a.Int32[2] = 300000;  b.Int32[2] = 42000;
-					a.Int32[3] = -4000;   b.Int32[3] = -68000;
-					a.Int32[4] = 9000;    b.Int32[4] = 25000;
-					a.Int32[5] = 80000;   b.Int32[5] = 500000;
-					a.Int32[6] = 200;     b.Int32[6] = -7000;
-					a.Int32[7] = -32769;  b.Int32[7] = 12500;
-
-					Pack_I32_I16(a, b, &result);
-
-					for (size_t i = 0; i < 4; i++)
-					{
-						Assert::AreEqual(ClampToShort(a.Int32[i]), result.Int16[i]);
-						Assert::AreEqual(ClampToShort(b.Int32[i]), result.Int16[i + 4]);
-						Assert::AreEqual(ClampToShort(a.Int32[i + 4]), result.Int16[i + 8]);
-						Assert::AreEqual(ClampToShort(b.Int32[i + 4]), result.Int16[i + 12]);
-					}
-				}
-
+				
 				TEST_METHOD(Test_Unpack_U32_U64)
 				{
 					alignas(32) YmmVal a;

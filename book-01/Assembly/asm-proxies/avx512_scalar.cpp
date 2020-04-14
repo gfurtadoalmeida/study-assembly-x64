@@ -5,7 +5,7 @@ namespace Assembly {
 	namespace AVX512 {
 		namespace Scalar {
 			
-			bool Calc_Conditional_Sum_Zero_Masking(double* a, double* b, double* result, uint32_t length, double valueToIgnore)
+			bool Calc_Conditional_Sum_Zero_Masking(const double* a, const double* b, double* result, uint32_t length, double valueToIgnore)
 			{
 				return AVX512_Scalar_Calc_Conditional_Sum_Zero_Masking_(a, b, result, length, valueToIgnore);
 			}

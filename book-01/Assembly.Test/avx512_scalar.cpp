@@ -16,11 +16,11 @@ namespace Assembly {
 			{
 				TEST_METHOD(Test_Calc_Conditional_Sum_Zero_Masking)
 				{
-					const uint32_t LENGTH = 5;
+					const uint32_t LENGTH = 6;
 
-					alignas(64) double a[LENGTH] = { 10, 20, 30, 40, 30 };
-					alignas(64) double b[LENGTH] = { 1, 2, 3, 4, 5 };
-					double result[LENGTH];
+					alignas(64) double a[LENGTH] = { 10.0, 20.0, 30.0, 40.0, 30.0, 60.0 };
+					alignas(64) double b[LENGTH] = { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 };
+					alignas(64) double result[LENGTH];
 
 					Assert::IsTrue(Calc_Conditional_Sum_Zero_Masking(a, b, result, LENGTH, 30.0));
 					Assert::AreEqual(11.0, result[0]);
@@ -28,6 +28,7 @@ namespace Assembly {
 					Assert::AreEqual(0.0, result[2]);
 					Assert::AreEqual(44.0, result[3]);
 					Assert::AreEqual(0.0, result[4]);
+					Assert::AreEqual(66.0, result[5]);
 				}
 
 				TEST_METHOD(Test_Calc_Sphere_Area_Volume)

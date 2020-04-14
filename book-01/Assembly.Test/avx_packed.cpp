@@ -588,7 +588,7 @@ namespace Assembly {
 					const int LENGTH = 6;
 					alignas(32) double x[LENGTH]{ 5.0, 10.0, 15.0, 20.0, 25.0, 30.0 };
 					alignas(32) double y[LENGTH]{ 2.0, 4.0, 6.0, 8.0, 10.0, 12.0 };
-					double sums[5];
+					alignas(32) double sums[5];
 					double rho;
 					double epsilon = 1.0e-12;
 
