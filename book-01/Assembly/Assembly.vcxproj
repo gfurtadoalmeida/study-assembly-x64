@@ -177,6 +177,7 @@
     <MASM Include="asm\avx-2\scalar\avx2_s_flagless_instructions.asm" />
     <MASM Include="asm\avx-512\scalar\avx512_s_calc_conditional_sum_zero_masking.asm" />
     <MASM Include="asm\avx-512\scalar\avx512_s_calc_sphere_area_volume.asm" />
+    <MASM Include="asm\avx-512\scalar\avx512_s_instruction_level_rouding.asm" />
     <MASM Include="asm\avx\avx_get_set_rouding_mode.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_abs_double.asm" />
     <MASM Include="asm\avx\packed\avx_p_y_array_cols_mean_double.asm" />

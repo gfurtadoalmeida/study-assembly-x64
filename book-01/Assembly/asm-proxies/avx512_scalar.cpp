@@ -14,6 +14,21 @@ namespace Assembly {
 			{
 				return AVX512_Scalar_Calc_Sphere_Area_Volume_(radius, area, volume, errorValue);
 			}
+
+			void Convert_Round_F32_U32(float value, uint32_t result[4])
+			{
+				AVX512_Scalar_Convert_Round_F32_U32_(value, result);
+			}
+
+			void Convert_Round_F64_F32(double value, float result[4])
+			{
+				AVX512_Scalar_Convert_Round_F64_F32_(value, result);
+			}
+
+			void Convert_Round_F64_U64(double value, uint64_t result[4])
+			{
+				AVX512_Scalar_Convert_Round_F64_U64_(value, result);
+			}
 		}
 	}
 }

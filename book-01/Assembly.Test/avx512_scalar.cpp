@@ -47,6 +47,42 @@ namespace Assembly {
 					Assert::AreEqual(HUGE_VAL, area);
 					Assert::AreEqual(HUGE_VAL, volume);
 				}
+
+				TEST_METHOD(Test_Convert_Round_F32_U32)
+				{
+					uint32_t result[4];
+
+					Convert_Round_F32_U32(3.14159F, result);
+
+					Assert::AreEqual(3U, result[0]);
+					Assert::AreEqual(3U, result[1]);
+					Assert::AreEqual(4U, result[2]);
+					Assert::AreEqual(3U, result[3]);
+				}
+
+				TEST_METHOD(Test_Convert_Round_F64_F32)
+				{
+					float result[4];
+
+					Convert_Round_F64_F32(3.1415927, result);
+
+					Assert::AreEqual(3.1415927F, result[0]);
+					Assert::AreEqual(3.1415925F, result[1]);
+					Assert::AreEqual(3.1415927F, result[2]);
+					Assert::AreEqual(3.1415925F, result[3]);
+				}
+
+				TEST_METHOD(Test_Convert_Round_F64_U64)
+				{
+					uint64_t result[4];
+
+					Convert_Round_F64_U64(1.41421, result);
+
+					Assert::AreEqual(1ULL, result[0]);
+					Assert::AreEqual(1ULL, result[1]);
+					Assert::AreEqual(2ULL, result[2]);
+					Assert::AreEqual(1ULL, result[3]);
+				}
 			};
 		}
 	}

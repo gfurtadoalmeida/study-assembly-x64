@@ -80,6 +80,9 @@ extern "C" void AVX2_Scalar_Flagless_Shift_UInt_(uint32_t value, uint32_t count,
 // AVX-512 Scalar
 extern "C" bool AVX512_Scalar_Calc_Conditional_Sum_Zero_Masking_(double* a, double* b, double* result, uint32_t length, double valueToIgnore);
 extern "C" bool AVX512_Scalar_Calc_Sphere_Area_Volume_(double radius, double* area, double* volume, double errorValue);
+extern "C" void AVX512_Scalar_Convert_Round_F32_U32_(float value, uint32_t result[4]);
+extern "C" void AVX512_Scalar_Convert_Round_F64_F32_(double value, float result[4]);
+extern "C" void AVX512_Scalar_Convert_Round_F64_U64_(double value, uint64_t result[4]);
 
 // Core / Array
 extern "C" int32_t Core_Array_Compare_(const int32_t * a, const int32_t * b, uint32_t arraysLength, int32_t * *matchedValue);

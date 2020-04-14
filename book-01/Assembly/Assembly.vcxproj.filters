@@ -295,6 +295,9 @@
     <MASM Include="asm\avx-512\scalar\avx512_s_calc_conditional_sum_zero_masking.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx-512\scalar\avx512_s_instruction_level_rouding.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">
