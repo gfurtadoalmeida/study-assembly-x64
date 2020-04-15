@@ -99,6 +99,23 @@ namespace Assembly {
 				YmmVal B;
 			};
 
+			struct ZmmVal {
+			public:
+				union
+				{
+					int8_t Byte[64];
+					int16_t Int16[32];
+					int32_t Int32[16];
+					int64_t Int64[8];
+					uint8_t UByte[64];
+					uint16_t UInt16[32];
+					uint32_t UInt32[16];
+					uint64_t UInt64[8];
+					float Float[16];
+					double Double[8];
+				};
+			};
+
 			// Must have the same definition as
 			// defined in the following files:
 			// - avx2/packed/avx2_p_clip_pixel_gray_image.asm

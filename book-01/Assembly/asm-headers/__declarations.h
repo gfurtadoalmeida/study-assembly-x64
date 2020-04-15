@@ -70,14 +70,18 @@ extern "C" void AVX2_Packed_Sum_Int_(const YmmVal & a, const YmmVal & b, YmmVal 
 extern "C" void AVX2_Packed_Sum_Short_(const YmmVal & a, const YmmVal & b, YmmVal & result);
 extern "C" YmmValAB AVX2_Packed_Unpack_U32_U64_(const YmmVal & a, const YmmVal & b);
 
-// AVX2  Scalar
+// AVX2 / Scalar
 extern "C" uint32_t AVX2_Scalar_And_Not_(uint32_t a, uint32_t b);
 extern "C" void AVX2_Scalar_Count_Zero_Bits_(uint32_t value, uint32_t * leadingZeros, uint32_t * trailingZeros);
 extern "C" uint32_t AVX2_Scalar_Extract_Bits_(uint32_t value, uint8_t start, uint8_t length);
 extern "C" uint64_t AVX2_Scalar_Flagless_Multiply_UInt_(uint32_t a, uint32_t b, uint64_t flags[2]);
 extern "C" void AVX2_Scalar_Flagless_Shift_UInt_(uint32_t value, uint32_t count, uint32_t results[3], uint64_t flags[4]);
 
-// AVX-512 Scalar
+// AVX-512 / Packed
+extern "C" void AVX512_Packed_Math_Double_(const ZmmVal * a, const ZmmVal * b, ZmmVal result[8]);
+extern "C" void AVX512_Packed_Math_Float_(const ZmmVal * a, const ZmmVal * b, ZmmVal result[8]);
+
+// AVX-512 / Scalar
 extern "C" bool AVX512_Scalar_Calc_Conditional_Sum_Zero_Masking_(const double* a, const double* b, double* result, uint32_t length, double valueToIgnore);
 extern "C" bool AVX512_Scalar_Calc_Sphere_Area_Volume_(double radius, double* area, double* volume, double errorValue);
 extern "C" void AVX512_Scalar_Convert_Round_F32_U32_(float value, uint32_t result[4]);

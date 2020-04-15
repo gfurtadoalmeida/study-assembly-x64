@@ -92,6 +92,7 @@
     <ClCompile Include="avx.cpp" />
     <ClCompile Include="avx2_packed.cpp" />
     <ClCompile Include="avx2_scalar.cpp" />
+    <ClCompile Include="avx512_packed.cpp" />
     <ClCompile Include="avx512_scalar.cpp" />
     <ClCompile Include="avx_packed.cpp" />
     <ClCompile Include="avx_scalar.cpp" />
