@@ -39,7 +39,7 @@ vmulps ymm3, ymm2, ymm0 ; [(4 * PI) * radius] * radius
 
 ; X < 0  = FFFFFFFFh
 ; X >= 0 = 00000000h
-vcmpps ymm1, ymm0, ymm9, CMP_LT ; Any result < 0.0F ?
+vcmpps ymm1, ymm0, ymm9, CMP_LT_OS ; Any result < 0.0F ?
 
 vandps ymm4, ymm1, ymm8  ; area >= 0.0F = 0.0F | area < 0.0F = QNAN
 vandnps ymm5, ymm1, ymm3 ; area >= 0.0F = area | area < 0.0F = 0.0F
@@ -66,7 +66,7 @@ vmovss xmm0, real4 ptr [r8 + rax]
 vmulss xmm2, xmm6, xmm0
 vmulss xmm3, xmm2, xmm0
 
-vcmpss xmm1, xmm0, xmm9, CMP_LT
+vcmpss xmm1, xmm0, xmm9, CMP_LT_OS
 
 vandps xmm4, xmm1, xmm8
 vandnps xmm5, xmm1, xmm3

@@ -7,17 +7,17 @@ AVX_Scalar_Compare_VCMPSD_Double_ proc
 
 xor r8, r8
 
-vcmpsd xmm2, xmm0, xmm1, CMP_LT
+vcmpsd xmm2, xmm0, xmm1, CMP_LT_OS
 vmovq rax, xmm2
 and al, 1   ; Remove unecessary bits and set RFLAGS. If comparison fails ZF will be zero.
 jnz Smaller
 
-vcmpsd xmm2, xmm0, xmm1, CMP_EQ
+vcmpsd xmm2, xmm0, xmm1, CMP_EQ_OQ
 vmovq rax, xmm2
 and al, 1
 jnz Done
 
-vcmpsd xmm2, xmm0, xmm1, CMP_GT
+vcmpsd xmm2, xmm0, xmm1, CMP_GT_OS
 vmovq rax, xmm2
 and al, 1
 jnz Bigger

@@ -78,6 +78,8 @@ extern "C" uint64_t AVX2_Scalar_Flagless_Multiply_UInt_(uint32_t a, uint32_t b, 
 extern "C" void AVX2_Scalar_Flagless_Shift_UInt_(uint32_t value, uint32_t count, uint32_t results[3], uint64_t flags[4]);
 
 // AVX-512 / Packed
+extern "C" void AVX512_Packed_Compare_Double_(const ZmmVal * a, const ZmmVal * b, uint8_t result[8]);
+extern "C" void AVX512_Packed_Compare_Float_(const ZmmVal * a, const ZmmVal * b, uint16_t result[8]);
 extern "C" void AVX512_Packed_Math_Double_(const ZmmVal * a, const ZmmVal * b, ZmmVal result[8]);
 extern "C" void AVX512_Packed_Math_Float_(const ZmmVal * a, const ZmmVal * b, ZmmVal result[8]);
 

@@ -15,7 +15,7 @@ vmovsd xmm2, real8 ptr [rdx+rax*type real8] ; xmm2 = b[i]
 
 ; xmm0 = valueToIgnore
 ; k1[0] = 1 if a[i] != valueToIgnore
-vcmpsd k1, xmm1, xmm0, CMP_NEQ
+vcmpsd k1, xmm1, xmm0, CMP_NEQ_OQ
 
 ; xmm3 = (a[i] == valueToIgnore) ? 0.0 : sum(a[i], b[i])
 vaddsd xmm3{k1}{z}, xmm1, xmm2

@@ -21,7 +21,7 @@ vmovaps xmm1, xmmword ptr [rdx] ; xmm1 = b
 ; 0x0 = false
 ; 0xF = true
 
-vcmppd xmm2, xmm0, xmm1, CMP_EQ
+vcmppd xmm2, xmm0, xmm1, CMP_EQ_OQ
 
 vmovapd xmmword ptr [r8], xmm2
 

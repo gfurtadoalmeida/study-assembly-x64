@@ -1,35 +1,35 @@
 ; Basic compare predicates
-CMP_EQ    equ 00h
-CMP_LT    equ 01h
-CMP_LE    equ 02h
-CMP_UNORD equ 03h
-CMP_NEQ   equ 04h
-CMP_NLT   equ 05h
-CMP_NLE   equ 06h
-CMP_ORD   equ 07h
+CMP_EQ_OQ   equ 00h ; Equal (ordered, non-signaling)
+CMP_LT_OS   equ 01h ; Less-than (ordered, signaling)
+CMP_LE_OS   equ 02h ; Less-than-or-equal (ordered, signaling)
+CMP_UNORD_Q equ 03h ; Unordered (non-signaling)
+CMP_NEQ_UQ  equ 04h ; Not-equal (unordered, non-signaling)
+CMP_NLT_US  equ 05h ; Not-less-than (unordered, signaling)
+CMP_NLE_US  equ 06h ; Not-less-than-or-equal (unordered, signaling)
+CMP_ORD_Q   equ 07h ; Ordered (nonsignaling)
 
 ; AVX compare predicates
-CMP_EQU_UQ   equ 08h
-CMP_NGE      equ 09h
-CMP_NGT      equ 0Ah
-CMP_FALSE    equ 0Bh
-CMP_NEQ_OQ   equ 0Ch
-CMP_GE       equ 0Dh
-CMP_GT       equ 0Eh
-CMP_TRUE     equ 0Fh
-CMP_EQ_OS    equ 10h
-CMP_LT_OQ    equ 11h
-CMP_LE_OQ    equ 12h
-CMP_UNORD_S  equ 13h
-CMP_NEQ_US   equ 14h
-CMP_NLT_UQ   equ 15h
-CMP_NLE_UQ   equ 16h
-CMP_ORD_S    equ 17h
-CMP_EQ_US    equ 18h
-CMP_NGE_UQ   equ 19h
-CMP_NGT_UQ   equ 1Ah
-CMP_FALSE_OS equ 1Bh
-CMP_NEQ_OS   equ 1Ch
-CMP_GE_OQ    equ 1Dh
-CMP_GT_OQ    equ 1Eh
-CMP_TRUE_US  equ 1Fh
+CMP_EQU_UQ   equ 08h ; Equal (unordered, non-signaling)
+CMP_NGE_US   equ 09h ; Not-greater-than-or-equal (unord, signaling)
+CMP_NGT_US   equ 0Ah ; Not-greater-than (unordered, signaling)
+CMP_FALSE_OQ equ 0Bh ; False (ordered, non-signaling)
+CMP_NEQ_OQ   equ 0Ch ; Not-equal (ordered, non-signaling)
+CMP_GE_OS    equ 0Dh ; Greater-than-or-equal (ordered, signaling)
+CMP_GT_OS    equ 0Eh ; Greater-than (ordered, signaling)
+CMP_TRUE_UQ  equ 0Fh ; True (unordered, non-signaling)
+CMP_EQ_OS    equ 10h ; Equal (ordered, signaling)
+CMP_LT_OQ    equ 11h ; Less-than (ordered, non-signaling)
+CMP_LE_OQ    equ 12h ; Less-than-or-equal (ordered, non-signaling)
+CMP_UNORD_S  equ 13h ; Unordered (signaling)
+CMP_NEQ_US   equ 14h ; Not-equal (unordered, signaling)
+CMP_NLT_UQ   equ 15h ; Not-less-than (unordered, non-signaling)
+CMP_NLE_UQ   equ 16h ; Not-less-than-or-equal (unord, non-signaling)
+CMP_ORD_S    equ 17h ; Ordered (signaling)
+CMP_EQ_US    equ 18h ; Equal (unordered, signaling)
+CMP_NGE_UQ   equ 19h ; Not-greater-than-or-equal (unord, non-sign)
+CMP_NGT_UQ   equ 1Ah ; Not-greater-than (unordered, non-signaling)
+CMP_FALSE_OS equ 1Bh ; False (ordered, signaling)
+CMP_NEQ_OS   equ 1Ch ; Not-equal (ordered, signaling)
+CMP_GE_OQ    equ 1Dh ; Greater-than-or-equal (ordered, non-signaling)
+CMP_GT_OQ    equ 1Eh ; Greater-than (ordered, non-signaling)
+CMP_TRUE_US  equ 1Fh ; True (unordered, signaling)

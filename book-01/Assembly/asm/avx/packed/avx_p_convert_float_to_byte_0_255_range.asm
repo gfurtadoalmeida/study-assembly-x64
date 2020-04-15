@@ -45,11 +45,11 @@ jz OneByOne
 vmovaps xmm0, xmmword ptr [rcx] ; xmm0 have 4 floats
 
 ; Values < 0.0F = 0.0F
-vcmpps xmm1, xmm0, xmm14, CMP_LT
+vcmpps xmm1, xmm0, xmm14, CMP_LT_OS
 vandnps xmm2, xmm1, xmm0
 
 ; Values > 1.0F = 1.0F
-vcmpps xmm3, xmm2, xmm15, CMP_GT
+vcmpps xmm3, xmm2, xmm15, CMP_GT_OS
 vandps xmm4, xmm3, xmm15
 vandnps xmm5, xmm3, xmm2
 vorps xmm6, xmm5, xmm4

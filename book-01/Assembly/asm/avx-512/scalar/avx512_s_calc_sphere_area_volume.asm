@@ -17,7 +17,7 @@ vmovsd xmm16, xmm16, xmm3 ; Erro value
 
 ; k1[0] = 1 if radius >= 0.0
 ; xmm0 = radius
-vcmpsd k1, xmm0, xmm5, CMP_GE
+vcmpsd k1, xmm0, xmm5, CMP_GE_OS
 
 ; Area = 4 * pi * radius^2
 ; Volume = (area * radius) / 3
