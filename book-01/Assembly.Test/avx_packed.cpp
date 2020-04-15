@@ -452,8 +452,8 @@ namespace Assembly {
 
 					for (short i = 0; i < LENGTH; i++)
 					{
-						a.Float[i] = i + 1;
-						b.Float[i] = i + 1;
+						a.Float[i] = i + 1.0F;
+						b.Float[i] = i + 1.0F;
 					}
 
 					Sum_Float(a, b, results);
@@ -615,7 +615,7 @@ namespace Assembly {
 					// Skip the first item. It will be tested alone.
 					for (size_t i = 1; i < LENGTH; i++)
 					{
-						float area = 4.0F * M_PI * powf(radius[i], 2);
+						float area = 4.0F * (float)M_PI * powf(radius[i], 2);
 						float volume = (area * radius[i]) / 3;
 
 						// Compare with 2 decimal digits only.
@@ -720,8 +720,8 @@ namespace Assembly {
 
 					for (short i = 0; i < LENGTH; i++)
 					{
-						a.Float[i] = i + 1;
-						b.Float[i] = i + 1;
+						a.Float[i] = i + 1.0F;
+						b.Float[i] = i + 1.0F;
 					}
 
 					Y_Sum_Float(a, b, results);

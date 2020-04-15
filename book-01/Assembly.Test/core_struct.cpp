@@ -14,7 +14,7 @@ namespace Assembly {
 			public:
 				TEST_METHOD(Test_Get_CPU_Info)
 				{
-					const ProcessorInfo cpu;
+					const ProcessorInfo cpu = ProcessorInfo();
 
 					Assert::IsTrue(Get_CPU_Info(&cpu));
 					Assert::IsNotNull(cpu.Name);

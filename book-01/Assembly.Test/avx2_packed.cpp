@@ -1,6 +1,6 @@
-#define _USE_MATH_DEFINES
 #include "pch.h"
 #include "CppUnitTest.h"
+#define _USE_MATH_DEFINES
 #include <math.h>
 #include "../Assembly/asm-headers/utils.h"
 #include "../Assembly/asm-headers/avx.h"
@@ -43,19 +43,19 @@ namespace Assembly {
 					pcd.ThresholdHigh = 200;
 
 					// 20 pixels lower than threshold low.
-					for (size_t i = 0; i < 20; i++)
+					for (uint8_t i = 0; i < 20; i++)
 					{
 						source[i] = 20;
 					}
 
 					// 30 pixels higher than threshold high.
-					for (size_t i = 20; i < 50; i++)
+					for (uint8_t i = 20; i < 50; i++)
 					{
 						source[i] = 255;
 					}
 
 					// 14 not-clipped pixels.
-					for (size_t i = 50; i < 64; i++)
+					for (uint8_t i = 50; i < 64; i++)
 					{
 						source[i] = i;
 					}
@@ -109,7 +109,7 @@ namespace Assembly {
 					alignas(32) YmmVal values;
 					alignas(32) YmmVal result[2];
 
-					for (size_t i = 0; i < 16; i++)
+					for (uint16_t i = 0; i < 16; i++)
 					{
 						values.Int16[i] = i;
 					}
@@ -128,7 +128,7 @@ namespace Assembly {
 					alignas(32) YmmVal values;
 					alignas(32) YmmVal result[4];
 
-					for (size_t i = 0; i < 16; i++)
+					for (uint16_t i = 0; i < 16; i++)
 					{
 						values.Int16[i] = i;
 					}
@@ -149,7 +149,7 @@ namespace Assembly {
 					alignas(32) YmmVal values;
 					alignas(32) YmmVal result[4];
 
-					for (size_t i = 0; i < 32; i++)
+					for (uint8_t i = 0; i < 32; i++)
 					{
 						values.UByte[i] = i;
 					}
@@ -170,7 +170,7 @@ namespace Assembly {
 					alignas(32) YmmVal values;
 					alignas(32) YmmVal result[2];
 
-					for (size_t i = 0; i < 32; i++)
+					for (uint8_t i = 0; i < 32; i++)
 					{
 						values.UByte[i] = i;
 					}
@@ -357,7 +357,7 @@ namespace Assembly {
 					// To test wraparound.
 					a.Int32[0] = INT_MAX; b.Int32[0] = 100;
 
-					for (size_t i = 1; i < 8; i++)
+					for (uint32_t i = 1; i < 8; i++)
 					{
 						a.Int32[i] = i * 10;
 						b.Int32[i] = a.Int32[i];
@@ -382,7 +382,7 @@ namespace Assembly {
 					// To test saturation.
 					a.Int16[0] = SHRT_MAX; b.Int16[0] = 100;
 
-					for (size_t i = 1; i < 16; i++)
+					for (uint16_t i = 1; i < 16; i++)
 					{
 						a.Int16[i] = i * 10;
 						b.Int16[i] = a.Int16[i];

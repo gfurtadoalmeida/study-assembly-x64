@@ -33,7 +33,7 @@ namespace Assembly {
 
 					Assert::AreEqual(5U, arrayLength);
 
-					for (int i = 0; i < arrayLength; i++)
+					for (uint32_t i = 0; i < arrayLength; i++)
 					{
 						Assert::IsTrue(Get_From_Const(i, &value));
 						Assert::AreEqual(EXPECTED_VALUES[i], value);
