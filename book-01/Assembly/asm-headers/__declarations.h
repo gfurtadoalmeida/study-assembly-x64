@@ -35,7 +35,7 @@ extern "C" void AVX_Packed_Sum_Short_(const XmmVal & a, const XmmVal & b, XmmVal
 extern "C" void AVX_Packed_Y_Abs_Double_(const YmmVal & input, YmmVal results[]);
 extern "C" bool AVX_Packed_Y_Array_Cols_Mean_Double_(const double* input, uint32_t numRows, uint32_t numCols, double* colMeans);
 extern "C" void AVX_Packed_Y_Blend_Float_(YmmVal * src1, YmmVal * src2, YmmVal * des, BlendSource blend[]);
-extern "C" bool AVX_Packed_Y_Calc_Correlation_Coefficient_(const double* x, const double* y, size_t arrayLength, double sums[5], double epsilon, double* rho);
+extern "C" bool AVX_Packed_Y_Calc_Correlation_Coefficient_(const double* x, const double* y, uint32_t arrayLength, double sums[5], double epsilon, double* rho);
 extern "C" void AVX_Packed_Y_Calc_Sphere_Area_Volume_(const float* radius, uint32_t arrayLength, float* areaa, float* volumea, float qnanValue);
 extern "C" void AVX_Packed_Y_Matrix_Multiplication_Double_(const double* a, const double* b, double* result);
 extern "C" void AVX_Packed_Y_Matrix_Transpose_Double_(double* input, const double* result);
@@ -82,6 +82,7 @@ extern "C" void AVX512_Packed_Compare_Double_(const ZmmVal * a, const ZmmVal * b
 extern "C" void AVX512_Packed_Compare_Float_(const ZmmVal * a, const ZmmVal * b, uint16_t result[8]);
 extern "C" void AVX512_Packed_Math_Double_(const ZmmVal * a, const ZmmVal * b, ZmmVal result[8]);
 extern "C" void AVX512_Packed_Math_Float_(const ZmmVal * a, const ZmmVal * b, ZmmVal result[8]);
+extern "C" bool AVX512_Packed_Vector_Cross_Product_(const Vector * a, const Vector * b, Vector * result, uint32_t length);
 
 // AVX-512 / Scalar
 extern "C" bool AVX512_Scalar_Calc_Conditional_Sum_Zero_Masking_(const double* a, const double* b, double* result, uint32_t length, double valueToIgnore);

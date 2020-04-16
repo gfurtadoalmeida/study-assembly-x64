@@ -2,7 +2,7 @@ include	macros.inc
 
 .code
 
-; bool AVX_Packed_Y_Calc_Correlation_Coefficient_(const double* x, const double* y, size_t arrayLength, double sums[5], double epsilon, double* rho);
+; bool AVX_Packed_Y_Calc_Correlation_Coefficient_(const double* x, const double* y, uint32_t arrayLength, double sums[5], double epsilon, double* rho);
 AVX_Packed_Y_Calc_Correlation_Coefficient_ proc frame
 _CreateFrame CC_, 0,32
 _SaveXmmRegs xmm6, xmm7

@@ -127,6 +127,12 @@ namespace Assembly {
 				uint8_t ThresholdLow;
 				uint8_t ThresholdHigh;
 			};
+
+			typedef struct {
+				double X;
+				double Y;
+				double Z;
+			} Vector;
 		}
 	}
 }

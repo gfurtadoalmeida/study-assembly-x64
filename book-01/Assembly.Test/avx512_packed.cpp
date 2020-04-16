@@ -148,6 +148,39 @@ namespace Assembly {
 						Assert::AreEqual(b.Float[i], result[7].Float[i]);
 					}
 				}
+
+				TEST_METHOD(Test_Vector_Cross_Product)
+				{
+					const uint32_t LENGTH = 32;
+
+					std::uniform_real_distribution<double> unif(1.0, 10000.0);
+					std::default_random_engine re;
+	
+					// They are not aligned because would waste too much space.
+					Vector a[LENGTH];
+					Vector b[LENGTH];
+					Vector result[LENGTH];
+				
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						a[i].X = unif(re);
+						a[i].Y = unif(re);
+						a[i].Z = unif(re);
+
+						b[i].X = unif(re);
+						b[i].Y = unif(re);
+						b[i].Z = unif(re);
+					}
+
+					Assert::IsTrue(Vector_Cross_Product(a, b, result, LENGTH));
+
+					for (size_t i = 0; i < LENGTH; i++)
+					{
+						Assert::AreEqual(a[i].Y * b[i].Z - a[i].Z * b[i].Y, result[i].X);
+						Assert::AreEqual(a[i].Z * b[i].X - a[i].X * b[i].Z, result[i].Y);
+						Assert::AreEqual(a[i].X * b[i].Y - a[i].Y * b[i].X, result[i].Z);
+					}
+				}
 			};
 		}
 	}

@@ -10,6 +10,7 @@ namespace Assembly {
 			__declspec(dllexport) void Compare_Float(const ZmmVal* a, const ZmmVal* b, uint16_t result[8]);
 			__declspec(dllexport) void Math_Double(const ZmmVal* a, const ZmmVal* b, ZmmVal result[8]);
 			__declspec(dllexport) void Math_Float(const ZmmVal* a, const ZmmVal* b, ZmmVal result[8]);
+			__declspec(dllexport) bool Vector_Cross_Product(const Vector* a, const Vector* b, Vector* result, uint32_t length);
 		}
 	}
 }

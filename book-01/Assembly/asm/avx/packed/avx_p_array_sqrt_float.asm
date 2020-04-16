@@ -8,7 +8,7 @@ xor rax, rax ; Our counter for the loop
 test rdx, rdx  ; Exit if array length is zero
 jz Done
 
-; If (rcx & 0f) == 0 then exit
+; If (rcx & 0f) != 0 then exit
 ; because the address is not 16 byte
 ; aligned.
 test rcx, 0fh 

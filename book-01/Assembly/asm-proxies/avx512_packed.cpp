@@ -24,6 +24,11 @@ namespace Assembly {
 			{
 				AVX512_Packed_Math_Float_(a, b, result);
 			}
+
+			bool Vector_Cross_Product(const Vector* a, const Vector* b, Vector* result, uint32_t length)
+			{
+				return AVX512_Packed_Vector_Cross_Product_(a, b, result, length);
+			}
 		}
 	}
 }

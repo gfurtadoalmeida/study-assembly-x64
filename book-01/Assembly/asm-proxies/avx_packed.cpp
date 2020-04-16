@@ -115,7 +115,7 @@ namespace Assembly {
 				AVX_Packed_Y_Blend_Float_(src1, src2, des, blend);
 			}
 
-			bool Y_Calc_Correlation_Coefficient(const double* x, const double* y, size_t arrayLength, double sums[5], double epsilon, double* rho)
+			bool Y_Calc_Correlation_Coefficient(const double* x, const double* y, uint32_t arrayLength, double sums[5], double epsilon, double* rho)
 			{
 				return AVX_Packed_Y_Calc_Correlation_Coefficient_(x, y, arrayLength, sums, epsilon, rho);
 			}
