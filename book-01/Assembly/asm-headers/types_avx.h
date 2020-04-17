@@ -133,6 +133,14 @@ namespace Assembly {
 				double Y;
 				double Z;
 			} Vector;
+
+			struct Vector4x1_F32
+			{
+				float W;
+				float X;
+				float Y;
+				float Z;
+			};
 		}
 	}
 }

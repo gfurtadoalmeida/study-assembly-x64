@@ -82,6 +82,7 @@ extern "C" void AVX512_Packed_Compare_Double_(const ZmmVal * a, const ZmmVal * b
 extern "C" void AVX512_Packed_Compare_Float_(const ZmmVal * a, const ZmmVal * b, uint16_t result[8]);
 extern "C" void AVX512_Packed_Math_Double_(const ZmmVal * a, const ZmmVal * b, ZmmVal result[8]);
 extern "C" void AVX512_Packed_Math_Float_(const ZmmVal * a, const ZmmVal * b, ZmmVal result[8]);
+extern "C" bool AVX512_Packed_Matrix_Vector_Multiplication_Float_(float matrix[4][4], Vector4x1_F32 * vectors, uint32_t vectorCount, Vector4x1_F32 * result);
 extern "C" bool AVX512_Packed_Vector_Cross_Product_(const Vector * a, const Vector * b, Vector * result, uint32_t length);
 
 // AVX-512 / Scalar

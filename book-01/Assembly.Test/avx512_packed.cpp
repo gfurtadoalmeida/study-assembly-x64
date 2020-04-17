@@ -149,18 +149,54 @@ namespace Assembly {
 					}
 				}
 
+				TEST_METHOD(Test_Matrix_Vector_Multiplication_Float)
+				{
+					const uint32_t VECTORS_COUNT = 8;
+
+					alignas(64) float matrix[4][4]
+					{
+					   10.0F, 11.0F, 12.0F, 13.0F,
+					   20.0F, 21.0F, 22.0F, 23.0F,
+					   30.0F, 31.0F, 32.0F, 33.0F,
+					   40.0F, 41.0F, 42.0F, 43.0F
+					};
+					alignas(64) Vector4x1_F32 vectors[VECTORS_COUNT];
+					alignas(64) Vector4x1_F32 results[VECTORS_COUNT];
+
+					std::uniform_real_distribution<float> unif(1.0F, 10000.0F);
+					std::default_random_engine re;
+
+					for (uint32_t i = 0; i < VECTORS_COUNT; i++)
+					{
+						vectors[i].W = unif(re); results[i].W = 1.0F;
+						vectors[i].X = unif(re); results[i].X = 1.0F;
+						vectors[i].Y = unif(re); results[i].Y = 1.0F;
+						vectors[i].Z = unif(re); results[i].Z = 1.0F;
+					}
+
+					Assert::IsTrue(Matrix_Vector_Multiplication_Float(matrix, vectors, VECTORS_COUNT, results));
+
+					for (uint32_t i = 0; i < VECTORS_COUNT; i++)
+					{
+						Assert::AreEqual((matrix[0][0] * vectors[i].W + matrix[0][1] * vectors[i].X) + (matrix[0][2] * vectors[i].Y + matrix[0][3] * vectors[i].Z), results[i].W);
+						Assert::AreEqual((matrix[1][0] * vectors[i].W + matrix[1][1] * vectors[i].X) + (matrix[1][2] * vectors[i].Y + matrix[1][3] * vectors[i].Z), results[i].X);
+						Assert::AreEqual((matrix[2][0] * vectors[i].W + matrix[2][1] * vectors[i].X) + (matrix[2][2] * vectors[i].Y + matrix[2][3] * vectors[i].Z), results[i].Y);
+						Assert::AreEqual((matrix[3][0] * vectors[i].W + matrix[3][1] * vectors[i].X) + (matrix[3][2] * vectors[i].Y + matrix[3][3] * vectors[i].Z), results[i].Z);
+					}
+				}
+
 				TEST_METHOD(Test_Vector_Cross_Product)
 				{
 					const uint32_t LENGTH = 32;
 
 					std::uniform_real_distribution<double> unif(1.0, 10000.0);
 					std::default_random_engine re;
-	
+
 					// They are not aligned because would waste too much space.
 					Vector a[LENGTH];
 					Vector b[LENGTH];
 					Vector result[LENGTH];
-				
+
 					for (size_t i = 0; i < LENGTH; i++)
 					{
 						a[i].X = unif(re);

@@ -24,6 +24,11 @@ namespace Assembly {
 			{
 				AVX512_Packed_Math_Float_(a, b, result);
 			}
+			
+			bool Matrix_Vector_Multiplication_Float(float matrix[4][4], Vector4x1_F32* vectors, uint32_t vectorCount, Vector4x1_F32* result)
+			{
+				return AVX512_Packed_Matrix_Vector_Multiplication_Float_(matrix, vectors, vectorCount, result);
+			}
 
 			bool Vector_Cross_Product(const Vector* a, const Vector* b, Vector* result, uint32_t length)
 			{
