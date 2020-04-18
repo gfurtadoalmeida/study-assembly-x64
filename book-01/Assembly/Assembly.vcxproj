@@ -109,6 +109,7 @@
     <ClInclude Include="asm-headers\core_string.h" />
     <ClInclude Include="asm-headers\core_struct.h" />
     <ClInclude Include="asm-headers\types_core.h" />
+    <ClInclude Include="asm-headers\core_cpuid.h" />
     <ClInclude Include="asm-headers\utils.h" />
     <ClInclude Include="asm-headers\__declarations.h" />
     <ClInclude Include="framework.h" />
@@ -142,6 +143,10 @@
     </ClCompile>
     <ClCompile Include="asm-proxies\core_array.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\core_cpuid.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="asm-proxies\core_math.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -228,6 +233,8 @@
     <MASM Include="asm\core\array\core_array_reverse.asm" />
     <MASM Include="asm\core\array\core_array_sum.asm" />
     <MASM Include="asm\core\array\core_array_sum_columns.asm" />
+    <MASM Include="asm\core\cpuid\core_cpuid_get.asm" />
+    <MASM Include="asm\core\cpuid\core_cpuid_xgetbv.asm" />
     <MASM Include="asm\core\math\core_math_arithmetics.asm" />
     <MASM Include="asm\core\math\core_math_min_max.asm" />
     <MASM Include="asm\core\stack\core_stack_sum_arguments.asm" />

@@ -69,6 +69,9 @@
     <ClInclude Include="asm-headers\avx512_scalar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="asm-headers\core_cpuid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -114,6 +117,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="asm-proxies\avx512_packed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="asm-proxies\core_cpuid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -326,6 +332,12 @@
       <Filter>Source Files</Filter>
     </MASM>
     <MASM Include="asm\avx-512\packed\avx512_p_math_long.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\cpuid\core_cpuid_get.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\core\cpuid\core_cpuid_xgetbv.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>

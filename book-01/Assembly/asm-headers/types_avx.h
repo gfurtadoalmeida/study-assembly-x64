@@ -45,7 +45,7 @@ namespace Assembly {
 				U32_ARITH_RIGHT, // Arithmetic right - doubleword
 			};
 
-			enum BlendSource : uint32_t
+			enum class BlendSource : uint32_t
 			{
 				Source1 = 0x00000000,
 				Source2 = 0x80000000

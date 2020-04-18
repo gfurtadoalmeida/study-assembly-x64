@@ -14,6 +14,7 @@ namespace Assembly {
 		namespace AVX512 {
 			TEST_CLASS(Scalar)
 			{
+			public:
 				TEST_METHOD(Test_Calc_Conditional_Sum_Zero_Masking)
 				{
 					const uint32_t LENGTH = 6;

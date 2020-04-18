@@ -12,6 +12,7 @@ namespace Assembly {
 		namespace AVX2 {
 			TEST_CLASS(Scalar)
 			{
+			public:
 				TEST_METHOD(Test_And_Not)
 				{
 					uint32_t a = 100;

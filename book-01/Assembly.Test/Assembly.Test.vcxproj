@@ -97,6 +97,7 @@
     <ClCompile Include="avx_packed.cpp" />
     <ClCompile Include="avx_scalar.cpp" />
     <ClCompile Include="core_array.cpp" />
+    <ClCompile Include="core_cpuid.cpp" />
     <ClCompile Include="core_math.cpp" />
     <ClCompile Include="core_stack.cpp" />
     <ClCompile Include="core_string.cpp" />

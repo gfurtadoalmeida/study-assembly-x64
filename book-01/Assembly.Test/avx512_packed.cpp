@@ -15,6 +15,7 @@ namespace Assembly {
 		namespace AVX512 {
 			TEST_CLASS(Packed)
 			{
+			public:
 				TEST_METHOD(Test_Compare_Double)
 				{
 					alignas(64) ZmmVal a;

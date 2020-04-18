@@ -2,7 +2,9 @@
 #include <cstdint>
 #include "types_avx.h"
 #include "types_core.h"
+#include "core_cpuid.h"
 
+using namespace Assembly::Core::CPUID;
 using namespace Assembly::Core::Types;
 using namespace Assembly::AVX::Types;
 
@@ -101,6 +103,10 @@ extern "C" bool Core_Array_Get_From_Const_(uint32_t position, uint32_t * value);
 extern "C" void Core_Array_Reverse_(const int32_t * source, const int32_t * destination, uint32_t arrayLength);
 extern "C" int32_t Core_Array_Sum_(const int32_t * source, uint32_t arrayLength);
 extern "C" bool Core_Array_Sum_Columns_(const int32_t * sourceMatrix, const int32_t * destinationArray, uint32_t numRows, uint32_t numColumns);
+
+// Core / CPUID
+extern "C" uint32_t Core_CPUID_Get_(uint32_t eax, uint32_t ecx, CpuidRegs * result);
+extern "C" uint32_t Core_CPUID_Xgetbv_(uint32_t * eax, uint32_t ecx, uint32_t * edx);
 
 // Core / Math
 extern "C" bool Core_Math_Div_(int32_t a, int32_t b, int32_t * quotient, int32_t * remainder);

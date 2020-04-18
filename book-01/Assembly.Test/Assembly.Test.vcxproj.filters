@@ -54,6 +54,9 @@
     <ClCompile Include="avx512_packed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="core_cpuid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

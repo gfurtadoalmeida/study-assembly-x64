@@ -16,6 +16,7 @@ namespace Assembly {
 		namespace AVX2 {
 			TEST_CLASS(Packed)
 			{
+			public:
 				// The use of "alignas(16)" or "alignas(32)" instruction on the 
 				// tests below are necessary because they use aligned AVX instructions.
 				// We could omit it if unaligned AVX instructions were used.
