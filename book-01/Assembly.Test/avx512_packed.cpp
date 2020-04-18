@@ -149,6 +149,68 @@ namespace Assembly {
 					}
 				}
 
+				TEST_METHOD(Test_Math_Long)
+				{
+					alignas(64) ZmmVal a;
+					alignas(64) ZmmVal b;
+					alignas(64) ZmmVal result[6];
+					
+					// We're going to do operations with the first 5 numbers.
+					// The last two we're going to test if they're zeros; ignored by the mask.
+					uint32_t opmask = 0x3f;
+
+					a.Int64[0] = LLONG_MAX;	b.Int64[0] = 1; // Add, wraparound
+					a.Int64[1] = LLONG_MIN;	b.Int64[1] = 1; // Subtraction, wraparound
+					a.Int64[2] = -2048;		b.Int64[2] = 2; // Multiplication, signed, low 64 bits
+					a.Int64[3] = -2048;     b.Int64[3] = 2; // Logical left shift
+					a.Int64[4] = 8192;      b.Int64[4] = 5; // Arithmetic right shift
+					a.Int64[5] = -4096;     b.Int64[5] = 7; // Abs
+					a.Int64[6] = 16;        b.Int64[6] = 3;
+					a.Int64[7] = 512;       b.Int64[7] = 6;
+
+					Math_Long(&a, &b, result, opmask);
+
+					Assert::AreEqual(LLONG_MIN, result[0].Int64[0]);
+					Assert::AreEqual(LLONG_MAX, result[1].Int64[1]);
+					Assert::AreEqual(a.Int64[2] * b.Int64[2], result[2].Int64[2]);
+					Assert::AreEqual(a.Int64[3] << b.Int64[3], result[3].Int64[3]);
+					Assert::AreEqual(a.Int64[4] >> b.Int64[4], result[4].Int64[4]);
+					Assert::AreEqual(abs(a.Int64[5]), result[5].Int64[5]);
+					Assert::AreEqual(0LL, result[0].Int64[6]);
+					Assert::AreEqual(0LL, result[0].Int64[7]);
+				}
+
+				TEST_METHOD(Test_Math_Short)
+				{
+					alignas(64) ZmmVal a;
+					alignas(64) ZmmVal b;
+					alignas(64) ZmmVal result[6];
+
+					for (int16_t i = 6; i < 32; i++)
+					{
+						a.Int16[i] = i + 2;
+						b.Int16[i] = i + 3;
+					}
+
+					a.Int16[0] = SHRT_MAX; b.Int16[0] = 1;   // Add, wraparound
+					a.Int16[1] = SHRT_MAX; b.Int16[1] = 100; // Add, saturation
+					a.Int16[2] = SHRT_MIN; b.Int16[2] = 1;   // Subtraction, wraparound
+					a.Int16[3] = SHRT_MIN; b.Int16[3] = 100; // Subtraction, saturation
+					a.Int16[4] = -50;      b.Int16[4] = 500; // Minimum, signed
+					a.Int16[5] = -60;      b.Int16[5] = 600; // Maximum, signed
+
+					Math_Short(&a, &b, result);
+
+					// I won't validate all items. If the items below are ok
+					// then everything is ok.
+					Assert::AreEqual((short)SHRT_MIN, result[0].Int16[0]);
+					Assert::AreEqual((short)SHRT_MAX, result[1].Int16[1]);
+					Assert::AreEqual((short)SHRT_MAX, result[2].Int16[2]);
+					Assert::AreEqual((short)SHRT_MIN, result[3].Int16[3]);
+					Assert::AreEqual(a.Int16[4], result[4].Int16[4]);
+					Assert::AreEqual(b.Int16[5], result[5].Int16[5]);
+				}
+
 				TEST_METHOD(Test_Matrix_Vector_Multiplication_Float)
 				{
 					const uint32_t VECTORS_COUNT = 8;

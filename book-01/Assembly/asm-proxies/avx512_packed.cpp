@@ -25,6 +25,16 @@ namespace Assembly {
 				AVX512_Packed_Math_Float_(a, b, result);
 			}
 			
+			void Math_Long(const ZmmVal* a, const ZmmVal* b, ZmmVal result[5], uint32_t operationMask)
+			{
+				AVX512_Packed_Math_Long_(a, b, result, operationMask);
+			}
+
+			void Math_Short(const ZmmVal* a, const ZmmVal* b, ZmmVal result[6])
+			{
+				AVX512_Packed_Math_Short_(a, b, result);
+			}
+
 			bool Matrix_Vector_Multiplication_Float(float matrix[4][4], Vector4x1_F32* vectors, uint32_t vectorCount, Vector4x1_F32* result)
 			{
 				return AVX512_Packed_Matrix_Vector_Multiplication_Float_(matrix, vectors, vectorCount, result);

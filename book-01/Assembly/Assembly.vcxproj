@@ -184,6 +184,8 @@
     <MASM Include="asm\avx-512\packed\avx512_p_compare_float.asm" />
     <MASM Include="asm\avx-512\packed\avx512_p_math_double.asm" />
     <MASM Include="asm\avx-512\packed\avx512_p_math_float.asm" />
+    <MASM Include="asm\avx-512\packed\avx512_p_math_long.asm" />
+    <MASM Include="asm\avx-512\packed\avx512_p_math_short.asm" />
     <MASM Include="asm\avx-512\packed\avx512_p_matrix_vector_multiplication_float.asm" />
     <MASM Include="asm\avx-512\packed\avx512_p_vector_cross_product.asm" />
     <MASM Include="asm\avx-512\scalar\avx512_s_calc_conditional_sum_zero_masking.asm" />

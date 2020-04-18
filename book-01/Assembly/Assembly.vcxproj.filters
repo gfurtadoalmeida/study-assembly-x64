@@ -322,6 +322,12 @@
     <MASM Include="asm\avx-512\packed\avx512_p_matrix_vector_multiplication_float.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="asm\avx-512\packed\avx512_p_math_short.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="asm\avx-512\packed\avx512_p_math_long.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
   <ItemGroup>
     <None Include="asm\macros.inc">
