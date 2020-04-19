@@ -4,7 +4,7 @@ trigger:
       - master
   paths:
     include:
-      - 'book-1/*'
+      - 'book-01/*'
 
 pool:
   name: default
