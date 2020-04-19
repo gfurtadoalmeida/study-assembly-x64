@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - 'book-1/*'
+
+pool:
+  name: default
+  # This project must be tested on an AVX-512
+  # capable processor and OS.
+  demands:
+  - ISA.AVX-512 -equals True
+
+steps:
+- task: VSBuild@1
+  name: Build
+  inputs:
+    solution: '**\*.sln'
+    platform: 'x64' # This project only runs on 64 bits platform.
+    msbuildArchitecture: 'x64'
+    configuration: release
+- task: VSTest@2
+  name: Test
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*.Test.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
