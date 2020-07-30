@@ -136,12 +136,12 @@ RSP (stack pointer): offset value within the program stack.
 Stores the starting location of segments present in memory, related to the whole process and not to method being executed.  
 All memory locations within a segment are relative to the starting address of the segment.  
 
-CS (code/text segment): starting address of the [code segment](https://en.wikipedia.org/wiki/Code_segment).
-DS (data segment): starting address of the [data segment](https://en.wikipedia.org/wiki/Data_segment).
-ES (extra segment): free memory segment.
-FS: on Windows is used to access the thread information block and exception handling chain.
-GS: on Windows is used to access the thread local storage.
-SS (stack segment): starting address of the stack.
+CS (code/text segment): starting address of the [code segment](https://en.wikipedia.org/wiki/Code_segment).  
+DS (data segment): starting address of the [data segment](https://en.wikipedia.org/wiki/Data_segment).  
+ES (extra segment): free memory segment.  
+FS: on Windows is used to access the thread information block and exception handling chain.  
+GS: on Windows is used to access the thread local storage.  
+SS (stack segment): starting address of the stack.  
 
 **On x64 only FS and GS are used.**
 
