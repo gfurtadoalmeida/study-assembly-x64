@@ -18,7 +18,7 @@ steps:
   name: Build
   inputs:
     solution: 'book-01\**\*.sln'
-    platform: 'x64' # This project only runs on 64 bits platform.
+    platform: 'x64' # This project must be built for 64 bits platform.
     msbuildArchitecture: 'x64'
     configuration: release
 - task: VSTest@2

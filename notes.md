@@ -9,26 +9,26 @@ Just the essentials as this is focused on Assembly and not CPU internals.
 ### Organization
 
 ```text
-Based on Intel Core i7 8570H (6 cores, but only 4 are shown).
-┌───────────────────────────────────────────────────────────────┐
-│                       MEMORY CONTROLLER                       │
-├───────────────┬───────────────┬───────────────┬───────────────┤
-│      CORE     │      CORE     │      CORE     │      CORE     │
-│ ┌───────────┐ │ ┌───────────┐ │ ┌───────────┐ │ ┌───────────┐ │
-│ │ REGISTERS │ │ │ REGISTERS │ │ │ REGISTERS │ │ │ REGISTERS │ │
-│ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │
-│ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │
-│ │ D - 32 Kb │ │ │ D - 32 Kb │ │ │ D - 32 Kb │ │ │ D - 32 Kb │ │
-│ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │
-│ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │
-│ │ I - 32 Kb │ │ │ I - 32 Kb │ │ │ I - 32 Kb │ │ │ I - 32 Kb │ │
-│ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │
-│ │ L2 CACHE  │ │ │ L2 CACHE  │ │ │ L2 CACHE  │ │ │ L2 CACHE  │ │
-│ │   256 Kb  │ │ │   256 Kb  │ │ │   256 Kb  │ │ │   256 Kb  │ │
-│ └───────────┘ │ └───────────┘ │ └───────────┘ │ └───────────┘ │
-├───────────────┴───────────────┴───────────────┴───────────────┤
-│                         L3 CACHE - 9 Mb                       │
-└───────────────────────────────────────────────────────────────┘
+Based on Intel Core i7 8570H (6 cores, 12 threads).
+┌───────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                       MEMORY CONTROLLER                                       │
+├───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────┤
+│      CORE     │      CORE     │      CORE     │      CORE     │      CORE     │      CORE     │
+│ ┌───────────┐ │ ┌───────────┐ │ ┌───────────┐ │ ┌───────────┐ │ ┌───────────┐ │ ┌───────────┐ │
+│ │ REGISTERS │ │ │ REGISTERS │ │ │ REGISTERS │ │ │ REGISTERS │ │ │ REGISTERS │ │ │ REGISTERS │ │
+│ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │
+│ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │
+│ │ D - 32 Kb │ │ │ D - 32 Kb │ │ │ D - 32 Kb │ │ │ D - 32 Kb │ │ │ D - 32 Kb │ │ │ D - 32 Kb │ │
+│ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │
+│ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │ │ L1 CACHE  │ │
+│ │ I - 32 Kb │ │ │ I - 32 Kb │ │ │ I - 32 Kb │ │ │ I - 32 Kb │ │ │ I - 32 Kb │ │ │ I - 32 Kb │ │
+│ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │ ├───────────┤ │
+│ │ L2 CACHE  │ │ │ L2 CACHE  │ │ │ L2 CACHE  │ │ │ L2 CACHE  │ │ │ L2 CACHE  │ │ │ L2 CACHE  │ │
+│ │   256 Kb  │ │ │   256 Kb  │ │ │   256 Kb  │ │ │   256 Kb  │ │ │   256 Kb  │ │ │   256 Kb  │ │
+│ └───────────┘ │ └───────────┘ │ └───────────┘ │ └───────────┘ │ └───────────┘ │ └───────────┘ │
+├───────────────┴───────────────┴───────────────┴───────────────┴───────────────┴───────────────┤
+│                                        L3 CACHE - 9 Mb                                        │
+└───────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
   
 ### Cache [:link:](https://en.wikipedia.org/wiki/CPU_cache)
@@ -41,7 +41,7 @@ L1 cache is divided in:
 
 Data is transferred between memory and cache in blocks of fixed size (_usually 64 bytes_), called cache lines or cache blocks.
 
-For every memory access(read/write) the CPU will:
+For every memory access (read/write) the CPU will:
 
 1. Verify if the data is not already in L1, L2 or L3.
 2. Load the data from memory (with cache line size) to L3 -> L2 -> L1.
@@ -93,12 +93,12 @@ R8-R15.
 ├───────────────────────────────────────────────┴──────┬────────┤
 │                                                      │ R8B 8b │
 └──────────────────────────────────────────────────────┴────────┘
-* It's not possible to access the upper 8 bits of R8W.
+* It's not possible to access the upper 8 bits of R(8-15)W.
 ```
 
 #### Index
 
-Used for indexed addressing (usually string functions) and sometimes used in addition and subtraction.  
+Used for indexed addressing (usually string functions) and sometimes used for addition and subtraction.  
 
 RSI: source index.
 RDI: destination index.
@@ -133,7 +133,7 @@ RSP (stack pointer): offset value within the program stack.
 
 #### Segment [:link:](https://en.wikipedia.org/wiki/X86_memory_segmentation)
 
-Stores the starting location of segments present in memory, related to the whole process, not method being executed.  
+Stores the starting location of segments present in memory, related to the whole process and not to method being executed.  
 All memory locations within a segment are relative to the starting address of the segment.  
 
 CS (code/text segment): starting address of the [code segment](https://en.wikipedia.org/wiki/Code_segment).
@@ -272,7 +272,7 @@ K0-K7
 
 A properly-aligned data type is one whose address is evenly divisible by its size in bytes. As example, storing a 64 bits number (8 bytes) at address 108678 would make it proper-aligned as 108768 % 8 == 0.
 
-Proper alignment is important for performance as some instructions, when operating with unaligned addresses takes more cycles to complete.
+Proper alignment is important for performance as some instructions, when operating with unaligned addresses, takes more cycles to complete.
 
 Common alignments (in bytes):
 
@@ -282,7 +282,7 @@ Common alignments (in bytes):
 
 ### Endianness [:link:](https://en.wikipedia.org/wiki/Endianness)
 
-How the bytes of a multi-byte value is represented in memory.
+How the bytes of a multi-byte value are represented in memory.
 
 * Big-endian: the most significant byte first and the least significant byte last.
 * Little-endian: the least significant byte first and the most significant byte last
@@ -389,7 +389,7 @@ The product of two 32-bit integers is always a 64-bit result.
 
 ### Instructions
 
-* String: require that addresses of source and destination operands to be placed in registers RSI (source) and RDI (destination).
+* String: the addresses of source and destination operands must be placed in registers RSI (source) and RDI (destination).
 * MMX and x87 FPU: recommended not to use as they're legacy instructions.  
 
 ### Bridging with Visual C++
@@ -408,7 +408,7 @@ When using aligned instructions, all memory operand **MUST BE** aligned on:
 * YMM: 32 bytes
 * ZMM: 64 bytes
 
-Control masks determines whether or not a instruction will operate or not on a  particular element on the destination operand.  
+Control masks determines whether or not a instruction will operate or not on a particular element on the destination operand.  
 
 Fused-multiply-add/subtract are instructions that perform a floating-point multiplication followed by a floating-point addition/subtraction using a single rounding operation using the rounding mode specified by MXCSR.RC.  
 
@@ -502,4 +502,4 @@ Use:
 * _vpxor, vxorp_ to zero a register.
 * _vzeroupper_ to avoid x86-AVX to x86-SSE transition penalties.
 
-^1^  A register spill occurs when a function must temporarily save the contents of a register to memory in order to free the register for other calculations.
+^1^  A register spill occurs when a function must temporarily save the contents of a register to memory in order to free the register for other calculations.  
