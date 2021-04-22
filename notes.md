@@ -50,7 +50,7 @@ For every memory access (read/write) the CPU will:
 Writes to main memory can happen in two ways:
 
 * Write-through: a write to the cache causes a write to main memory.
-* Write-back: only write to main memory when a cache line is evicted.
+* Write-back: only write to main memory when the last cache line is evicted (L1 -> L2 -> L3).
 
 ### Registers [:link:](https://en.wikipedia.org/wiki/Processor_register)
 
