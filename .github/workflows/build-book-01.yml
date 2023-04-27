@@ -13,14 +13,11 @@ on:
 
 env:
   BUILD_AVX512: 0
+  PROJ_DIR: 'book-01'
 
 jobs:
   build:
     runs-on: windows-2022
-
-    defaults:
-      run:
-        working-directory: ./book-01
 
     steps:
     - name: Checkout
@@ -34,10 +31,10 @@ jobs:
     - name: Build
       # Add additional options to the MSBuild command line here.
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild 'Study.sln' /m /p:Configuration=Release /p:platform=x64
+      run: msbuild '${{github.workspace}}\${{env:PROJ_DIR}}\Study.sln' /m /p:Configuration=Release /p:platform=x64
 
     - name: Test
       uses: microsoft/vstest-action@v1.0.0
       with:
-        searchFolder: '${{github.workspace}}\book-01'
+        searchFolder: '${{github.workspace}}\${{env:PROJ_DIR}}\'
         platform: 'x64'
