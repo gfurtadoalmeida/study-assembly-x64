@@ -25,9 +25,11 @@ namespace Assembly {
 					Assert::IsTrue(vendorId.length() > 0);
 					Assert::IsTrue(ci.Has(CpuidInfo::FeatureFlag::AVX));
 					Assert::IsTrue(ci.Has(CpuidInfo::FeatureFlag::AVX2));
+#if BUILD_AVX512 == 1
 					Assert::IsTrue(ci.Has(CpuidInfo::FeatureFlag::AVX512BW));
 					Assert::IsTrue(ci.Has(CpuidInfo::FeatureFlag::AVX512CD));
 					Assert::IsTrue(ci.Has(CpuidInfo::FeatureFlag::AVX512F));
+#endif
 					Assert::IsTrue(ci.Has(CpuidInfo::FeatureFlag::BMI1));
 					Assert::IsTrue(ci.Has(CpuidInfo::FeatureFlag::FMA));
 

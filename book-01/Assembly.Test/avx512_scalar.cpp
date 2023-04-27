@@ -1,4 +1,7 @@
 #include "pch.h"
+
+#if BUILD_AVX512 == 1
+
 #include "CppUnitTest.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -89,3 +92,5 @@ namespace Assembly {
 		}
 	}
 }
+
+#endif

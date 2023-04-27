@@ -1,4 +1,7 @@
 #include "pch.h"
+
+#if BUILD_AVX512 == 1
+
 #include "CppUnitTest.h"
 #include <random>
 #define _USE_MATH_DEFINES
@@ -155,7 +158,7 @@ namespace Assembly {
 					alignas(64) ZmmVal a;
 					alignas(64) ZmmVal b;
 					alignas(64) ZmmVal result[6];
-					
+
 					// We're going to do operations with the first 5 numbers.
 					// The last two we're going to test if they're zeros; ignored by the mask.
 					uint32_t opmask = 0x3f;
@@ -284,3 +287,5 @@ namespace Assembly {
 		}
 	}
 }
+
+#endif
