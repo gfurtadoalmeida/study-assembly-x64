@@ -42,4 +42,5 @@ jobs:
         vstestLocationMethod: '16.0'
         vsTestVersion: '16.0'
         platform: 'x64'
+        searchFolder: '/'
         resultLogsArtifactName: 's-test-result-logs'
