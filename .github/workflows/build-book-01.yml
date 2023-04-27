@@ -35,3 +35,11 @@ jobs:
       # Add additional options to the MSBuild command line here.
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild 'Study.sln' /m /p:Configuration=Release /p:platform=x64
+
+    - name: Test
+      uses: microsoft/vstest-action@v1.0.0
+      with:
+        vstestLocationMethod: '16.0'
+        vsTestVersion: '16.0'
+        platform: 'x64'
+        resultLogsArtifactName: 's-test-result-logs'
