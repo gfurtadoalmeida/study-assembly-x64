@@ -36,5 +36,5 @@ jobs:
     - name: Test
       uses: microsoft/vstest-action@v1.0.0
       with:
-        searchFolder: '${{github.workspace}}\${{env:PROJ_DIR}}\'
+        searchFolder: '${{github.workspace}}\${{env.PROJ_DIR}}\'
         platform: 'x64'
