@@ -1,0 +1,36 @@
+name: build-book-01
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - 'book-01/**'
+  pull_request:
+    branches: [ "master" ]
+    paths:
+      - 'book-01/**'
+  workflow_dispatch:
+
+env:
+  BUILD_AVX512: 0
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    defaults:
+      run:
+        working-directory: ./book-01
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        msbuild-architecture: x64
+
+    - name: Build
+      # Add additional options to the MSBuild command line here.
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild 'book-01\**\*.sln' /m /p:Configuration=Release /p:platform=x64
