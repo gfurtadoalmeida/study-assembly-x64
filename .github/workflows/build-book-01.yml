@@ -39,4 +39,5 @@ jobs:
     - name: Test
       uses: microsoft/vstest-action@v1.0.0
       with:
-        searchFolder: '${{github.workspace}}/x64/Release'
+        searchFolder: '${{github.workspace}}\x64\Release'
+        platform: 'x64'
