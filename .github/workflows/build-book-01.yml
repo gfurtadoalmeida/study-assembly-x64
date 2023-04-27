@@ -39,8 +39,6 @@ jobs:
     - name: Test
       uses: microsoft/vstest-action@v1.0.0
       with:
-        vstestLocationMethod: '16.0'
-        vsTestVersion: '16.0'
-        platform: 'x64'
-        searchFolder: '/'
-        resultLogsArtifactName: 's-test-result-logs'
+        testAssembly: Assembly.Test.dll
+        searchFolder: ./x64/Release
+
