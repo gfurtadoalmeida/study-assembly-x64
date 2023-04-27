@@ -39,6 +39,4 @@ jobs:
     - name: Test
       uses: microsoft/vstest-action@v1.0.0
       with:
-        testAssembly: Assembly.Test.dll
-        searchFolder: ./x64/Release
-
+        searchFolder: '${{github.workspace}}/x64/Release'
