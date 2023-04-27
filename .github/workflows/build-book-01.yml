@@ -23,6 +23,7 @@ jobs:
         working-directory: ./book-01
 
     steps:
+    - name: Checkout
     - uses: actions/checkout@v3
 
     - name: Add MSBuild to PATH
@@ -33,4 +34,4 @@ jobs:
     - name: Build
       # Add additional options to the MSBuild command line here.
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild 'book-01\**\*.sln' /m /p:Configuration=Release /p:platform=x64
+      run: msbuild '**\*.sln' /m /p:Configuration=Release /p:platform=x64
