@@ -11,7 +11,7 @@ Each folder contains two projects:
 
 ## Books
 
-1. [Modern X86 Assembly Language Programming, 2nd edition](https://www.amazon.com/gp/product/B07L6Z6K9Z) ^1^ ![Azure DevOps builds](https://img.shields.io/azure-devops/build/gfurtadoalmeida/GitHub/36?) ![Azure DevOps tests (compact)](https://img.shields.io/azure-devops/tests/gfurtadoalmeida/GitHub/36)
+1. [Modern X86 Assembly Language Programming, 2nd edition](https://www.amazon.com/gp/product/B07L6Z6K9Z) ![GitHub Build Status](https://github.com/gfurtadoalmeida/study-assembly-x64/actions/workflows/build-book-01.yml/badge.svg)
     * Says x86 but covers x86, x64, AVX, AVX2 and AVX-512 [(github)](https://github.com/Apress/modern-x86-assembly-language-programming-2e)
     * To build tests for AVX-512 add the `BUILD_AVX512=1` compile argument.
 
