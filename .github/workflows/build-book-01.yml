@@ -36,5 +36,6 @@ jobs:
     - name: Test
       uses: microsoft/vstest-action@v1.0.0
       with:
+        testAssembly: '**\*.Test.dll'
         searchFolder: '${{github.workspace}}\${{env.PROJ_DIR}}\'
         platform: 'x64'
